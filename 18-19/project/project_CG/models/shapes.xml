@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<scene>
+    <group>
+        <!-- SUN-Group with geometric transformations -->
+        <translate order="0" X="0" Y="1" Z="0" />
+        <rotate order="1" angle="0" axisX="0" axisY="0" axisZ="0" />
+        <models>
+            <model file="models/sun.3d" />
+        </models>
+    </group>
+    <group>
+        <!-- JUPITER -Group with geometric transformations -->
+        <translate order="0" X="0" Y="1" Z="30" />
+        <models>
+            <model file="models/jupiter.3d" />
+        </models>
+    </group>
+    <group>
+        <!-- SATURN -Group with geometric transformations -->
+        <translate order="0" X="0" Y="1" Z="40" />
+        <models>
+            <model file="models/saturn.3d" />
+        </models>
+    </group>
+    <group>
+        <!-- URANUS -Group with geometric transformations -->
+        <translate order="0" X="0" Y="1" Z="50" />
+        <models>
+            <model file="models/uranus.3d" />
+        </models>
+    </group>
+    <group>
+        <!-- NEPTUNE -Group with geometric transformations -->
+        <translate order="0" X="0" Y="1" Z="60" />
+        <models>
+            <model file="models/neptune.3d" />
+        </models>
+    </group>
+    <group>
+        <!-- EARTH -Group with geometric transformations -->
+        <translate order="0" X="0" Y="1" Z="15" />
+        <models>
+            <model file="models/earth.3d" />
+        </models>
+    </group>
+    <group>
+        <!-- VENUS -Group with geometric transformations -->
+        <translate order="0" X="0" Y="1" Z="10" />
+        <models>
+            <model file="models/venus.3d" />
+        </models>
+    </group>
+    <group>
+        <!-- MARS -Group with geometric transformations -->
+        <translate order="0" X="0" Y="1" Z="20" />
+        <models>
+            <model file="models/mars.3d" />
+        </models>
+    </group>
+    <group>
+        <!-- MERCURY -Group with geometric transformations -->
+        <translate order="0" X="0" Y="1" Z="5" />
+        <models>
+            <model file="models/mercury.3d" />
+        </models>
+    </group>
+</scene>
