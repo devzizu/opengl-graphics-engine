@@ -3,4 +3,4 @@ Repositório do projeto "Sistema Solar" a ser desenvolvido em Computação Gráf
 
 Membros:
 Paulo Lima - A89983
-
+João Azevedo - A85227
