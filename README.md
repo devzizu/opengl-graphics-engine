@@ -1,6 +1,11 @@
-# CG19-20
-Repositório do projeto "Sistema Solar" a ser desenvolvido em Computação Gráfica com uso a openGL em c/c++
+# CG - 2020
 
-Membros:
-Paulo Lima - A89983
-João Azevedo - A85227
+Project: CG | "Sistema Solar" | using OpenGL in C/C++.
+
+## Members
+
+A89983 | Paulo Lima
+ 
+A85227 | João Azevedo
+
+University of Minho, 3rd year.
