@@ -1,0 +1,3 @@
+/home/joao/Desktop/2º Semestre/CG/assessment/Projeto-CG/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/joao/Desktop/2º Semestre/CG/assessment/Projeto-CG/cmake-build-debug/CMakeFiles/Projeto_CG.dir
+/home/joao/Desktop/2º Semestre/CG/assessment/Projeto-CG/cmake-build-debug/CMakeFiles/edit_cache.dir
