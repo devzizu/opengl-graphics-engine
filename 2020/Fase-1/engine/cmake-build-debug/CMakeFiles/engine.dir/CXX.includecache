@@ -6,11 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/joao/Desktop/2º Semestre/CG/assessment/Projeto-CG/main.cpp
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/main.cpp
 iostream
--
-fstream
--
-math.h
 -
 

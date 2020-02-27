@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/generator.dir/main.cpp.o CMakeFiles/generator.dir/Model-Generator/model-generator.cpp.o  -o generator 

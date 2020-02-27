@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/joao/Desktop/2º Semestre/CG/assessment/Projeto-CG/Model-Generator/model-generator.cpp">
+			<Option target="Projeto_CG"/>
+		</Unit>
+		<Unit filename="/home/joao/Desktop/2º Semestre/CG/assessment/Projeto-CG/Model-Generator/model-generator.h">
+			<Option target="Projeto_CG"/>
+		</Unit>
 		<Unit filename="/home/joao/Desktop/2º Semestre/CG/assessment/Projeto-CG/main.cpp">
 			<Option target="Projeto_CG"/>
 		</Unit>

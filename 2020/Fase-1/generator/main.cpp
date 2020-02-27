@@ -1,107 +1,153 @@
 
 #include <iostream>
-#include <fstream>
 
-#include <math.h>
+#include "Model-Generator/model-generator.h"
 
 using namespace std;
 
-void generate_plane_3d (int size, string file_name) {
+#define GENERATED_FILES "../Model-Vertices-Files/"
 
-    ofstream outfile(file_name);
-
-    int nr_of_vertices = 6;
-
-    outfile << nr_of_vertices << endl;
-
-    //First triangle
-    outfile << size/2 << " " << 0 << " " << -size/2 << endl;
-    outfile << -size/2 << " " << 0 << " " << size/2 << endl;
-    outfile << size/2 << " " << 0 << " " << size/2 << endl;
-    //Second triangle
-    outfile << size/2 << " " << 0 << " " << -size/2 << endl;
-    outfile << -size/2 << " " << 0 << " " << -size/2 << endl;
-    outfile << -size/2 << " " << 0 << " " << size/2 << endl;
-
-    outfile.close();
+string arg_cmd (int argc, char* argv[]) {
+    string cmd = "";
+    for (int i = 0; i < argc; i++) {
+        cmd += argv[i];
+        cmd += " ";
+    }
+    return cmd;
 }
 
-void generate_box (int x, int y, int z, int divisions, string file_name) {
+void cat_command_options (string invalid_cmd) {
 
-    ofstream outfile(file_name);
+    cout << "Invalid command: " << invalid_cmd << endl << endl;
+    cout << "Command options: " << endl << endl;
+    cout << "plane   : generator plane <dim> <outfile>" << endl;
+    cout << "box     : generator box <X> <Y> <Z> <outfile>" << endl;
+    cout << "box-div : generator box <X> <Y> <Z> <divisions> <outfile>" << endl;
+    cout << "sphere  : generator sphere <radius> <slices> <stacks> <outfile>" << endl;
+    cout << "cone    : generator cone <bot-radius> <height> <slices> <stacks> <outfile>" << endl;
+}
 
-    int nr_of_vertices = 6 * 6 * pow((1+divisions), 2);
-
-    outfile << nr_of_vertices << endl;
-
-    int iterations = pow((divisions+1), 2);
-
-    //Bottom rectangles (Plane XZ, Y = 0)
-    for (int go_up = 0; go_up < (divisions + 1); go_up++) {
-
-        for (int go_right = 0; go_right < (divisions + 1);go_right++) {
-
-            //First triangle
-            outfile << (x/(divisions+1)) * (go_right + 1) << " "
-                    << (y/(divisions+1)) * (go_up + 1) << " "
-                    << z << endl;
-            outfile << (x/(divisions+1)) * go_right << " "
-                    << (y/(divisions+1)) * (go_up + 1) << " "
-                    << z << endl;
-            outfile << (x/(divisions+1)) * go_right << " "
-                    << (y/(divisions+1)) * go_up << " "
-                    << z << endl;
-
-            //Second triangle
-            outfile << (x/(divisions+1)) * (go_right + 1) << " "
-                    << (y/(divisions+1)) * (go_up + 1) << " "
-                    << z << endl;
-            outfile << (x/(divisions+1)) * go_right << " "
-                    << (y/(divisions+1)) * go_up << " "
-                    << z << endl;
-            outfile << (x/(divisions+1)) * (go_right + 1) << " "
-                    << (y/(divisions+1)) * go_up << " "
-                    << z << endl;
-        }
-    }
-
-    for (int go_up = 0; go_up < (divisions + 1); go_up++) {
-
-        for (int go_right = 0; go_right < (divisions + 1);go_right++) {
-
-            //First triangle
-            outfile << (x/(divisions+1)) * (go_right + 1) << " "
-                    << (y/(divisions+1)) * (go_up + 1) << " "
-                    << 0 << endl;
-            outfile << (x/(divisions+1)) * go_right << " "
-                    << (y/(divisions+1)) * (go_up + 1) << " "
-                    << 0 << endl;
-            outfile << (x/(divisions+1)) * go_right << " "
-                    << (y/(divisions+1)) * go_up << " "
-                    << 0 << endl;
-
-            //Second triangle
-            outfile << (x/(divisions+1)) * (go_right + 1) << " "
-                    << (y/(divisions+1)) * (go_up + 1) << " "
-                    << 0 << endl;
-            outfile << (x/(divisions+1)) * go_right << " "
-                    << (y/(divisions+1)) * go_up << " "
-                    << 0 << endl;
-            outfile << (x/(divisions+1)) * (go_right + 1) << " "
-                    << (y/(divisions+1)) * go_up << " "
-                    << 0 << endl;
-        }
-    }
-
-    outfile.close();
+void cat_end_program() {
+    cout << endl << "Program finished..." << endl << endl;
 }
 
 int main(int argc, char* argv[]) {
 
-    string xml_generated_files_path = "../XML-Examples/";
+    //------------------------------------------------------------------------------------------------------------------
 
-    //generate_plane_3d(4, xml_generated_files_path + "plane.3d");
-    generate_box(8, 2, 3, 20, xml_generated_files_path + "box.3d");
+    //Clear the console
+    system("clear");
+
+    cout << endl << "Generator starting..." << endl << endl;
+
+    //------------------------------------------------------------------------------------------------------------------
+    //Insufficient arguments
+
+    if (argc <= 1) {
+        cat_command_options(arg_cmd(argc, argv));
+        cat_end_program();
+
+        return 0;
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    string selected_model = argv[1];
+
+    if (selected_model == "plane") {
+    //generator plane <dim> <outfile>
+
+        try {
+
+            double dim = stod(argv[2]);
+
+            string output_file = argv[3];
+
+            cout << "[status] Generating vertices for: " << endl << endl;
+
+            cout << "\t-> Model       : " << selected_model << "," << endl;
+            cout << "\t-> Properties  : " << endl;
+            cout << "\t\t / Side-Dimension = " << dim << "." << endl;
+            cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
+
+            generate_plane_3d(dim, GENERATED_FILES + output_file);
+
+            cout << endl << "[status] All vertices were generated... " << endl << endl;
+
+        } catch (...) {
+            cat_command_options(arg_cmd(argc, argv)); cat_end_program();
+            return 0;
+        }
+
+    } else if (selected_model == "box") {
+
+        try {
+
+            double X = stod(argv[2]), Y = stod(argv[3]), Z = stod(argv[4]);
+
+            if (argc == 6) { //without dimensions
+            //generator box <X> <Y> <Z> <outfile>
+
+                string output_file = argv[5];
+
+                cout << "[status] Generating vertices for: " << endl << endl;
+
+                cout << "\t-> Model       : " << selected_model << "," << endl;
+                cout << "\t-> Properties  : " << endl;
+                cout << "\t\t / X = " << X << "," << endl;
+                cout << "\t\t / Y = " << Y << "," << endl;
+                cout << "\t\t / Z = " << Z << "," << endl;
+                cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
+
+                generate_box(X, Y, Z, 0, GENERATED_FILES + output_file);
+
+                cout << endl << "[status] All vertices were generated... " << endl << endl;
+
+            } else if (argc == 7) { //with dimensions
+            //generator box <X> <Y> <Z> <divisions> <outfile>
+
+                int divisions = stod(argv[5]);
+                string output_file = argv[6];
+
+                cout << "[status] Generating vertices for: " << endl << endl;
+
+                cout << "\t-> Model       : " << selected_model << "," << endl;
+                cout << "\t-> Properties  : " << endl;
+                cout << "\t\t / X   = " << X << "," << endl;
+                cout << "\t\t / Y   = " << Y << "," << endl;
+                cout << "\t\t / Z   = " << Z << "," << endl;
+                cout << "\t\t / Div = " << divisions << "," << endl;
+                cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
+
+                generate_box(X, Y, Z, divisions, GENERATED_FILES + output_file);
+
+                cout << endl << "[status] All vertices were generated... " << endl << endl;
+            }
+
+        } catch (...) { cat_command_options(arg_cmd(argc, argv)); cat_end_program(); return 0; }
+
+    } else if (selected_model == "sphere") {
+    //generator sphere <radius> <slices> <stacks> <outfile>
+
+        try {
+
+
+
+        } catch (...) { cat_command_options(arg_cmd(argc, argv)); cat_end_program(); return 0; }
+
+    } else if (selected_model == "cone") {
+    //generator cone <bot-radius> <height> <slices> <stacks> <outfile>
+
+        try {
+
+        } catch (...) { cat_command_options(arg_cmd(argc, argv)); cat_end_program(); return 0; }
+
+    } else {
+
+        cat_command_options(arg_cmd(argc, argv));
+    }
+
+    cat_end_program();
 
     return 0;
 }

@@ -48,10 +48,10 @@ RM = /home/joao/clion-2019.3.2/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator
+CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/CMakeFiles /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,44 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named generator
+# Target rules for targets named engine
 
 # Build rule for target.
-generator: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 generator
-.PHONY : generator
+engine: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 engine
+.PHONY : engine
 
 # fast build rule for target.
-generator/fast:
-	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/build
-.PHONY : generator/fast
-
-Model-Generator/model-generator.o: Model-Generator/model-generator.cpp.o
-
-.PHONY : Model-Generator/model-generator.o
-
-# target to build an object file
-Model-Generator/model-generator.cpp.o:
-	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/Model-Generator/model-generator.cpp.o
-.PHONY : Model-Generator/model-generator.cpp.o
-
-Model-Generator/model-generator.i: Model-Generator/model-generator.cpp.i
-
-.PHONY : Model-Generator/model-generator.i
-
-# target to preprocess a source file
-Model-Generator/model-generator.cpp.i:
-	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/Model-Generator/model-generator.cpp.i
-.PHONY : Model-Generator/model-generator.cpp.i
-
-Model-Generator/model-generator.s: Model-Generator/model-generator.cpp.s
-
-.PHONY : Model-Generator/model-generator.s
-
-# target to generate assembly for a file
-Model-Generator/model-generator.cpp.s:
-	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/Model-Generator/model-generator.cpp.s
-.PHONY : Model-Generator/model-generator.cpp.s
+engine/fast:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/build
+.PHONY : engine/fast
 
 main.o: main.cpp.o
 
@@ -156,7 +129,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -165,7 +138,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -174,7 +147,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -184,11 +157,8 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... generator"
+	@echo "... engine"
 	@echo "... edit_cache"
-	@echo "... Model-Generator/model-generator.o"
-	@echo "... Model-Generator/model-generator.i"
-	@echo "... Model-Generator/model-generator.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

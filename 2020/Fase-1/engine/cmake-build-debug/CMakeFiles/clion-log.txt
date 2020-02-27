@@ -1,4 +1,4 @@
-/home/joao/clion-2019.3.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator
+/home/joao/clion-2019.3.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine
 -- The C compiler identification is GNU 7.4.0
 -- The CXX compiler identification is GNU 7.4.0
 -- Check for working C compiler: /usr/bin/cc
@@ -15,4 +15,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug
+-- Build files have been written to: /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug

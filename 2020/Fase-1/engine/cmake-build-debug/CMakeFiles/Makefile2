@@ -44,21 +44,21 @@ RM = /home/joao/clion-2019.3.2/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator
+CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/generator.dir/all
+all: CMakeFiles/engine.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
-clean: CMakeFiles/generator.dir/clean
+clean: CMakeFiles/engine.dir/clean
 
 .PHONY : clean
 
@@ -68,31 +68,31 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
-# Target rules for target CMakeFiles/generator.dir
+# Target rules for target CMakeFiles/engine.dir
 
 # All Build rule for target.
-CMakeFiles/generator.dir/all:
-	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/depend
-	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target generator"
-.PHONY : CMakeFiles/generator.dir/all
+CMakeFiles/engine.dir/all:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/depend
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target engine"
+.PHONY : CMakeFiles/engine.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/generator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/generator.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/generator.dir/rule
+CMakeFiles/engine.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/engine.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/engine.dir/rule
 
 # Convenience name for target.
-generator: CMakeFiles/generator.dir/rule
+engine: CMakeFiles/engine.dir/rule
 
-.PHONY : generator
+.PHONY : engine
 
 # clean rule for target.
-CMakeFiles/generator.dir/clean:
-	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/clean
-.PHONY : CMakeFiles/generator.dir/clean
+CMakeFiles/engine.dir/clean:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/clean
+.PHONY : CMakeFiles/engine.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

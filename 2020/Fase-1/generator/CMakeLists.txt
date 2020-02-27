@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
-project(Projeto_CG)
+project(generator)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Projeto_CG main.cpp)
+add_executable(generator main.cpp Model-Generator/model-generator.h Model-Generator/model-generator.cpp)
