@@ -24,7 +24,7 @@ void generate_plane_3d (double size, string file_name) {
     outfile.close();
 }
 
-void generate_box (double x, double y, double z, int divisions, string file_name) {
+void generate_box_3d (double x, double y, double z, int divisions, string file_name) {
 
     ofstream outfile(file_name);
 
@@ -191,5 +191,42 @@ void generate_box (double x, double y, double z, int divisions, string file_name
         }
     }
 
+    outfile.close();
+}
+
+void generate_cone_3d (double radius, double height, int slices, int stacks, string file_name) {
+
+    ofstream outfile(file_name);
+
+    int nr_of_vertices = 6 * slices * (stacks-1) + slices * 3;
+    
+    double alpha = 2*M_PI/slices;;
+    double beta = atan(height/radius);
+    double stack_height = height/stacks;
+    double stack_radius, next_radius;
+
+    outfile << nr_of_vertices << endl;
+
+    for(int j=0; j < stacks;j++) {
+        stack_radius = radius - (j*radius/stacks);
+        next_radius = radius - ((j+1)*radius/stacks);
+        beta = (double)j;
+        for(int i=0; i < slices;i++) {
+            // Bottom of each stack
+            outfile << "glColor3f(" << beta*0.05 << "," <<0 << "," <<1<< ");" << endl;
+            outfile << "glVertex3f(" << 0.0 << "," << j*stack_height << "," << 0.0 << ");" << endl;
+            outfile << "glVertex3f(" << stack_radius * sin(alpha*(i+1)) << "," << j*stack_height << "," << stack_radius * cos(alpha*(i+1)) << ");"<<  endl;
+            outfile <<  "glVertex3f(" << stack_radius * sin(alpha*i) << "," << j*stack_height << "," << stack_radius * cos(alpha*i) << ");"<< endl;
+
+            // Sides
+            outfile << "glVertex3f(" << stack_radius * sin(alpha*i)<< "," <<  j*stack_height << "," <<  stack_radius * cos(alpha*i)<< ");" << endl;
+            outfile << "glVertex3f(" << next_radius * sin(alpha*(i+1))<< "," <<  (j+1)*stack_height << "," <<  next_radius * cos(alpha*(i+1))<< ");" << endl;
+            outfile << "glVertex3f(" << next_radius * sin(alpha*i)<< "," <<  (j+1)*stack_height << "," <<  next_radius * cos(alpha*i)<< ");" << endl;
+
+            outfile << "glVertex3f(" << stack_radius * sin(alpha*(i+1))<< "," <<  j*stack_height << "," <<  stack_radius * cos(alpha*(i+1))<< ");" << endl;
+            outfile << "glVertex3f(" << next_radius * sin(alpha*(i+1))<< "," <<  (j+1)*stack_height<< "," <<  next_radius * cos(alpha*(i+1))<< ");" << endl;
+            outfile << "glVertex3f(" << stack_radius * sin(alpha*i)<< "," <<  j*stack_height << "," <<  stack_radius * cos(alpha*i)<< ");" << endl;
+        }
+    }
     outfile.close();
 }

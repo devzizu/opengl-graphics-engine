@@ -99,7 +99,7 @@ int main(int argc, char* argv[]) {
                 cout << "\t\t / Z = " << Z << "," << endl;
                 cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
 
-                generate_box(X, Y, Z, 0, GENERATED_FILES + output_file);
+                generate_box_3d(X, Y, Z, 0, GENERATED_FILES + output_file);
 
                 cout << endl << "[status] All vertices were generated... " << endl << endl;
 
@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {
                 cout << "\t\t / Div = " << divisions << "," << endl;
                 cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
 
-                generate_box(X, Y, Z, divisions, GENERATED_FILES + output_file);
+                generate_box_3d(X, Y, Z, divisions, GENERATED_FILES + output_file);
 
                 cout << endl << "[status] All vertices were generated... " << endl << endl;
             }
@@ -139,7 +139,7 @@ int main(int argc, char* argv[]) {
     //generator cone <bot-radius> <height> <slices> <stacks> <outfile>
 
         try {
-
+            generate_cone_3d(1, 2, 40, 40, "cone.3d");
         } catch (...) { cat_command_options(arg_cmd(argc, argv)); cat_end_program(); return 0; }
 
     } else {
