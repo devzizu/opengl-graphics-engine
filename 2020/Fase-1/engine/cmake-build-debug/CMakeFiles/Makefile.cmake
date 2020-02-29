@@ -26,6 +26,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/Compiler/GNU-C.cmake"
   "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake"
   "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/Compiler/GNU.cmake"
+  "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/FindGLUT.cmake"
+  "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/FindOpenGL.cmake"
+  "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake"
+  "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/FindPackageMessage.cmake"
   "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake"
   "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/Platform/Linux-GNU-C.cmake"
   "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/Platform/Linux-GNU-CXX.cmake"
@@ -33,6 +37,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/Platform/Linux.cmake"
   "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/Platform/UnixPaths.cmake"
   "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/ProcessorCount.cmake"
+  "/home/joao/clion-2019.3.2/bin/cmake/linux/share/cmake-3.15/Modules/SelectLibraryConfigurations.cmake"
   )
 
 # The corresponding makefile is:

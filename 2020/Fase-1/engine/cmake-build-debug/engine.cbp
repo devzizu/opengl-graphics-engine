@@ -34,6 +34,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers"/>
 					<Add directory="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
@@ -58,6 +59,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers"/>
 					<Add directory="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
@@ -86,10 +88,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Model-Read-Tests/box_div_1.3d">
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers/load-graphics.h">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/XML-Examples/ex-config-1.xml">
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers/load-xml.h">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers/model-info.h">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/load-graphics.cpp">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/load-xml.cpp">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/model-info.cpp">
 			<Option target="engine"/>
 		</Unit>
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/main.cpp">

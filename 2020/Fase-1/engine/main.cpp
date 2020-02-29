@@ -1,52 +1,42 @@
 
 #include <iostream>
 
+#include "Models/headers/model-info.h"
+#include "Models/headers/load-xml.h"
+#include "Models/headers/load-graphics.h"
+
 #include "tinyxml2/tinyxml2.h"
 
 using namespace std;
 using namespace tinyxml2;
 
-//XML default file path
-#define XML_CONFIG_FILES_PATH "../XML-Examples/"
-
-int load_xml_config(string xml_config_filename) {
-
-    string file_path = XML_CONFIG_FILES_PATH + xml_config_filename;
-    cout << endl << "Reading from " << file_path << "..." << endl;
-
-    //Load document file
-    XMLDocument xml_config_doc;
-    XMLError eResult = xml_config_doc.LoadFile(file_path.c_str());
-
-    //Read all models
-    XMLElement* scene = xml_config_doc.FirstChildElement("scene");
-    for (XMLElement* model_ptr = scene -> FirstChildElement("model");
-         model_ptr != NULL;
-         model_ptr = model_ptr -> NextSiblingElement()
-         ) {
-
-        string model_file = string(model_ptr -> Attribute("file"));
-        cout << endl << "Got file model = " << model_file << ";";
-    }
-
-    cout << endl;
-
-    return eResult;
-}
+#define xml_config_file "ex-config-1.xml"
 
 int main() {
 
     system("clear");
+
     cout << endl << "Engine starting..." << endl;
+    cout << endl << "Reading configuration file: " << xml_config_file << endl;
 
-    string xml_file = "ex-config-1.xml";
-    int loaded = load_xml_config(xml_file);
+    //Loading xml file
+    vector<MODEL_INFO> models_list = load_xml_config(xml_config_file);
 
-    if (loaded != XML_SUCCESS) {
-
-        cout << endl << "Error reading " + xml_file + ";" << endl;
+    //Error handling
+    if (models_list.empty()) {
+        cout << endl << "Error reading " << xml_config_file << ";" << endl;
         return 0;
     }
+
+    //load opengl
+    cout << endl << "Loading models to data structures..." << endl << endl;
+
+    for(auto it = models_list.begin(); it != models_list.end(); ++it) {
+
+        load_model(it.base());
+    }
+
+    load_graphics(models_list);
 
     return 0;
 }

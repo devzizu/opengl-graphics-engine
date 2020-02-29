@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#define GENERATED_FILES "../Model-Vertices-Files/"
+#define GENERATED_FILES "../../examples/Model-Read-Tests/"
 
 string arg_cmd (int argc, char* argv[]) {
     string cmd = "";
@@ -167,7 +167,7 @@ int main(int argc, char* argv[]) {
             cout << "\t\t / Height   = " << height << "," << endl;
             cout << "\t\t / Slices   = " << slices << "," << endl;
             cout << "\t\t / Stacks   = " << stacks << "," << endl;
-            cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
+            cout << "\t-> Output file : " << GENERATED_FILES + output_file << endl;
 
             generate_cone_3d(radius, height, slices, stacks, GENERATED_FILES + output_file);
 

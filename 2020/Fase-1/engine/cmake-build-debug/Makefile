@@ -123,6 +123,87 @@ engine/fast:
 	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/build
 .PHONY : engine/fast
 
+Models/load-graphics.o: Models/load-graphics.cpp.o
+
+.PHONY : Models/load-graphics.o
+
+# target to build an object file
+Models/load-graphics.cpp.o:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/load-graphics.cpp.o
+.PHONY : Models/load-graphics.cpp.o
+
+Models/load-graphics.i: Models/load-graphics.cpp.i
+
+.PHONY : Models/load-graphics.i
+
+# target to preprocess a source file
+Models/load-graphics.cpp.i:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/load-graphics.cpp.i
+.PHONY : Models/load-graphics.cpp.i
+
+Models/load-graphics.s: Models/load-graphics.cpp.s
+
+.PHONY : Models/load-graphics.s
+
+# target to generate assembly for a file
+Models/load-graphics.cpp.s:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/load-graphics.cpp.s
+.PHONY : Models/load-graphics.cpp.s
+
+Models/load-xml.o: Models/load-xml.cpp.o
+
+.PHONY : Models/load-xml.o
+
+# target to build an object file
+Models/load-xml.cpp.o:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/load-xml.cpp.o
+.PHONY : Models/load-xml.cpp.o
+
+Models/load-xml.i: Models/load-xml.cpp.i
+
+.PHONY : Models/load-xml.i
+
+# target to preprocess a source file
+Models/load-xml.cpp.i:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/load-xml.cpp.i
+.PHONY : Models/load-xml.cpp.i
+
+Models/load-xml.s: Models/load-xml.cpp.s
+
+.PHONY : Models/load-xml.s
+
+# target to generate assembly for a file
+Models/load-xml.cpp.s:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/load-xml.cpp.s
+.PHONY : Models/load-xml.cpp.s
+
+Models/model-info.o: Models/model-info.cpp.o
+
+.PHONY : Models/model-info.o
+
+# target to build an object file
+Models/model-info.cpp.o:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/model-info.cpp.o
+.PHONY : Models/model-info.cpp.o
+
+Models/model-info.i: Models/model-info.cpp.i
+
+.PHONY : Models/model-info.i
+
+# target to preprocess a source file
+Models/model-info.cpp.i:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/model-info.cpp.i
+.PHONY : Models/model-info.cpp.i
+
+Models/model-info.s: Models/model-info.cpp.s
+
+.PHONY : Models/model-info.s
+
+# target to generate assembly for a file
+Models/model-info.cpp.s:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/model-info.cpp.s
+.PHONY : Models/model-info.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -186,6 +267,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... engine"
 	@echo "... edit_cache"
+	@echo "... Models/load-graphics.o"
+	@echo "... Models/load-graphics.i"
+	@echo "... Models/load-graphics.s"
+	@echo "... Models/load-xml.o"
+	@echo "... Models/load-xml.i"
+	@echo "... Models/load-xml.s"
+	@echo "... Models/model-info.o"
+	@echo "... Models/model-info.i"
+	@echo "... Models/model-info.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

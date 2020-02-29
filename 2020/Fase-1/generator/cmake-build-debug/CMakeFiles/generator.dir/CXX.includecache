@@ -6,9 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/Model-Generator/model-generator.cpp
-fstream
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/Model-Generator/model-generator.h
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/main.cpp
+iostream
 -
-cmath
--
+Model-Generator/model-generator.h
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/Model-Generator/model-generator.h
 
