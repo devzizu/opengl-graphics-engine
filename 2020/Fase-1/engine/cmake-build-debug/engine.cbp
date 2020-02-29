@@ -34,6 +34,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -57,6 +58,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -84,7 +86,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Model-Read-Tests/box_div_1.3d">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/XML-Examples/ex-config-1.xml">
+			<Option target="engine"/>
+		</Unit>
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/main.cpp">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2/tinyxml2.cpp">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2/tinyxml2.h">
 			<Option target="engine"/>
 		</Unit>
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/CMakeLists.txt">

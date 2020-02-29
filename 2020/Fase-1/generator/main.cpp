@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
 
             string output_file = argv[3];
 
-            cout << "[status] Generating vertices for: " << endl << endl;
+            cout << "[status] Generating vertices for: " << endl;
 
             cout << "\t-> Model       : " << selected_model << "," << endl;
             cout << "\t-> Properties  : " << endl;
@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
 
             generate_plane_3d(dim, GENERATED_FILES + output_file);
 
-            cout << endl << "[status] All vertices were generated... " << endl << endl;
+            cout << "[status] All vertices were generated... " << endl << endl;
 
         } catch (...) {
             cat_command_options(arg_cmd(argc, argv)); cat_end_program();
@@ -90,7 +90,7 @@ int main(int argc, char* argv[]) {
 
                 string output_file = argv[5];
 
-                cout << "[status] Generating vertices for: " << endl << endl;
+                cout << "[status] Generating vertices for: " << endl;
 
                 cout << "\t-> Model       : " << selected_model << "," << endl;
                 cout << "\t-> Properties  : " << endl;
@@ -101,7 +101,7 @@ int main(int argc, char* argv[]) {
 
                 generate_box_3d(X, Y, Z, 0, GENERATED_FILES + output_file);
 
-                cout << endl << "[status] All vertices were generated... " << endl << endl;
+                cout << "[status] All vertices were generated... " << endl << endl;
 
             } else if (argc == 7) { //with dimensions
             //generator box <X> <Y> <Z> <divisions> <outfile>
@@ -121,7 +121,7 @@ int main(int argc, char* argv[]) {
 
                 generate_box_3d(X, Y, Z, divisions, GENERATED_FILES + output_file);
 
-                cout << endl << "[status] All vertices were generated... " << endl << endl;
+                cout << "[status] All vertices were generated... " << endl << endl;
             }
 
         } catch (...) { cat_command_options(arg_cmd(argc, argv)); cat_end_program(); return 0; }
@@ -131,7 +131,22 @@ int main(int argc, char* argv[]) {
 
         try {
 
+            double radius = stod(argv[2]);
+            int slices = stod(argv[3]), stacks = stod(argv[4]);
+            string output_file = argv[5];
 
+            cout << "[status] Generating vertices for: " << endl;
+
+            cout << "\t-> Model       : " << selected_model << "," << endl;
+            cout << "\t-> Properties  : " << endl;
+            cout << "\t\t / Radius   = " << radius << "," << endl;
+            cout << "\t\t / Slices   = " << slices << "," << endl;
+            cout << "\t\t / Stacks   = " << stacks << "," << endl;
+            cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
+
+            generate_sphere_3d (radius, slices, stacks, GENERATED_FILES + output_file);
+
+            cout << "[status] All vertices were generated... " << endl << endl;
 
         } catch (...) { cat_command_options(arg_cmd(argc, argv)); cat_end_program(); return 0; }
 
@@ -139,7 +154,25 @@ int main(int argc, char* argv[]) {
     //generator cone <bot-radius> <height> <slices> <stacks> <outfile>
 
         try {
-            generate_cone_3d(1, 2, 40, 40, "cone.3d");
+
+            double radius = stod(argv[2]), height = stod(argv[3]);
+            int slices = stod(argv[4]), stacks = stod(argv[5]);
+            string output_file = argv[6];
+
+            cout << "[status] Generating vertices for: " << endl;
+
+            cout << "\t-> Model       : " << selected_model << "," << endl;
+            cout << "\t-> Properties  : " << endl;
+            cout << "\t\t / Radius   = " << radius << "," << endl;
+            cout << "\t\t / Height   = " << height << "," << endl;
+            cout << "\t\t / Slices   = " << slices << "," << endl;
+            cout << "\t\t / Stacks   = " << stacks << "," << endl;
+            cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
+
+            generate_cone_3d(radius, height, slices, stacks, GENERATED_FILES + output_file);
+
+            cout << "[status] All vertices were generated... " << endl << endl;
+
         } catch (...) { cat_command_options(arg_cmd(argc, argv)); cat_end_program(); return 0; }
 
     } else {

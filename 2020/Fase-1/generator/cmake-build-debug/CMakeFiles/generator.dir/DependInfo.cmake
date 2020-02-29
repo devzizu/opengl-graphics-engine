@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator/Model-Generator/model-generator.cpp" "/home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles/generator.dir/Model-Generator/model-generator.cpp.o"
-  "/home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator/main.cpp" "/home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles/generator.dir/main.cpp.o"
+  "/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/Model-Generator/model-generator.cpp" "/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles/generator.dir/Model-Generator/model-generator.cpp.o"
+  "/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/main.cpp" "/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles/generator.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

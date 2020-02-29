@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+tinyxml2/tinyxml2.o: tinyxml2/tinyxml2.cpp.o
+
+.PHONY : tinyxml2/tinyxml2.o
+
+# target to build an object file
+tinyxml2/tinyxml2.cpp.o:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.o
+.PHONY : tinyxml2/tinyxml2.cpp.o
+
+tinyxml2/tinyxml2.i: tinyxml2/tinyxml2.cpp.i
+
+.PHONY : tinyxml2/tinyxml2.i
+
+# target to preprocess a source file
+tinyxml2/tinyxml2.cpp.i:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.i
+.PHONY : tinyxml2/tinyxml2.cpp.i
+
+tinyxml2/tinyxml2.s: tinyxml2/tinyxml2.cpp.s
+
+.PHONY : tinyxml2/tinyxml2.s
+
+# target to generate assembly for a file
+tinyxml2/tinyxml2.cpp.s:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.s
+.PHONY : tinyxml2/tinyxml2.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +189,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... tinyxml2/tinyxml2.o"
+	@echo "... tinyxml2/tinyxml2.i"
+	@echo "... tinyxml2/tinyxml2.s"
 .PHONY : help
 
 
