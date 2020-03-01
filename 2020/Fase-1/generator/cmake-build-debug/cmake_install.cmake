@@ -1,4 +1,4 @@
-# Install script for directory: /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator
+# Install script for directory: /home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

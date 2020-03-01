@@ -8,114 +8,114 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug"/>
+				<Option working_dir="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug"/>
+				<Option working_dir="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="engine">
-				<Option output="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/engine" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug"/>
+				<Option output="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/engine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers"/>
-					<Add directory="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2"/>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/Models/headers"/>
+					<Add directory="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/tinyxml2"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 engine"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 engine"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="engine/fast">
-				<Option output="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/engine" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug"/>
+				<Option output="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/engine" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers"/>
-					<Add directory="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2"/>
-					<Add directory="/usr/include/c++/7"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
-					<Add directory="/usr/include/c++/7/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/Models/headers"/>
+					<Add directory="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/tinyxml2"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
 					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
 					<Add directory="/usr/include/x86_64-linux-gnu"/>
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 engine/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 engine/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug"/>
+				<Option working_dir="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers/load-graphics.h">
+		<Unit filename="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/Models/headers/load-graphics.h">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers/load-xml.h">
+		<Unit filename="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/Models/headers/load-xml.h">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers/model-info.h">
+		<Unit filename="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/Models/headers/model-info.h">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/load-graphics.cpp">
+		<Unit filename="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/Models/load-graphics.cpp">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/load-xml.cpp">
+		<Unit filename="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/Models/load-xml.cpp">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/model-info.cpp">
+		<Unit filename="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/Models/model-info.cpp">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/main.cpp">
+		<Unit filename="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/main.cpp">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2/tinyxml2.cpp">
+		<Unit filename="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/tinyxml2/tinyxml2.cpp">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2/tinyxml2.h">
+		<Unit filename="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/tinyxml2/tinyxml2.h">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/CMakeLists.txt">
+		<Unit filename="/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

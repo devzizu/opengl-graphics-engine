@@ -12,7 +12,7 @@ using namespace tinyxml2;
 
 #define xml_config_file "ex-config-1.xml"
 
-int main() {
+int main(int argc, char** argv) {
 
     system("clear");
 
@@ -36,7 +36,7 @@ int main() {
         load_model(it.base());
     }
 
-    load_graphics(models_list);
+    load_graphics(models_list, argc, argv);
 
     return 0;
 }

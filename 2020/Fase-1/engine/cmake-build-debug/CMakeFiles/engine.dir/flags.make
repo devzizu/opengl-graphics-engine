@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/headers -I/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/tinyxml2 
+CXX_INCLUDES = -I/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/Models/headers -I/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/tinyxml2 
 

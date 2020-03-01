@@ -42,12 +42,28 @@ void drawAxis() {
 void draw_model(MODEL_INFO* model) {
 
     glBegin(GL_TRIANGLES);
-    glColor3f(1.0f, 1.0f, 1.0f);
+
+    float red = 1.0f;
+    float green = 0.0f;
+    float blue = 0.0f;
 
     vector<POINT_3D> vertices = model->getVertices();
     for(auto it = vertices.begin(); it != vertices.end(); it++) {
-
+        glColor3f(red, green, blue);
         glVertex3f(it->getX(), it->getY(), it->getZ());
+        if(red == 1.0f) {
+            red = 0.0f;
+            green = 1.0f;
+        }
+        else if(green == 1.0f) {
+            green = 0.0f;
+            blue = 1.0f;
+        }
+        else if(blue = 1.0f) {
+            red = 1.0f;
+            blue = 0.0f;
+        }
+
     }
 
     glEnd();
@@ -139,16 +155,16 @@ void processSpecialKeys(int key, int xx, int yy) {
 
 }
 
-int load_graphics(vector<MODEL_INFO> models) {
+int load_graphics(vector<MODEL_INFO> models, int argc, char** argv) {
 
     //load models pointer to global variable
     models_list = models;
-
     //default values
-    int argc; char* argv[0];
+    // int argc; char* argv[0];
 
     //init GLUT and the window
     glutInit(&argc, argv);
+    cout << "lol" << endl;
     glutInitDisplayMode(GLUT_DEPTH|GLUT_DOUBLE|GLUT_RGBA);
     glutInitWindowPosition(100,100);
     glutInitWindowSize(800,800);
