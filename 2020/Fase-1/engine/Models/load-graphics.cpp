@@ -164,7 +164,6 @@ int load_graphics(vector<MODEL_INFO> models, int argc, char** argv) {
 
     //init GLUT and the window
     glutInit(&argc, argv);
-    cout << "lol" << endl;
     glutInitDisplayMode(GLUT_DEPTH|GLUT_DOUBLE|GLUT_RGBA);
     glutInitWindowPosition(100,100);
     glutInitWindowSize(800,800);

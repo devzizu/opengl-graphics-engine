@@ -35,19 +35,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/103/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/joao/clion-2019.3.2/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/103/bin/cmake/linux/bin/cmake -E remove -f
+RM = /home/joao/clion-2019.3.2/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator
+CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -74,14 +74,14 @@ preinstall:
 CMakeFiles/generator.dir/all:
 	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/depend
 	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target generator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target generator"
 .PHONY : CMakeFiles/generator.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/generator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/generator.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/linux/Documents/GIT/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/generator/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/generator.dir/rule
 
 # Convenience name for target.

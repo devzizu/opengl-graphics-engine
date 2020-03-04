@@ -12,7 +12,7 @@ iostream
 vector
 -
 
-/home/linux/Documents/GIT/CG19-20/2020/Fase-1/engine/Models/load-graphics.cpp
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-1/engine/Models/load-graphics.cpp
 GLUT/glut.h
 -
 GL/glut.h
