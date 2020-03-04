@@ -12,8 +12,8 @@ using namespace tinyxml2;
 
 #define xml_config_file "ex-config-1.xml"
 
-int main(int argc, char** argv) {
-
+int main(int argc, char** argv)
+{
     system("clear");
 
     cout << endl << "Engine starting..." << endl;
