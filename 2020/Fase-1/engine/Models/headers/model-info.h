@@ -9,6 +9,9 @@ using namespace std;
 
 //--------------------------------------------------------------------------------------
 
+/*
+ * Implementação de um ponto 3D em C++
+ * */
 class POINT_3D {
     public:
         POINT_3D(float x, float y, float z);
@@ -33,6 +36,12 @@ class POINT_3D {
 
 //--------------------------------------------------------------------------------------
 
+/*
+ * Contém informação de um modelo, nomeadamente,
+ * o nome do ficheiro que contém os vertices e
+ * o vetor de vértices que será carregado para a
+ * memória principal.
+ * */
 class MODEL_INFO {
 
     private:

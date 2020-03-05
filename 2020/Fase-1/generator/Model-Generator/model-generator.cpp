@@ -200,7 +200,7 @@ void generate_cone_3d (double radius, double height, int slices, int stacks, str
 
     int nr_of_vertices = (slices * 3 * stacks) + (6 * slices * stacks);
     
-    double alpha = 2*M_PI/slices;;
+    double alpha = 2*M_PI/slices;
     double stack_height = height/stacks;
     double stack_radius, next_radius;
 

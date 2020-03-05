@@ -139,8 +139,7 @@ engine: CMakeFiles/engine.dir/main.cpp.o
 engine: CMakeFiles/engine.dir/Models/model-info.cpp.o
 engine: CMakeFiles/engine.dir/Models/load-graphics.cpp.o
 engine: CMakeFiles/engine.dir/build.make
-engine: /usr/lib/x86_64-linux-gnu/libOpenGL.so
-engine: /usr/lib/x86_64-linux-gnu/libGLX.so
+engine: /usr/lib/x86_64-linux-gnu/libGL.so
 engine: /usr/lib/x86_64-linux-gnu/libGLU.so
 engine: /usr/lib/x86_64-linux-gnu/libglut.so
 engine: /usr/lib/x86_64-linux-gnu/libXmu.so
