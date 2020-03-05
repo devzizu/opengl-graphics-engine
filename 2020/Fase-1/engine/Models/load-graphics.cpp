@@ -15,11 +15,15 @@
 //Models
 vector<MODEL_INFO> models_list;
 //Translations
+float alfa = 0.0f, beta = 0.0f, radius = 5.0f;
+float camX, camY, camZ;
+
 float pos_x = 0.0f,
-      pos_y = 0.0f,
-      pos_z = 0.0f;
+        pos_y = 0.0f,
+        pos_z = 0.0f;
 
 float rotation = 0.0f;
+
 
 void drawAxis() {
 
@@ -101,7 +105,7 @@ void renderScene(void) {
 
     // set the camera
     glLoadIdentity();
-    gluLookAt(10.0f,12.0f,5.0f,
+    gluLookAt(camX, camY, camZ,
               0.0,0.0,0.0,
               0.0f,1.0f,0.0f);
 
@@ -119,16 +123,17 @@ void renderScene(void) {
     glutSwapBuffers();
 }
 
+void spherical2Cartesian() {
+
+    camX = radius * cos(beta) * sin(alfa);
+    camY = radius * sin(beta);
+    camZ = radius * cos(beta) * cos(alfa);
+}
+
 void processKeys(unsigned char c, int xx, int yy) {
 
-    switch(tolower(c)) {
-
-        case 'f':
-            glPolygonMode(GL_FRONT, GL_FILL);
-            break;
-        case 'l':
-            glPolygonMode(GL_FRONT, GL_LINE);
-            break;
+    switch(tolower(c))
+    {
         case 'w':
             pos_x-=0.1f;
             break;
@@ -149,11 +154,47 @@ void processKeys(unsigned char c, int xx, int yy) {
     glutPostRedisplay();
 }
 
-void processSpecialKeys(int key, int xx, int yy) {
+void processSpecialKeys(int key, int xx, int yy)
+{
+    switch (key)
+    {
+        case GLUT_KEY_F1:
+            glPolygonMode(GL_FRONT, GL_FILL);
+            break;
 
-// put code to process special keys in here
+        case GLUT_KEY_F2:
+            glPolygonMode(GL_FRONT, GL_LINE);
+            break;
 
+        case GLUT_KEY_RIGHT:
+            alfa -= 0.1; break;
+
+        case GLUT_KEY_LEFT:
+            alfa += 0.1; break;
+
+        case GLUT_KEY_UP:
+            beta += 0.1f;
+            if (beta > 1.5f)
+                beta = 1.5f;
+            break;
+
+        case GLUT_KEY_DOWN:
+            beta -= 0.1f;
+            if (beta < -1.5f)
+                beta = -1.5f;
+            break;
+
+        case GLUT_KEY_PAGE_DOWN: radius -= 0.1f;
+            if (radius < 0.1f)
+                radius = 0.1f;
+            break;
+
+        case GLUT_KEY_PAGE_UP: radius += 0.1f; break;
+    }
+    spherical2Cartesian();
+    glutPostRedisplay();
 }
+
 
 int load_graphics(vector<MODEL_INFO> models, int argc, char** argv) {
 
@@ -177,14 +218,16 @@ int load_graphics(vector<MODEL_INFO> models, int argc, char** argv) {
     glutReshapeFunc(changeSize);
 
     //Callback registration for keyboard processing
-    glutKeyboardFunc(processKeys);
     glutSpecialFunc(processSpecialKeys);
+    glutKeyboardFunc(processKeys);
 
     //OpenGL settings
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
 
     glPolygonMode(GL_FRONT, GL_LINE);
+
+    spherical2Cartesian();
 
     //GLUT's main cycle
     glutMainLoop();
