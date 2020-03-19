@@ -1,0 +1,14 @@
+<scene>
+    <group>
+        <!-- Planet -->
+        <translate X = "10" />
+        <group>
+            <rotate angle="34" axisX="0" axisY="0" axisZ="1"/>
+            <group>
+                <models>
+                    <model file="cone.3d" />
+                </models>
+            </group>
+        </group>
+    </group>
+</scene>

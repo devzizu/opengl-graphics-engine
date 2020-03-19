@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/generator/Model-Generator/model-generator.cpp
+fstream
+-
+cmath
+-
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/generator/Model-Generator/model-generator.h
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/generator/main.cpp
+iostream
+-
+Model-Generator/model-generator.h
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/generator/Model-Generator/model-generator.h
+

@@ -1,0 +1,21 @@
+<scene>
+    <group>
+        <!-- Planet -->
+        <translate X = "10" />
+        <group>
+            <scale X="167.3" Y="167.3" Z="167.3"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+            <!-- Moon -->
+            <group>
+                <scale X = "1.7" Y = "1.7" Z="1.7" />
+                    <models>
+                        <model file = "cone.3d" />
+                    </models>
+            </group>
+        </group>
+    </group>
+</scene>

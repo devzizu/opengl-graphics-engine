@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Models/headers/model-info.h
+iostream
+-
+vector
+-
+stack
+-
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/engine/Models/draw-elements.cpp
+GLUT/glut.h
+-
+GL/glut.h
+-
+model-info.h
+-
+

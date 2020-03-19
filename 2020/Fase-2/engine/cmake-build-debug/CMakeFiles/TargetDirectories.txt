@@ -1,0 +1,3 @@
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/engine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/engine/cmake-build-debug/CMakeFiles/engine.dir
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/engine/cmake-build-debug/CMakeFiles/edit_cache.dir
