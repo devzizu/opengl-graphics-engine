@@ -23,11 +23,11 @@ vector<Group> *sceneGroups;
 //Translations
 float alfa = 0.0f,
       beta = 0.0f,
-      radius = 5.0f;
+      radius = 30.0f;
 
 float camX, camY, camZ;
 
-float pos_x = 0.0f,
+float pos_x = -15.0f,
       pos_y = 0.0f,
       pos_z = 0.0f;
 
@@ -79,13 +79,13 @@ void renderScene(void) {
     /*----------------------------------------------------------------------------------------------------------------*/
     //Load the scene based on the structures
 
+    //TMP: Move models in the XZ plane
+    glTranslatef(pos_x, pos_y, pos_z);
+
     //::1::Draw the axis
     glPushMatrix();
     drawAxis();
     glPopMatrix();
-
-    //TMP: Move models in the XZ plane
-    glTranslatef(pos_x, pos_y, pos_z);
 
     //TMP: Fill every model white
     glColor3f(1.0f, 1.0f, 1.0f);
