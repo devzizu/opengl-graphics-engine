@@ -50,6 +50,7 @@ int load_model_vertices(MODEL_INFO *model) {
         //while not EOF
         while (getline(file_stream, line)) {
 
+            //Parse line float vertices
             sscanf(line.c_str(), "%f %f %f", &x, &y, &z);
 
             auto p = new POINT_3D(x,y,z);
@@ -155,7 +156,7 @@ static void processGroupTag(XMLElement *group_tag_ptr, Group *group) {
             { processTranslationTag(element, group); }
 
         //Rotate tag found
-        else if (element_name == "rotate")
+        if (element_name == "rotate")
             { processRotationTag(element, group); }
 
         //Scale tag found
@@ -194,7 +195,7 @@ vector<Group>* load_xml_config(string xml_config_filename) {
 
     //XML config file name
     string file_path = XML_CONFIG_FILES_PATH + xml_config_filename;
-    cout << endl << "Reading from " << file_path << "..." << endl;
+    cout << endl << "> Reading from " << file_path << "..." << endl;
 
     //Load document file
     XMLDocument xml_config_doc;

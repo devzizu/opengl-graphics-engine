@@ -80,12 +80,15 @@ void renderScene(void) {
     //Load the scene based on the structures
 
     //::1::Draw the axis
-//    glPushMatrix();
-//    drawAxis();
-//    glPopMatrix();
+    glPushMatrix();
+    drawAxis();
+    glPopMatrix();
 
-    //Move in the XZ plane
+    //TMP: Move models in the XZ plane
     glTranslatef(pos_x, pos_y, pos_z);
+
+    //TMP: Fill every model white
+    glColor3f(1.0f, 1.0f, 1.0f);
 
     //::2::Iterate through all the scene groups
     for (auto iter = sceneGroups->begin(); iter != sceneGroups->end(); ++iter) {
@@ -129,8 +132,11 @@ void processKeys(unsigned char c, int xx, int yy) {
         case 'd':
             pos_x-=0.1f;
             break;
-        case 'r':
-            rotation+=0.5;
+        case 'f':
+            glPolygonMode(GL_FRONT, GL_FILL);
+            break;
+        case 'l':
+            glPolygonMode(GL_FRONT, GL_LINE);
             break;
     }
 

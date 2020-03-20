@@ -1,12 +1,13 @@
 <scene>
     <group>
         <!-- Planet -->
-        <translate X = "10" />
+        <scale X="2" Y="2" Z="2" />
+        <translate X = "1" />
+        <rotation angle="40" axisX="1" axisY="0" axisZ="0" />
         <group>
-            <rotate angle="34" axisX="0" axisY="0" axisZ="1"/>
             <group>
                 <models>
-                    <model file="cone.3d" />
+                    <model file="sphere.3d" />
                 </models>
             </group>
         </group>

@@ -9,7 +9,9 @@
 using namespace std;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-
+/*
+ * Stores a point representation in 3D.
+ * */
 class POINT_3D {
 
     public:
@@ -26,6 +28,10 @@ class POINT_3D {
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+/*
+ * Stores information about a model.
+ * Its file name and the vector of vertices.
+ * */
 class MODEL_INFO {
 
     public:
@@ -42,25 +48,37 @@ class MODEL_INFO {
 };
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-
+/*
+ * Transformation class containing the
+ * fundamental attributes for Rotation,
+ * Translation and Scaling.
+ * */
 class Transformation {
 public:
+    //Constructor for Rotate
     Transformation(const string &description, float x, float y, float z, float angle);
-
+    //Constructor for Translate and Scale
     Transformation(const string &description, float x, float y, float z);
 
 public:
+        //transformation name
         string description;
+        //x, y and z values
         float x, y, z;
+        //angle of rotation in degrees
         float angle;
 };
 
-//Call Rotation, Translation and scale as a Transformation type
+/*
+ * Call Rotation, Translation and scale as a Transformation type
+ * */
 typedef class Transformation Rotation, Translation, Scale;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /*
- *
+ * A group of elements to compose.
+ * Models and other groups will be affected by the
+ * transformations in order.
  */
 class Group {
 public:

@@ -3,7 +3,7 @@
 
 /*
  * Carrega um conjunto de modelos dados como argumento em OpenGL
- * @param models vetor de modelos a carregar
+ * @param models vetor de modelos a carregar.
  * @param argc argc da main principal
  * @param argv argv da main principal
  * */
