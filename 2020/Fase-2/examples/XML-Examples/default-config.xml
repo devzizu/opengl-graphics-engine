@@ -1,10 +1,14 @@
 <scene>
     <group>
+
+        <scale X="4" Y="4" Z="4"/>
+
         <!-- SOL -->
         <group>
-            <scale X="5" Y="5" Z="5"/>
+            <scale X="4" Y="4" Z="4"/>
             <group>
                 <models>
+                    <!-- raio = 1 -->
                     <model file="sphere.3d" />
                 </models>
             </group>
@@ -12,8 +16,8 @@
 
         <!-- MERCURIO -->
         <group>
-            <translate X="9"/>
-            <scale X="0.05" Y="0.05" Z="0.05"/>
+            <translate X="4.5"/>
+            <scale X="0.0140" Y="0.0140" Z="0.0140"/>
             <group>
                 <models>
                     <model file="sphere.3d" />
@@ -23,8 +27,8 @@
 
         <!-- VENUS -->
         <group>
-            <translate X="11" Z="2"/>
-            <scale X="0.125" Y="0.125" Z="0.125"/>
+            <translate X="5.5"/>
+            <scale X="0.0348" Y="0.0348" Z="0.0348"/>
             <group>
                 <models>
                     <model file="sphere.3d" />
@@ -34,8 +38,8 @@
 
         <!-- TERRA -->
         <group>
-            <translate X="12.25" Z="0.2"/>
-            <scale X="0.175" Y="0.175" Z="0.175"/>
+            <translate X="6.5"/>
+            <scale X="0.0367" Y="0.0367" Z="0.0367"/>
             <group>
                 <models>
                     <model file="sphere.3d" />
@@ -43,10 +47,22 @@
             </group>
         </group>
 
+        <!-- SATELITES NATURAIS DA TERRA-->
+
+        <group>
+            <translate X="6.5" Y="0.06" Z="-0.06"/>
+            <scale X="0.005" Y="0.005" Z="0.005"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>        
+
         <!-- MARTE -->
         <group>
-            <translate X="14" Z="2.8"/>
-            <scale X="0.1" Y="0.1" Z="0.1"/>
+            <translate X="8"/>
+            <scale X="0.0195" Y="0.0195" Z="0.0195"/>
             <group>
                 <models>
                     <model file="sphere.3d" />
@@ -56,8 +72,8 @@
 
         <!-- JUPITER -->
         <group>
-            <translate X="18" Z="-1.5"/>
-            <scale X="1" Y="1" Z="1"/>
+            <translate X="12"/>
+            <scale X="0.4115" Y="0.4115" Z="0.4115"/>
             <group>
                 <models>
                     <model file="sphere.3d" />
@@ -65,10 +81,35 @@
             </group>
         </group>
 
-        <!-- SATURNO -->
+        <!-- SATELITES NATURAIS DE JUPITER-->
+
         <group>
-            <translate X="22" Z="2.8"/>
-            <scale X="0.85" Y="0.85" Z="0.85"/>
+            <translate X="12" Y="0.65" Z="-0.65"/>
+            <scale X="0.0076" Y="0.0076" Z="0.0076"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group> 
+
+        <!-- SATURNO -->
+
+        <group>
+            <translate X="18"/>
+            <scale X="0.3469" Y="0.3469" Z="0.3469"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- SATELITES NATURAIS DE SATURNO-->
+
+        <group>
+            <translate X="18" Y="0.4" Z="-0.4"/>
+            <scale X="0.0072" Y="0.0072" Z="0.0072"/>
             <group>
                 <models>
                     <model file="sphere.3d" />
@@ -77,9 +118,10 @@
         </group>
 
         <!-- URANO -->
+
         <group>
-            <translate X="25"/>
-            <scale X="0.5" Y="0.5" Z="0.5"/>
+            <translate X="24"/>
+            <scale X="0.1471" Y="0.1471" Z="0.1471"/>
             <group>
                 <models>
                     <model file="sphere.3d" />
@@ -87,10 +129,34 @@
             </group>
         </group>
 
-        <!-- NEPTUNO -->
+        <!-- SATELITES NATURAIS DE URANO-->
+
         <group>
-            <translate X="29.5" Z="1.3"/>
-            <scale X="0.4" Y="0.4" Z="0.4"/>
+            <translate X="24" Y="0.2" Z="0.2"/>
+            <scale X="0.0029" Y="0.0029" Z="0.0029"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+                <!-- NEPTUNO -->
+
+        <group>
+            <translate X="30"/>
+            <scale X="0.1426" Y="0.1426" Z="0.1426"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- SATELITES NATURAIS DE NEPTUNO -->
+
+        <group>
+            <translate X="30" Y="0.2" Z="0.2"/>
+            <scale X="0.0039" Y="0.0039" Z="0.0039"/>
             <group>
                 <models>
                     <model file="sphere.3d" />
@@ -100,3 +166,5 @@
 
     </group>
 </scene>
+
+
