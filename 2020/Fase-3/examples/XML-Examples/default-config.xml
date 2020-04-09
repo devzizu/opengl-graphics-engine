@@ -1,0 +1,170 @@
+<scene>
+    <group>
+
+        <scale X="4" Y="4" Z="4"/>
+
+        <!-- SOL -->
+        <group>
+            <scale X="4" Y="4" Z="4"/>
+            <group>
+                <models>
+                    <!-- raio = 1 -->
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- MERCURIO -->
+        <group>
+            <translate X="4.5"/>
+            <scale X="0.0140" Y="0.0140" Z="0.0140"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- VENUS -->
+        <group>
+            <translate X="5.5"/>
+            <scale X="0.0348" Y="0.0348" Z="0.0348"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- TERRA -->
+        <group>
+            <translate X="6.5"/>
+            <scale X="0.0367" Y="0.0367" Z="0.0367"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- SATELITES NATURAIS DA TERRA-->
+
+        <group>
+            <translate X="6.5" Y="0.06" Z="-0.06"/>
+            <scale X="0.005" Y="0.005" Z="0.005"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>        
+
+        <!-- MARTE -->
+        <group>
+            <translate X="8"/>
+            <scale X="0.0195" Y="0.0195" Z="0.0195"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- JUPITER -->
+        <group>
+            <translate X="12"/>
+            <scale X="0.4115" Y="0.4115" Z="0.4115"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- SATELITES NATURAIS DE JUPITER-->
+
+        <group>
+            <translate X="12" Y="0.65" Z="-0.65"/>
+            <scale X="0.0076" Y="0.0076" Z="0.0076"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group> 
+
+        <!-- SATURNO -->
+
+        <group>
+            <translate X="18"/>
+            <scale X="0.3469" Y="0.3469" Z="0.3469"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- SATELITES NATURAIS DE SATURNO-->
+
+        <group>
+            <translate X="18" Y="0.4" Z="-0.4"/>
+            <scale X="0.0072" Y="0.0072" Z="0.0072"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- URANO -->
+
+        <group>
+            <translate X="24"/>
+            <scale X="0.1471" Y="0.1471" Z="0.1471"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- SATELITES NATURAIS DE URANO-->
+
+        <group>
+            <translate X="24" Y="0.2" Z="0.2"/>
+            <scale X="0.0029" Y="0.0029" Z="0.0029"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+                <!-- NEPTUNO -->
+
+        <group>
+            <translate X="30"/>
+            <scale X="0.1426" Y="0.1426" Z="0.1426"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- SATELITES NATURAIS DE NEPTUNO -->
+
+        <group>
+            <translate X="30" Y="0.2" Z="0.2"/>
+            <scale X="0.0039" Y="0.0039" Z="0.0039"/>
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+    </group>
+</scene>
+
+

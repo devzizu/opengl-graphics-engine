@@ -1,18 +1,36 @@
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+//Required libraries
+
 #ifdef __APPLE__
-#include <GLUT/glut.h>
+    #include <GLUT/glut.h>
 #else
-#include <GL/glut.h>
+    #include <GL/glew.h>
+    #include <GL/glut.h>
 #endif
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+//Main imports
 
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <cctype>
 
+/*--------------------------------------------------------------------------------------------------------------------*/
+//Custom imports
+
 #include <model-info.h>
 #include <draw-elements.h>
+#include "VBO.h"
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 //1) Global Variables
+
+string WINDOW_TITLE = "Phase_3@CG_2020 | ? fps";
+int frame = 0, fps = 0, timebase = 0;
+
+
+/*--------------------------------------------------------------------------------------------------------------------*/
 
 //Group structures
 vector<Group> *sceneGroups;
@@ -62,6 +80,36 @@ void changeSize(int w, int h) {
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
+//Display useful information
+
+void processFPS () {
+    frame++;
+    int time=glutGet(GLUT_ELAPSED_TIME);
+    if (time - timebase > 1000) {
+        fps = frame*1000.0/(time-timebase);
+        timebase = time;
+        frame = 0;
+        string newTitle = "Phase_3@CG_2020 | " + to_string(fps) + " fps";
+        glutSetWindowTitle(newTitle.c_str());
+    }
+}
+
+void displayRunningInformation() {
+
+    cout << "[3] Everything was loaded:" << endl;
+
+    cout << "\tVendor   : " << glGetString(GL_VENDOR) << endl;
+    cout << "\tRenderer : " << glGetString(GL_RENDERER) << endl;
+    cout << "\tVersion  : " << glGetString(GL_VERSION) << endl;
+
+    cout << "[4] Useful Keys:" << endl;
+
+    cout << "\tl   : " << "glPolygonMode(GL_FRONT, GL_LINE) " << endl;
+    cout << "\tf   : " << "glPolygonMode(GL_FRONT, GL_FILL) " << endl;
+    cout << "\tARROW_UP, ARROW_DW, ARROW_LEFT, ARROW_RIGHT : Move the camera." << endl;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
 //Render scene function
 
 void renderScene(void) {
@@ -71,6 +119,7 @@ void renderScene(void) {
 
     // set the camera
     glLoadIdentity();
+
     gluLookAt(camX, camY, camZ,
               0.0,0.0,0.0,
               0.0f,1.0f,0.0f);
@@ -93,11 +142,13 @@ void renderScene(void) {
     //::2::Iterate through all the scene groups
     for (auto iter = sceneGroups->begin(); iter != sceneGroups->end(); ++iter) {
 
-        //Draw a single group and its childs
+        //Draw a single group and its child
         drawGroupElements(*iter);
     }
 
     /*----------------------------------------------------------------------------------------------------------------*/
+
+    processFPS();
 
     // End of frame
     glutSwapBuffers();
@@ -189,27 +240,53 @@ void processSpecialKeys(int key, int xx, int yy)
     glutPostRedisplay();
 }
 
-
 int load_graphics(vector<Group>* scene_groups, int argc, char** argv) {
 
-    //Note: here argc and argv are inherit from the main() function
-    //      where this wall called
+    //------------------------------------------------------------------------------------------------------------------
 
-    //Assign global variable scene_groups with the loaded groups vector
+    /*
+     * Note: here argc and argv are inherit from the main() function
+     *       where this was called
+     * */
+
+    //------------------------------------------------------------------------------------------------------------------
+    //Setting up global variables
+
+    //Loaded groups from the xml file
     sceneGroups = scene_groups;
+
+    //------------------------------------------------------------------------------------------------------------------
+    //Glut, Glew and VBOs Initialization
 
     //init GLUT and the window
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DEPTH|GLUT_DOUBLE|GLUT_RGBA);
     glutInitWindowPosition(100,100);
     glutInitWindowSize(800,800);
-    glutCreateWindow("Phase_2@CG_2020");
+    glutCreateWindow(WINDOW_TITLE.c_str());
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    #ifndef __APPLE__
+        glewInit();
+    #endif
+
+    //------------------------------------------------------------------------------------------------------------------
+    // VBOs Initialization
+
+    //Enables vertex arrays when calling glDrawArrays or glDrawElements
+    glEnableClientState(GL_VERTEX_ARRAY);
+
+    initVBOs(sceneGroups);
+
+    //------------------------------------------------------------------------------------------------------------------
 
     //Sets the screen size to fullscreen
-    glutFullScreen();
+    //glutFullScreen();
 
     //Required callback registry
     glutDisplayFunc(renderScene);
+    glutIdleFunc(renderScene);
     glutReshapeFunc(changeSize);
 
     //Callback registration for keyboard processing
@@ -220,11 +297,12 @@ int load_graphics(vector<Group>* scene_groups, int argc, char** argv) {
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
 
-    //Set the polygon display mode
-    glPolygonMode(GL_FRONT, GL_FILL);
-
-    //...
     spherical2Cartesian();
+
+
+    displayRunningInformation();
+
+    //------------------------------------------------------------------------------------------------------------------
 
     //GLUT's main cycle
     glutMainLoop();
