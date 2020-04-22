@@ -1,11 +1,15 @@
 
 #include <iostream>
+#include <vector>
 
-#include "Model-Generator/model-generator.h"
+#include "Model-Generator/headers/model-generator.h"
+#include "Model-Generator/headers/model-info.h"
+#include "Model-Generator/headers/bezier-patch.h"
 
 using namespace std;
 
-#define GENERATED_FILES "../../examples/Model-Read-Tests/"
+#define GENERATED_FILES "../../examples/Models.3d/"
+#define PATCH_FILES "../../examples/Models.patch/"
 
 string arg_cmd (int argc, char* argv[]) {
     string cmd = "";
@@ -19,12 +23,17 @@ string arg_cmd (int argc, char* argv[]) {
 void cat_command_options (string invalid_cmd) {
 
     cout << "Invalid command: " << invalid_cmd << endl << endl;
-    cout << "Command options: " << endl << endl;
+
+    cout << "@Phase1 additions: " << endl << endl;
+
     cout << "plane   : generator plane <dim> <outfile>" << endl;
     cout << "box     : generator box <X> <Y> <Z> <outfile>" << endl;
     cout << "box-div : generator box <X> <Y> <Z> <divisions> <outfile>" << endl;
     cout << "sphere  : generator sphere <radius> <slices> <stacks> <outfile>" << endl;
     cout << "cone    : generator cone <bot-radius> <height> <slices> <stacks> <outfile>" << endl;
+
+    cout << endl << "@Phase3 additions: " << endl << endl;
+    cout << "bezier  : generator bezier-patch <in-file> <tessellation-level> <outfile>" << endl;
 }
 
 void cat_end_program() {
@@ -68,7 +77,7 @@ int main(int argc, char* argv[]) {
             cout << "\t-> Model       : " << selected_model << "," << endl;
             cout << "\t-> Properties  : " << endl;
             cout << "\t\t / Side-Dimension = " << dim << "." << endl;
-            cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
+            cout << "\t-> Output file : " << GENERATED_FILES + output_file << endl;
 
             generate_plane_3d(dim, GENERATED_FILES + output_file);
 
@@ -97,7 +106,7 @@ int main(int argc, char* argv[]) {
                 cout << "\t\t / X = " << X << "," << endl;
                 cout << "\t\t / Y = " << Y << "," << endl;
                 cout << "\t\t / Z = " << Z << "," << endl;
-                cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
+                cout << "\t-> Output file : " << GENERATED_FILES + output_file << endl;
 
                 generate_box_3d(X, Y, Z, 0, GENERATED_FILES + output_file);
 
@@ -117,7 +126,7 @@ int main(int argc, char* argv[]) {
                 cout << "\t\t / Y   = " << Y << "," << endl;
                 cout << "\t\t / Z   = " << Z << "," << endl;
                 cout << "\t\t / Div = " << divisions << "," << endl;
-                cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
+                cout << "\t-> Output file : " << GENERATED_FILES + output_file << endl;
 
                 generate_box_3d(X, Y, Z, divisions, GENERATED_FILES + output_file);
 
@@ -142,7 +151,7 @@ int main(int argc, char* argv[]) {
             cout << "\t\t / Radius   = " << radius << "," << endl;
             cout << "\t\t / Slices   = " << slices << "," << endl;
             cout << "\t\t / Stacks   = " << stacks << "," << endl;
-            cout << "\t-> Output file : " << "Model-Vertices-Files/" + output_file << endl;
+            cout << "\t-> Output file : " << GENERATED_FILES + output_file << endl;
 
             generate_sphere_3d (radius, slices, stacks, GENERATED_FILES + output_file);
 
@@ -174,6 +183,35 @@ int main(int argc, char* argv[]) {
             cout << "[status] All vertices were generated... " << endl << endl;
 
         } catch (...) { cat_command_options(arg_cmd(argc, argv)); cat_end_program(); return 0; }
+
+    //generator bezier-patch <in-file> <tessellation-level> <outfile>
+    } else if (selected_model == "bezier-patch") {
+
+        try {
+
+            string inFile = argv[2];
+            int tessellationLevel = stoi(argv[3]);
+            string output_file = argv[4];
+
+            cout << "[status] Generating a 3d model file for: " << endl;
+
+            cout << "\t-> Patch       : " << PATCH_FILES + inFile << "," << endl;
+            cout << "\t-> Properties  : " << endl;
+            cout << "\t\t / Tessellation level   = " << tessellationLevel << endl;
+            cout << "\t-> Output file : " << GENERATED_FILES + output_file + ".indexed" << endl << endl;
+
+            vector<POINT_3D>* control_points = new vector<POINT_3D>();
+            vector<int>* patch_indices = new vector<int>();
+
+            int parseError    = load_bezier_patch (PATCH_FILES + inFile, control_points, patch_indices);
+            int generateError = generate_bezier_model(GENERATED_FILES + output_file + ".indexed", patch_indices, control_points, tessellationLevel);
+
+            if (parseError != -1) {
+
+                cout << "[status] All vertices and indexes were generated... " << endl;
+            }
+
+        } catch (...) { cat_command_options(arg_cmd(argc, argv)); cat_end_program(); }
 
     } else {
 

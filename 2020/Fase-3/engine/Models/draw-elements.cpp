@@ -7,28 +7,29 @@
 #endif
 
 #include <model-info.h>
+#include <catmull-rom.h>
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 //Draw the axis on the screen
 
-void drawAxis() {
+void drawAxis(float x, float y, float z) {
 
     glBegin(GL_LINES);
 
     // X axis in red
     glColor3f(1.0f, 0.0f, 0.0f);
-    glVertex3f(-20.0f, 0.0f, 0.0f);
-    glVertex3f( 80.0f, 0.0f, 0.0f);
+    glVertex3f(-x, 0.0f, 0.0f);
+    glVertex3f( x, 0.0f, 0.0f);
 
     // Y Axis in Green
     glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(0.0f, -20.0f, 0.0f);
-    glVertex3f(0.0f, 20.0f, 0.0f);
+    glVertex3f(0.0f, -y, 0.0f);
+    glVertex3f(0.0f, y, 0.0f);
 
     // Z Axis in Blue
     glColor3f(0.0f, 0.0f, 1.0f);
-    glVertex3f(0.0f, 0.0f, -20.0f);
-    glVertex3f(0.0f, 0.0f, 20.0f);
+    glVertex3f(0.0f, 0.0f, -z);
+    glVertex3f(0.0f, 0.0f, z);
     glEnd();
 }
 
@@ -82,7 +83,17 @@ void drawModelVBO (MODEL_INFO model) {
 
     int count = model.vertices -> size() / 3;
 
-    glDrawArrays(GL_TRIANGLES, 0, count);
+    if (model.indexedModel) {
+
+        int indexArraySize = model.indexes -> size();
+
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.indexesBuffer[0]);
+        glDrawElements(GL_TRIANGLES, indexArraySize, GL_UNSIGNED_INT, NULL);
+
+    } else {
+
+        glDrawArrays(GL_TRIANGLES, 0, count);
+    }
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -101,11 +112,47 @@ void drawGroupElements(Group g) {
     for (auto it = transformations -> begin(); it != transformations -> end(); ++it) {
 
         if (it -> description == "Translation") {
+
             glTranslatef(it->x, it->y, it->z);
+
         } else if (it -> description == "Rotation") {
+
             glRotatef(it->angle, it->x, it->y, it->z);
+
         } else if (it -> description == "Scale") {
+
             glScalef(it->x, it->y, it->z);
+
+        } else if (it -> description == "Translation_TimeBased") {
+
+            float timeT = (float) glutGet(GLUT_ELAPSED_TIME) / it -> time;
+
+            float pos[3] = { 0.0, 0.0, 0.0 };
+            float deriv[3] = { 0.0, 0.0, 0.0 };
+
+            getGlobalCatmullRomPoint(it->transformationPoints, timeT, (float*)pos, (float*)deriv);
+
+            glTranslatef(pos[0], pos[1], pos[2]);
+
+            float M[4][4];
+            float Y[3], Z[3];
+
+            cross(deriv, it -> startY, Z);
+            cross(Z, deriv, it -> startY);
+
+            normalize(deriv);
+            normalize(it -> startY);
+            normalize(Z);
+
+            buildRotMatrix(deriv, it -> startY, Z, *M);
+
+            glMultMatrixf(*M);
+
+        } else if (it -> description == "Rotation_TimeBased") {
+
+            float rotationAngle = (float) glutGet(GLUT_ELAPSED_TIME) * 360 / it -> time;
+
+            glRotatef(rotationAngle, it -> x, it -> y, it -> z);
         }
     }
 
@@ -114,7 +161,22 @@ void drawGroupElements(Group g) {
 
     for (auto it = models -> begin(); it != models -> end(); ++it) {
 
-        drawModelVBO(*it);
+        //Axis around each model
+//        glPushMatrix();
+//            drawAxis(3.0f, 3.0f, 3.0f);
+//        glPopMatrix();
+
+        glPushMatrix();
+
+            //All models white
+            glColor3f(1,1,1);
+
+            //Phase 3
+            drawModelVBO(*it);
+
+        glPopMatrix();
+
+        //Phase 1/2
         //drawModelVertices(*it);
     }
 

@@ -6,11 +6,7 @@
 
 #IncludeRegexTransform: 
 
-../Models/headers/VBO.h
-model-info.h
-../Models/headers/model-info.h
-
-../Models/headers/draw-elements.h
+../Models/headers/catmull-rom.h
 model-info.h
 ../Models/headers/model-info.h
 
@@ -24,21 +20,15 @@ stack
 GL/glew.h
 -
 
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/load-graphics.cpp
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/draw-elements.cpp
 GLUT/glut.h
 -
 GL/glew.h
 -
 GL/glut.h
 -
-math.h
--
-cctype
--
 model-info.h
 -
-draw-elements.h
+catmull-rom.h
 -
-VBO.h
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/VBO.h
 

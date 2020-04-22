@@ -2,7 +2,12 @@
 #include "model-info.h"
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-/* MODEL_INFO methods */
+/* POINT_3D methods and constructors */
+
+POINT_3D::POINT_3D(float x, float y, float z) : x(x), y(y), z(z) {}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+/* MODEL_INFO methods and constructors */
 
 //Get vertices vector ptr
 vector<float> *MODEL_INFO::getVertices() const {
@@ -15,7 +20,15 @@ const string &MODEL_INFO::getName() const {
 }
 
 //MODEL_INFO constructor
-MODEL_INFO::MODEL_INFO(const string &name, vector<float> *vertices) : name(name), vertices(vertices) {}
+MODEL_INFO::MODEL_INFO(const string &name, bool isIndexed) : name(name), indexedModel(isIndexed) {
+
+    this->vertices = new vector<float>();
+
+    if(isIndexed) {
+        this->indexes = new vector<GLuint>();
+    }
+
+}
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 /* Groups and geometric transformations methods */
@@ -27,6 +40,30 @@ Transformation::Transformation(const string &description, float x, float y, floa
 //Other constructors
 Transformation::Transformation(const string &description, float x, float y, float z) : description(description), x(x),
                                                                                        y(y), z(z) {}
+//For time based translations
+Transformation::Transformation(const string &description, float time) : description(description), time(time) {
+
+    if (description == "Translation_TimeBased") {
+
+        //Create a valid memory pointer for the points vector
+        this->transformationPoints = new vector<POINT_3D>();
+
+        this -> startY = (float*) malloc(sizeof(float)*3);
+
+        this -> startY[0] = 0.0f;
+        this -> startY[1] = 1.0f;
+        this -> startY[2] = 0.0f;
+    }
+}
+
+//Add a new transformation point
+void Transformation::addTransformationPoint(POINT_3D *newPoint) {
+
+    this->transformationPoints->push_back(*newPoint);
+}
+
+Transformation::Transformation(const string &description, float x, float y, float z, float angle, float time)
+        : description(description), x(x), y(y), z(z), angle(angle), time(time) {}
 
 //Group constructor
 Group::Group() {
@@ -50,9 +87,24 @@ void displayGroup(Group group) {
         if (trIt -> description == "Translation") {
             cout << "\t»»»» Values :: x = " << trIt -> x << " y = " << trIt -> y << " z = " << trIt -> z << endl;
         }
+
+        if (trIt -> description == "Translation_TimeBased") {
+
+            cout << "\t»»»» Values :: time = " << trIt -> time << "...points:" << endl;
+
+            auto points = trIt -> transformationPoints;
+            for (auto pointsItr = points->begin(); pointsItr != points->end(); pointsItr++) {
+
+                auto point = pointsItr.base();
+
+                cout << "\t\t»» Point :: x = " << point -> x << " y = " << point -> y << " z = " << point -> z << endl;
+            }
+        }
+
         if (trIt -> description == "Rotation") {
             cout << "\t»»»» Values :: x = " << trIt -> x << " y = " << trIt -> y << " z = " << trIt -> z << " angle = " << trIt -> angle << endl;
         }
+
         if (trIt -> description == "Scale") {
             cout << "\t»»»» Values :: x = " << trIt -> x << " y = " << trIt -> y << " z = " << trIt -> z << endl;
         }

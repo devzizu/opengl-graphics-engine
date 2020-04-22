@@ -4,7 +4,11 @@
 CMakeFiles/engine.dir/Models/VBO.cpp.o
  ../Models/headers/model-info.h
  /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/VBO.cpp
+CMakeFiles/engine.dir/Models/catmull-rom.cpp.o
+ ../Models/headers/model-info.h
+ /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/catmull-rom.cpp
 CMakeFiles/engine.dir/Models/draw-elements.cpp.o
+ ../Models/headers/catmull-rom.h
  ../Models/headers/model-info.h
  /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/draw-elements.cpp
 CMakeFiles/engine.dir/Models/load-graphics.cpp.o

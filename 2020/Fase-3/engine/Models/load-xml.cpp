@@ -17,12 +17,12 @@ using namespace tinyxml2;
 #define XML_CONFIG_FILES_PATH "../../examples/XML-Examples/"
 
 //MODELS default path
-#define MODEL_3D_PATH "../../examples/Model-Read-Tests/"
+#define MODEL_3D_PATH "../../examples/Models.3d/"
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 //Read model file and store the vertices in the vertices vector from MODEL_INFO
 
-int load_model_vertices(MODEL_INFO *model) {
+int load_standard_model_vertices(MODEL_INFO *model) {
 
     //Model path appended to default folder location for models
     string path_to_model = MODEL_3D_PATH + model -> getName();
@@ -72,6 +72,79 @@ int load_model_vertices(MODEL_INFO *model) {
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
+//Read model file and store the vertices and indexes vectors from MODEL_INFO
+
+int load_indexed_model_vertices(MODEL_INFO *model) {
+
+    //Model path appended to default folder location for models
+    string path_to_model = MODEL_3D_PATH + model -> getName();
+
+    ifstream file_stream (path_to_model);
+
+    if (!file_stream.is_open()) {
+        cout << "Could not read from " << path_to_model << "!" << endl;
+        return -1;
+    }
+
+    //Get model array of vertices pointer
+    vector<float>* modelVertices = model -> getVertices();
+    vector<GLuint>* indexes = model -> indexes;
+
+    //0: vertices
+    //1: indexes
+    int parsing = 0, floatsRead = 0;
+    try {
+
+        //to store the line
+        string line;
+
+        //3 fields of each line in model file
+        //the 3 coordinates x, y and z
+        float x, y, z;
+        int index;
+
+        //while not EOF
+        while (getline(file_stream, line)) {
+
+
+            //parsing vertices
+            if (parsing == 0) {
+
+                floatsRead = sscanf(line.c_str(), "%f %f %f", &x, &y, &z);
+
+                if (floatsRead != 3) {
+
+                    index = (GLuint) x;
+                    parsing = 1;
+                    continue;
+                }
+
+                modelVertices->push_back(x);
+                modelVertices->push_back(y);
+                modelVertices->push_back(z);
+
+            //parsing indexes
+            } else if (parsing == 1) {
+
+                indexes -> push_back(index);
+
+                floatsRead = sscanf(line.c_str(), "%d", &index);
+            }
+        }
+
+        file_stream.close();
+
+        //catch wtv error we got
+    } catch (...) {
+
+        file_stream.close();
+        cout << "Error parsing 3D model file in: " << path_to_model << "..." << endl;
+
+        return -1;
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
 //Process the models (<models>)
 
 static void processModelsTag(XMLElement *models_ptr, Group *group) {
@@ -82,37 +155,107 @@ static void processModelsTag(XMLElement *models_ptr, Group *group) {
 
         string model_file_name = string(model_ptr -> Attribute("file"));
 
-        auto vertices = new vector<float>;
-        auto model = new MODEL_INFO(model_file_name, vertices);
+        if (model_file_name.substr(model_file_name.find_last_of(".") + 1) == "indexed") {
 
-        load_model_vertices(model);
+            auto model = new MODEL_INFO(model_file_name, true);
 
-        group -> models -> push_back(*model);
+            load_indexed_model_vertices(model);
+
+            group -> models -> push_back(*model);
+
+        } else {
+
+            auto model = new MODEL_INFO(model_file_name, false);
+
+            load_standard_model_vertices(model);
+
+            group -> models -> push_back(*model);
+        }
     }
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-//Process the translations (<translation X=? Y=? Z=?>)
+//Process the translations
+
+/*
+ * Translation can have 2 types:
+ * Standard   : <translate X="..." Y="..." Z="..."/>
+ * Time based : <translate time="...">
+ *                  <point X="..." Y="..." Z="..." />
+ *                  ....
+ *                  <point X="..." Y="..." Z="..." />
+ */
 
 static void processTranslationTag(XMLElement *translation_ptr, Group *group) {
 
-    float x = 0.0f, y = 0.0f, z = 0.0f;
+    float time = 0.0f;
+    XMLError queryTimeExists = translation_ptr -> QueryAttribute("time", &time);
 
-    translation_ptr -> QueryAttribute("X", &x);
-    translation_ptr -> QueryAttribute("Y", &y);
-    translation_ptr -> QueryAttribute("Z", &z);
+    //Standard translation
+    if (queryTimeExists == XML_NO_ATTRIBUTE) {
 
-    //Create new translation
-    Transformation *t = new Translation("Translation", x, y, z);
+        float x = 0.0f, y = 0.0f, z = 0.0f;
 
-    group -> transformations -> push_back(*t);
+        translation_ptr -> QueryAttribute("X", &x);
+        translation_ptr -> QueryAttribute("Y", &y);
+        translation_ptr -> QueryAttribute("Z", &z);
+
+        //Create new translation
+        Transformation *t = new Translation("Translation", x, y, z);
+
+        group -> transformations -> push_back(*t);
+
+    //Catmull-Rom transformation
+    } else {
+
+        Transformation *t = new Translation("Translation_TimeBased", time);
+
+        XMLElement* translationPoint = translation_ptr->FirstChildElement(nullptr);
+
+        int nr_points = 0;
+        while (translationPoint) {
+
+            float x, y, z;
+
+            translationPoint -> QueryAttribute("X", &x);
+            translationPoint -> QueryAttribute("Y", &y);
+            translationPoint -> QueryAttribute("Z", &z);
+
+            t -> addTransformationPoint(new POINT_3D(x, y, z));
+
+            translationPoint = translationPoint -> NextSiblingElement("point");
+
+            nr_points++;
+        }
+
+        //minimum number of points is 4
+        if (nr_points >= 4) {
+
+            group -> transformations -> push_back(*t);
+
+        } else {
+
+            //process error
+
+            //FIXME
+        }
+    }
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-//Process the rotations (<rotation X=? ?Y=? ?Z=?>)
-//X, Y and Z attributes are optional
+//Process the rotations
+
+/*
+ * Rotation can have 2 types:
+ * Standard   : <rotate axisX="..." axisY="..." axisZ="..." angle="..."/>
+ * Time based : <rotate time="...">
+ *              (in this case time to perform a full 360 degrees rotation)
+ */
 
 static void processRotationTag(XMLElement *rotation_ptr, Group *group) {
+
+    float time = 0.0f;
+    XMLError queryTimeExists = rotation_ptr -> QueryAttribute("time", &time);
 
     float angle = 0.0f, x = 0.0f, y = 0.0f, z = 0.0f;
 
@@ -121,10 +264,20 @@ static void processRotationTag(XMLElement *rotation_ptr, Group *group) {
     rotation_ptr -> QueryAttribute("axisY", &y);
     rotation_ptr -> QueryAttribute("axisZ", &z);
 
-    //Create new rotation
-    Transformation *t = new Rotation("Rotation", x, y, z, angle);
+    //Standard translation
+    if (queryTimeExists == XML_NO_ATTRIBUTE) {
 
-    group -> transformations -> push_back(*t);
+        //Create new rotation
+        Transformation *t = new Rotation("Rotation", x, y, z, angle);
+
+        group -> transformations -> push_back(*t);
+
+    } else {
+
+        Transformation *t = new Rotation("Rotation_TimeBased", x, y, z, angle, time);
+
+        group -> transformations -> push_back(*t);
+    }
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/

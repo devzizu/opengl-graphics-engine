@@ -150,6 +150,33 @@ Models/VBO.cpp.s:
 	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/VBO.cpp.s
 .PHONY : Models/VBO.cpp.s
 
+Models/catmull-rom.o: Models/catmull-rom.cpp.o
+
+.PHONY : Models/catmull-rom.o
+
+# target to build an object file
+Models/catmull-rom.cpp.o:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/catmull-rom.cpp.o
+.PHONY : Models/catmull-rom.cpp.o
+
+Models/catmull-rom.i: Models/catmull-rom.cpp.i
+
+.PHONY : Models/catmull-rom.i
+
+# target to preprocess a source file
+Models/catmull-rom.cpp.i:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/catmull-rom.cpp.i
+.PHONY : Models/catmull-rom.cpp.i
+
+Models/catmull-rom.s: Models/catmull-rom.cpp.s
+
+.PHONY : Models/catmull-rom.s
+
+# target to generate assembly for a file
+Models/catmull-rom.cpp.s:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/catmull-rom.cpp.s
+.PHONY : Models/catmull-rom.cpp.s
+
 Models/draw-elements.o: Models/draw-elements.cpp.o
 
 .PHONY : Models/draw-elements.o
@@ -324,6 +351,9 @@ help:
 	@echo "... Models/VBO.o"
 	@echo "... Models/VBO.i"
 	@echo "... Models/VBO.s"
+	@echo "... Models/catmull-rom.o"
+	@echo "... Models/catmull-rom.i"
+	@echo "... Models/catmull-rom.s"
 	@echo "... Models/draw-elements.o"
 	@echo "... Models/draw-elements.i"
 	@echo "... Models/draw-elements.s"

@@ -6,8 +6,9 @@
 
 /*
  * Draws the axis in the screen
+ * give each axis length from origin
  * */
-void drawAxis();
+void drawAxis(float x, float y, float z);
 
 /*
  * Draws a group of elements in the screen

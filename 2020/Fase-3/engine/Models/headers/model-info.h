@@ -12,6 +12,17 @@ using namespace std;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+class POINT_3D {
+
+    public:
+        POINT_3D(float x, float y, float z);
+
+    public:
+            float x;
+            float y;
+            float z;
+};
+
 /*
  * Stores information about a model.
  * Its file name and the vector of vertices.
@@ -20,11 +31,14 @@ class MODEL_INFO {
 
     public:
         string name;
+        bool indexedModel;
         vector<float>* vertices;
+        vector<GLuint>* indexes;
         GLuint verticesBuffer[1];
+        GLuint indexesBuffer[1];
 
     public:
-        MODEL_INFO(const string &name, vector<float> *vertices);
+        MODEL_INFO(const string &name, bool isIndexed);
         vector<float> *getVertices() const;
         const string &getName() const;
 };
@@ -36,19 +50,30 @@ class MODEL_INFO {
  * Translation and Scaling.
  * */
 class Transformation {
-public:
-    //Constructor for Rotate
-    Transformation(const string &description, float x, float y, float z, float angle);
-    //Constructor for Translate and Scale
-    Transformation(const string &description, float x, float y, float z);
+    public:
+        //Constructor for Rotate
+        Transformation(const string &description, float x, float y, float z, float angle);
+        //Constructor for Translate and Scale
+        Transformation(const string &description, float x, float y, float z);
 
-public:
+        //For time based Translations
+        Transformation(const string &description, float time);
+        //For time based Rotations
+        Transformation(const string &description, float x, float y, float z, float angle, float time);
+
+        void addTransformationPoint(POINT_3D *newPoint);
+
         //transformation name
         string description;
         //x, y and z values
         float x, y, z;
         //angle of rotation in degrees
         float angle;
+        float time;
+
+        float* startY;
+
+        vector<POINT_3D>* transformationPoints;
 };
 
 /*

@@ -43,11 +43,12 @@ float alfa = 0.0f,
       beta = 0.0f,
       radius = 30.0f;
 
-float camX, camY, camZ;
+//float camX, camY, camZ;
+float camX = -5.0f, camY = 0.0f, camZ = 0.0f;
 
-float pos_x = -15.0f,
+float pos_x = 100.0f,
       pos_y = 0.0f,
-      pos_z = 0.0f;
+      pos_z = 100.0f;
 
 float rotation = 0.0f;
 
@@ -129,11 +130,11 @@ void renderScene(void) {
     //Load the scene based on the structures
 
     //TMP: Move models in the XZ plane
-    glTranslatef(pos_x, pos_y, pos_z);
+    //glTranslatef(pos_x, pos_y, pos_z);
 
     //::1::Draw the axis
     glPushMatrix();
-    drawAxis();
+        drawAxis(50.0f, 50.0f, 50.0f);
     glPopMatrix();
 
     //TMP: Fill every model white
@@ -171,18 +172,6 @@ void processKeys(unsigned char c, int xx, int yy) {
 
     switch(tolower(c))
     {
-        case 'w':
-            pos_z+=0.1f;
-            break;
-        case 'a':
-            pos_x+=0.1f;
-            break;
-        case 's':
-            pos_z-=0.1f;
-            break;
-        case 'd':
-            pos_x-=0.1f;
-            break;
         case 'f':
             glPolygonMode(GL_FRONT, GL_FILL);
             break;

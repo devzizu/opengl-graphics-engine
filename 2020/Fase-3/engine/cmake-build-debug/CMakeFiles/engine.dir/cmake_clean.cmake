@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/engine.dir/Models/VBO.cpp.o"
+  "CMakeFiles/engine.dir/Models/catmull-rom.cpp.o"
   "CMakeFiles/engine.dir/Models/draw-elements.cpp.o"
   "CMakeFiles/engine.dir/Models/load-graphics.cpp.o"
   "CMakeFiles/engine.dir/Models/load-xml.cpp.o"

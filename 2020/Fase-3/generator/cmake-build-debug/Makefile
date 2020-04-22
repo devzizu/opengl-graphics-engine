@@ -48,10 +48,10 @@ RM = /home/joao/clion-2019.3.2/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/generator
+CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/generator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/generator/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/generator/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/generator/cmake-build-debug/CMakeFiles /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/generator/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/generator/cmake-build-debug/CMakeFiles /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/generator/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-2/generator/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/generator/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,6 +123,33 @@ generator/fast:
 	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/build
 .PHONY : generator/fast
 
+Model-Generator/bezier-patch.o: Model-Generator/bezier-patch.cpp.o
+
+.PHONY : Model-Generator/bezier-patch.o
+
+# target to build an object file
+Model-Generator/bezier-patch.cpp.o:
+	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/Model-Generator/bezier-patch.cpp.o
+.PHONY : Model-Generator/bezier-patch.cpp.o
+
+Model-Generator/bezier-patch.i: Model-Generator/bezier-patch.cpp.i
+
+.PHONY : Model-Generator/bezier-patch.i
+
+# target to preprocess a source file
+Model-Generator/bezier-patch.cpp.i:
+	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/Model-Generator/bezier-patch.cpp.i
+.PHONY : Model-Generator/bezier-patch.cpp.i
+
+Model-Generator/bezier-patch.s: Model-Generator/bezier-patch.cpp.s
+
+.PHONY : Model-Generator/bezier-patch.s
+
+# target to generate assembly for a file
+Model-Generator/bezier-patch.cpp.s:
+	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/Model-Generator/bezier-patch.cpp.s
+.PHONY : Model-Generator/bezier-patch.cpp.s
+
 Model-Generator/model-generator.o: Model-Generator/model-generator.cpp.o
 
 .PHONY : Model-Generator/model-generator.o
@@ -149,6 +176,33 @@ Model-Generator/model-generator.s: Model-Generator/model-generator.cpp.s
 Model-Generator/model-generator.cpp.s:
 	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/Model-Generator/model-generator.cpp.s
 .PHONY : Model-Generator/model-generator.cpp.s
+
+Model-Generator/model-info.o: Model-Generator/model-info.cpp.o
+
+.PHONY : Model-Generator/model-info.o
+
+# target to build an object file
+Model-Generator/model-info.cpp.o:
+	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/Model-Generator/model-info.cpp.o
+.PHONY : Model-Generator/model-info.cpp.o
+
+Model-Generator/model-info.i: Model-Generator/model-info.cpp.i
+
+.PHONY : Model-Generator/model-info.i
+
+# target to preprocess a source file
+Model-Generator/model-info.cpp.i:
+	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/Model-Generator/model-info.cpp.i
+.PHONY : Model-Generator/model-info.cpp.i
+
+Model-Generator/model-info.s: Model-Generator/model-info.cpp.s
+
+.PHONY : Model-Generator/model-info.s
+
+# target to generate assembly for a file
+Model-Generator/model-info.cpp.s:
+	$(MAKE) -f CMakeFiles/generator.dir/build.make CMakeFiles/generator.dir/Model-Generator/model-info.cpp.s
+.PHONY : Model-Generator/model-info.cpp.s
 
 main.o: main.cpp.o
 
@@ -186,9 +240,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... generator"
 	@echo "... edit_cache"
+	@echo "... Model-Generator/bezier-patch.o"
+	@echo "... Model-Generator/bezier-patch.i"
+	@echo "... Model-Generator/bezier-patch.s"
 	@echo "... Model-Generator/model-generator.o"
 	@echo "... Model-Generator/model-generator.i"
 	@echo "... Model-Generator/model-generator.s"
+	@echo "... Model-Generator/model-info.o"
+	@echo "... Model-Generator/model-info.i"
+	@echo "... Model-Generator/model-info.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

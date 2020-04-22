@@ -1,0 +1,49 @@
+<scene>
+    <group>
+
+        <!-- SOL -->
+        <group>
+        	
+	    <translate time="100000">
+                <point X="500" Y="0" Z="500"/>
+                <point X="500" Y="0" Z="-500"/>
+                <point X="-500" Y="0" Z="-500"/>
+                <point X="-500" Y="0" Z="500"/>
+        </translate>
+		
+	    <scale X="40" Y="40" Z="40" />		
+
+            <group>
+                <rotate time="10000" axisX="0" axisY="1" axisZ="0" />
+                <models>
+                    <!-- raio = 1 -->
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- SOL -->
+        <group>
+        	
+	    <translate time="10000">
+                <point X="100" Y="0" Z="100"/>
+                <point X="100" Y="0" Z="-100"/>
+                <point X="-100" Y="0" Z="-100"/>
+                <point X="-100" Y="0" Z="100"/>
+            </translate>
+		
+	    <scale X="30" Y="30" Z="30" />		
+
+            <group>
+                <rotate time="10000" axisX="0" axisY="1" axisZ="0" />
+                <models>
+                    <!-- raio = 1 -->
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+    </group>
+</scene>
+
+

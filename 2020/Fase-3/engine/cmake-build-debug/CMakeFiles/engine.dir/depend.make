@@ -4,6 +4,10 @@
 CMakeFiles/engine.dir/Models/VBO.cpp.o: ../Models/headers/model-info.h
 CMakeFiles/engine.dir/Models/VBO.cpp.o: ../Models/VBO.cpp
 
+CMakeFiles/engine.dir/Models/catmull-rom.cpp.o: ../Models/headers/model-info.h
+CMakeFiles/engine.dir/Models/catmull-rom.cpp.o: ../Models/catmull-rom.cpp
+
+CMakeFiles/engine.dir/Models/draw-elements.cpp.o: ../Models/headers/catmull-rom.h
 CMakeFiles/engine.dir/Models/draw-elements.cpp.o: ../Models/headers/model-info.h
 CMakeFiles/engine.dir/Models/draw-elements.cpp.o: ../Models/draw-elements.cpp
 

@@ -93,10 +93,16 @@
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/VBO.cpp">
 			<Option target="engine"/>
 		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/catmull-rom.cpp">
+			<Option target="engine"/>
+		</Unit>
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/draw-elements.cpp">
 			<Option target="engine"/>
 		</Unit>
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/headers/VBO.h">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/headers/catmull-rom.h">
 			<Option target="engine"/>
 		</Unit>
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/headers/draw-elements.h">

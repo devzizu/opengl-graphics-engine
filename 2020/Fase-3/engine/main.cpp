@@ -81,8 +81,6 @@ int main(int argc, char** argv)
     //Graphic engine initialized:
     cout  << endl << "[1] Initializing graphics engine with the structures... " << endl;
 
-    //displayGroup(scene_groups->front());
-
     load_graphics(scene_groups, argc, argv);
 
     return 0;
