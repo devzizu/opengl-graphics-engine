@@ -228,9 +228,9 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
 
         getVerticesInPatch(patch, patch_indices, control_points, Pij_X, Pij_Y, Pij_Z);
 
-        for (int u = 0; u <= tessellationLevel; u++) {
+        for (int v = 0; v <= tessellationLevel; v++) {
 
-            for (int v = 0; v <= tessellationLevel; v++) {
+            for (int u = 0; u <= tessellationLevel; u++) {
 
                 t_u = ((float) u / (float) tessellationLevel);
                 t_v = ((float) v / (float) tessellationLevel);
@@ -254,9 +254,9 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
 
     for (int indice_in_patch = 0; indice_in_patch < nr_indices; indice_in_patch+=16) {
 
-        for (int u = 0; u < tessellationLevel; u++) {
+        for (int v = 0; v < tessellationLevel; v++) {
 
-            for (int v = 0; v < tessellationLevel; v++) {
+            for (int u = 0; u < tessellationLevel; u++) {
 
                     //Considering a square ABCD
                     // A_____B
@@ -268,9 +268,9 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
 
                     patch = indice_in_patch / 16;
 
-                    iA = patch * nr_vertices_in_patch + v + ((tessellationLevel + 1) * u);
+                    iA = patch * nr_vertices_in_patch + u + ((tessellationLevel + 1) * v);
                     iB = iA + 1;
-                    iC = patch * nr_vertices_in_patch + v + (tessellationLevel + 1) * (u + 1);
+                    iC = patch * nr_vertices_in_patch + u + (tessellationLevel + 1) * (v + 1);
                     iD = iC + 1;
 
                     outfile << iA << endl << iC << endl << iB << endl;
