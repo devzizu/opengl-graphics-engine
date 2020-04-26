@@ -125,7 +125,7 @@ void drawGroupElements(Group g) {
 
         } else if (it -> description == "Translation_TimeBased") {
 
-            float timeT = (float) glutGet(GLUT_ELAPSED_TIME) / it -> time;
+            float timeT = ((float) glutGet(GLUT_ELAPSED_TIME) / 1000) / (it -> time);
 
             float pos[3] = { 0.0, 0.0, 0.0 };
             float deriv[3] = { 0.0, 0.0, 0.0 };
@@ -150,7 +150,7 @@ void drawGroupElements(Group g) {
 
         } else if (it -> description == "Rotation_TimeBased") {
 
-            float rotationAngle = (float) glutGet(GLUT_ELAPSED_TIME) * 360 / it -> time;
+            float rotationAngle = (((float) glutGet(GLUT_ELAPSED_TIME) / 1000) * 360) / (it -> time);
 
             glRotatef(rotationAngle, it -> x, it -> y, it -> z);
         }
@@ -162,9 +162,9 @@ void drawGroupElements(Group g) {
     for (auto it = models -> begin(); it != models -> end(); ++it) {
 
         //Axis around each model
-//        glPushMatrix();
-//            drawAxis(3.0f, 3.0f, 3.0f);
-//        glPopMatrix();
+        glPushMatrix();
+            drawAxis(3.0f, 3.0f, 3.0f);
+        glPopMatrix();
 
         glPushMatrix();
 

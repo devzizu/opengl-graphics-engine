@@ -97,7 +97,7 @@ void processFPS () {
 
 void displayRunningInformation() {
 
-    cout << "[3] Everything was loaded:" << endl;
+    cout << "[3] Everything was loaded: " << endl;
 
     cout << "\tVendor   : " << glGetString(GL_VENDOR) << endl;
     cout << "\tRenderer : " << glGetString(GL_RENDERER) << endl;
@@ -216,12 +216,12 @@ void processSpecialKeys(int key, int xx, int yy)
                 beta = -1.5f;
             break;
 
-        case GLUT_KEY_PAGE_DOWN: radius -= 0.1f;
+        case GLUT_KEY_PAGE_DOWN: radius -= 0.5f;
             if (radius < 0.1f)
                 radius = 0.1f;
             break;
 
-        case GLUT_KEY_PAGE_UP: radius += 0.1f; break;
+        case GLUT_KEY_PAGE_UP: radius += 0.5f; break;
     }
 
     spherical2Cartesian();
