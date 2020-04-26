@@ -41,7 +41,11 @@ vector<Group> *sceneGroups;
 //Translations
 float alfa = 0.0f,
       beta = 0.0f,
-      radius = 30.0f;
+      radius = 100.0f;
+      //radius = 30.0f;
+
+float centerX = 0.0f, centerY = 0.0f, centerZ = 0.0f;
+//float centerX = 20.0f, centerY = 0.0f, centerZ = 0.0f;
 
 //float camX, camY, camZ;
 float camX = -5.0f, camY = 0.0f, camZ = 0.0f;
@@ -122,7 +126,7 @@ void renderScene(void) {
     glLoadIdentity();
 
     gluLookAt(camX, camY, camZ,
-              0.0,0.0,0.0,
+              centerX,centerY,centerZ,
               0.0f,1.0f,0.0f);
 
 
@@ -134,7 +138,7 @@ void renderScene(void) {
 
     //::1::Draw the axis
     glPushMatrix();
-        drawAxis(50.0f, 50.0f, 50.0f);
+        //drawAxis(50.0f, 50.0f, 50.0f);
     glPopMatrix();
 
     //TMP: Fill every model white

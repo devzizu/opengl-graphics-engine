@@ -1,0 +1,334 @@
+<scene>
+    <group>
+
+        <!-- Standard sphere scale = 1................................ -->
+
+        <scale X="4" Y="4" Z="4"/>
+
+        <!-- Teapot .................................................. -->
+        <group>
+                        
+            <group>
+                
+                <translate time="20">
+                    <point X="0" Y="4" Z="-10"/>
+                    <point X="-10" Y="2" Z="-10"/>
+                    <point X="-10" Y="0" Z="0"/>
+                    <point X="10" Y="3" Z="10"/>
+                </translate>
+    
+                <scale X="0.09" Y="0.09" Z="0.09"/>
+
+                <rotate angle="-90" axisX="1" axisY="0" axisZ="0" />
+                <models>
+                    <model file="teapot.3d.indexed" />
+                </models>
+            </group>
+        </group>
+
+        <!-- Sol ..................................................... -->
+        <group>
+            
+            <scale X="3.4" Y="3.4" Z="3.4"/>
+            
+            <group>
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+            </group>
+        </group>
+
+        <!-- Mercurio .................................................. -->
+        <group>
+
+            <translate time="1.44">
+                <point X="5.50" Y="0.00" Z="0.00" />
+                <point X="3.89" Y="0.00" Z="-3.89" />
+                <point X="0.00" Y="0.00" Z="-5.50" />
+                <point X="-3.89" Y="0.00" Z="-3.89" />
+                <point X="-5.50" Y="0.00" Z="0.00" />
+                <point X="-3.89" Y="0.00" Z="3.89" />
+                <point X="0.00" Y="0.00" Z="5.50" />
+                <point X="3.89" Y="0.00" Z="3.89" />
+            </translate>
+
+            <scale X="0.0140" Y="0.0140" Z="0.0140"/>
+
+            <group>
+
+                <!-- Rotação sobre o próprio eixo -->
+                <rotate time="348" axisX="0" axisY="1" axisZ="0" />
+
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+
+            </group>
+        </group>
+
+        <!-- Venus .................................................. -->
+        <group>
+            
+            <translate time="3.69">
+                <point X="6.50" Y="0.00" Z="0.00" />
+                <point X="4.60" Y="0.00" Z="-4.60" />
+                <point X="0.00" Y="0.00" Z="-6.50" />
+                <point X="-4.60" Y="0.00" Z="-4.60" />
+                <point X="-6.50" Y="0.00" Z="0.00" />
+                <point X="-4.60" Y="0.00" Z="4.60" />
+                <point X="0.00" Y="0.00" Z="6.50" />
+                <point X="4.60" Y="0.00" Z="4.60" />
+            </translate>
+
+            <scale X="0.0348" Y="0.0348" Z="0.0348"/>
+            
+            <group>
+
+                <!-- Rotação sobre o próprio eixo -->
+                <rotate time="696" axisX="0" axisY="1" axisZ="0" />
+
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+
+            </group>
+        </group>
+
+        <!-- Terra .................................................. -->
+        <group>
+     
+            <translate time="5.9">
+                <point X="7.50" Y="0.00" Z="0.00" />
+                <point X="5.30" Y="0.00" Z="-5.30" />
+                <point X="0.00" Y="0.00" Z="-7.50" />
+                <point X="-5.30" Y="0.00" Z="-5.30" />
+                <point X="-7.50" Y="0.00" Z="0.00" />
+                <point X="-5.30" Y="0.00" Z="5.30" />
+                <point X="0.00" Y="0.00" Z="7.50" />
+                <point X="5.30" Y="0.00" Z="5.30" />
+            </translate>    
+            
+            <scale X="0.0367" Y="0.0367" Z="0.0367"/>
+            
+            <group>
+
+                <!-- Rotação sobre o próprio eixo -->
+                <rotate time="6" axisX="0" axisY="1" axisZ="0" />
+
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+
+            </group>
+
+            <group>
+
+                <translate X="6.5" Y="0.06" Z="-0.06"/>
+
+                <scale X="0.01" Y="0.01" Z="0.01"/>
+
+                <group>
+
+                    <models>
+                        <model file="sphere.3d" />
+                    </models>
+
+                </group>
+            </group>        
+
+        </group>
+
+        <!-- SATELITES NATURAIS DA TERRA-->
+
+        <!-- Marte .................................................. -->
+        <group>
+
+            <translate time="11.00">
+                <point X="9.00" Y="0.00" Z="0.00" />
+                <point X="6.36" Y="0.00" Z="-6.36" />
+                <point X="0.00" Y="0.00" Z="-9.00" />
+                <point X="-6.36" Y="0.00" Z="-6.36" />
+                <point X="-9.00" Y="0.00" Z="0.00" />
+                <point X="-6.36" Y="0.00" Z="6.36" />
+                <point X="0.00" Y="0.00" Z="9.00" />
+                <point X="6.36" Y="0.00" Z="6.36" />
+            </translate>
+
+            <scale X="0.0195" Y="0.0195" Z="0.0195"/>
+
+            <group>
+
+                <!-- Rotação sobre o próprio eixo -->
+                <rotate time="6.1" axisX="0" axisY="1" axisZ="0" />
+
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+
+            </group>
+        </group>
+
+        <!-- Jupiter .................................................. -->
+        <group>
+            
+            <translate time="15.00">
+                <point X="13.00" Y="0.00" Z="0.00" />
+                <point X="9.19" Y="0.00" Z="-9.19" />
+                <point X="0.00" Y="0.00" Z="-13.00" />
+                <point X="-9.19" Y="0.00" Z="-9.19" />
+                <point X="-13.00" Y="0.00" Z="0.00" />
+                <point X="-9.19" Y="0.00" Z="9.19" />
+                <point X="0.00" Y="0.00" Z="13.00" />
+                <point X="9.19" Y="0.00" Z="9.19" />
+            </translate>
+
+            <scale X="0.4115" Y="0.4115" Z="0.4115"/>
+            
+            <group>
+
+                <!-- Rotação sobre o próprio eixo -->
+                <rotate time="3.5" axisX="0" axisY="1" axisZ="0" />
+
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+
+            </group>
+
+            <group>
+                <translate X="12" Y="0.65" Z="-0.65"/>
+                <scale X="0.0076" Y="0.0076" Z="0.0076"/>
+                <group>
+                    <models>
+                        <model file="sphere.3d" />
+                    </models>
+                </group>
+            </group> 
+
+        </group>
+
+
+        <!-- Saturno .................................................. -->
+        <group>
+           
+            <translate time="16.00">
+                <point X="19.00" Y="0.00" Z="0.00" />
+                <point X="13.44" Y="0.00" Z="-13.44" />
+                <point X="0.00" Y="0.00" Z="-19.00" />
+                <point X="-13.44" Y="0.00" Z="-13.44" />
+                <point X="-19.00" Y="0.00" Z="0.00" />
+                <point X="-13.44" Y="0.00" Z="13.44" />
+                <point X="0.00" Y="0.00" Z="19.00" />
+                <point X="13.44" Y="0.00" Z="13.44" />
+            </translate>
+
+            <scale X="0.3469" Y="0.3469" Z="0.3469"/>
+          
+            <group>
+
+                <!-- Rotação sobre o próprio eixo -->
+                <rotate time="3.6" axisX="0" axisY="0" axisZ="1" />
+
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+
+            </group>
+
+            <!-- SATELITES NATURAIS DE SATURNO-->
+
+            <group>
+                <translate X="18" Y="0.4" Z="-0.4"/>
+                <scale X="0.0072" Y="0.0072" Z="0.0072"/>
+                <group>
+                    <models>
+                        <model file="sphere.3d" />
+                    </models>
+                </group>
+            </group>
+
+        </group>
+
+        <!-- Urano .................................................. -->
+        <group>
+            
+            <translate time="20.00">
+                <point X="25.00" Y="0.00" Z="0.00" />
+                <point X="17.68" Y="0.00" Z="-17.68" />
+                <point X="0.00" Y="0.00" Z="-25.00" />
+                <point X="-17.68" Y="0.00" Z="-17.68" />
+                <point X="-25.00" Y="0.00" Z="0.00" />
+                <point X="-17.68" Y="0.00" Z="17.68" />
+                <point X="0.00" Y="0.00" Z="25.00" />
+                <point X="17.68" Y="0.00" Z="17.68" />
+            </translate>
+
+            <scale X="0.1471" Y="0.1471" Z="0.1471"/>
+            
+            <group>
+
+                <!-- Rotação sobre o próprio eixo -->
+                <rotate time="4.2" axisX="0" axisY="0" axisZ="1" />
+
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+
+            </group>
+        <!-- SATELITES NATURAIS DE URANO-->
+
+            <group>
+                <translate X="24" Y="0.2" Z="0.2"/>
+                <scale X="0.0029" Y="0.0029" Z="0.0029"/>
+                <group>
+                    <models>
+                        <model file="sphere.3d" />
+                    </models>
+                </group>
+            </group>
+        </group>
+
+        <!-- Neptuno .................................................. -->
+        <group>
+            
+            <translate time="30.00">
+                <point X="31.00" Y="0.00" Z="0.00" />
+                <point X="21.92" Y="0.00" Z="-21.92" />
+                <point X="0.00" Y="0.00" Z="-31.00" />
+                <point X="-21.92" Y="0.00" Z="-21.92" />
+                <point X="-31.00" Y="0.00" Z="0.00" />
+                <point X="-21.92" Y="0.00" Z="21.92" />
+                <point X="0.00" Y="0.00" Z="31.00" />
+                <point X="21.92" Y="0.00" Z="21.92" />
+            </translate>
+
+            <scale X="0.1426" Y="0.1426" Z="0.1426"/>
+            
+            <group>
+
+                <!-- Rotação sobre o próprio eixo -->
+                <rotate time="4" axisX="1" axisY="1" axisZ="1" />
+
+                <models>
+                    <model file="sphere.3d" />
+                </models>
+
+            </group>
+
+            <!-- SATELITES NATURAIS DE NEPTUNO -->
+
+            <group>
+                <translate X="30" Y="0.2" Z="0.2"/>
+                <scale X="0.0039" Y="0.0039" Z="0.0039"/>
+                <group>
+                    <models>
+                        <model file="sphere.3d" />
+                    </models>
+                </group>
+            </group>
+
+        </group>
+    </group>
+</scene>
+
+
