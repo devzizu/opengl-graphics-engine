@@ -62,9 +62,14 @@ int main(int argc, char** argv)
         //Loading xml file
         scene_groups = load_xml_config(xml_file_name);
 
-    } catch (...) {
+    } catch (string msg) {
 
         cout << endl << "[X] Parse error, check the xml config file syntax!" << endl;
+        cout << "\n> Message: \"" << msg << "\"" << endl;
+
+        cout << endl << "[X] Engine exited with code -1." << endl;
+
+        return 0;
     }
 
     // Could not read any group from a scene tag

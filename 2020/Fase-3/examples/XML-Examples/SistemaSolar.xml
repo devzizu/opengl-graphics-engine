@@ -9,7 +9,7 @@
         <group>
                         
             <group>
-                
+
                 <translate time="20">
                     <point X="0" Y="4" Z="-10"/>
                     <point X="-10" Y="2" Z="-10"/>
@@ -20,6 +20,7 @@
                 <scale X="0.09" Y="0.09" Z="0.09"/>
 
                 <rotate angle="-90" axisX="1" axisY="0" axisZ="0" />
+
                 <models>
                     <model file="teapot.3d.indexed" />
                 </models>

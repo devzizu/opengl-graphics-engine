@@ -250,7 +250,7 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
     //Process indices
 
     int nr_vertices_in_patch = pow(tessellationLevel + 1, 2);
-    int iA, iB, iC, iD, patch;
+    int iA, iB, iC, iD, patch, iOffset;
 
     for (int indice_in_patch = 0; indice_in_patch < nr_indices; indice_in_patch+=16) {
 
@@ -268,9 +268,11 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
 
                     patch = indice_in_patch / 16;
 
-                    iA = patch * nr_vertices_in_patch + u + ((tessellationLevel + 1) * v);
+                    iOffset = patch * nr_vertices_in_patch;
+
+                    iA = iOffset + u + ((tessellationLevel+1) * v);
                     iB = iA + 1;
-                    iC = patch * nr_vertices_in_patch + u + (tessellationLevel + 1) * (v + 1);
+                    iC = iOffset + u + (tessellationLevel+1) * (v + 1);
                     iD = iC + 1;
 
                     outfile << iA << endl << iC << endl << iB << endl;

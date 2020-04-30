@@ -30,8 +30,7 @@ int load_standard_model_vertices(MODEL_INFO *model) {
     ifstream file_stream (path_to_model);
 
     if (!file_stream.is_open()) {
-        cout << "Could not read from " << path_to_model << "!" << endl;
-        return -1;
+        throw string("Could not read from " + path_to_model + "!");
     }
 
     //Get model array of vertices pointer
@@ -82,8 +81,7 @@ int load_indexed_model_vertices(MODEL_INFO *model) {
     ifstream file_stream (path_to_model);
 
     if (!file_stream.is_open()) {
-        cout << "Could not read from " << path_to_model << "!" << endl;
-        return -1;
+        throw string("Could not read from " + path_to_model + "!");
     }
 
     //Get model array of vertices pointer
@@ -236,8 +234,7 @@ static void processTranslationTag(XMLElement *translation_ptr, Group *group) {
         } else {
 
             //process error
-
-            //FIXME
+            throw string("The minimum number of points is 4 in dynamic translations!");
         }
     }
 }
@@ -304,21 +301,23 @@ static void processGroupTag(XMLElement *group_tag_ptr, Group *group) {
 
     XMLElement* element = group_tag_ptr -> FirstChildElement(nullptr);
 
+    int tr = 0, rt = 0, scl = 0;
+
     while (element != nullptr) {
 
         string element_name = element -> Name();
 
         //Translate tag found
         if (element_name == "translate")
-            { processTranslationTag(element, group); }
+            { processTranslationTag(element, group); tr++; }
 
         //Rotate tag found
         if (element_name == "rotate")
-            { processRotationTag(element, group); }
+            { processRotationTag(element, group); rt++; }
 
         //Scale tag found
         else if (element_name == "scale")
-            { processScaleTag(element, group); }
+            { processScaleTag(element, group); scl++; }
 
         //Models tag found
         else if (element_name == "models")
@@ -340,6 +339,10 @@ static void processGroupTag(XMLElement *group_tag_ptr, Group *group) {
         /*--------------------------------------------------------*/
 
         element = element -> NextSiblingElement(nullptr);
+    }
+
+    if (scl > 1 || tr > 1 || rt > 1) {
+        throw string("Multiple transformations of the same type on the same Group!");
     }
 }
 
@@ -385,8 +388,9 @@ vector<Group>* load_xml_config(string xml_config_filename) {
         //Create new group that will be processed in processGroupTag(...)
         auto newGroup = new Group();
 
-        //Process the group tag
-        processGroupTag(group_tag_ptr, newGroup);
+
+            //Process the group tag
+            processGroupTag(group_tag_ptr, newGroup);
 
         //Insert new group in groups vector
         groups_vector -> push_back(*newGroup);
