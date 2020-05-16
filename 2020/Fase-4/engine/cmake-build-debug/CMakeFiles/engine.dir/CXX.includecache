@@ -28,12 +28,18 @@ stack
 GL/glew.h
 -
 
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/load-graphics.cpp
+../Models/headers/textures.h
+model-info.h
+../Models/headers/model-info.h
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-graphics.cpp
 GLUT/glut.h
 -
 GL/glew.h
 -
 GL/glut.h
+-
+IL/il.h
 -
 math.h
 -
@@ -45,6 +51,8 @@ draw-elements.h
 -
 catmull-rom.h
 -
+textures.h
+-
 VBO.h
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/VBO.h
+-
 

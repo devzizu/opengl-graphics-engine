@@ -207,6 +207,9 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
     cout << "\t\t/ Patchs (16 points) = " << nr_patchs << endl;
     cout << "\t\t/ Total indexes      = " << nr_indices << endl << endl;
 
+    //totaling vertices
+    outfile << nr_patchs * pow(tessellationLevel + 1, 2) << endl;
+
     //Store here the vertices of each patch
     float Pij_X[16];
     float Pij_Y[16];

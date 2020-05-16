@@ -72,8 +72,9 @@ int load_standard_model_vertices(MODEL_INFO *model) {
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 //Read model file and store the vertices and indexes vectors from MODEL_INFO
+//This type of models can eventually have texture coordinates and normals
 
-int load_indexed_model_vertices(MODEL_INFO *model) {
+int load_indexed_model(MODEL_INFO *model) {
 
     //Model path appended to default folder location for models
     string path_to_model = MODEL_3D_PATH + model -> getName();
@@ -85,8 +86,11 @@ int load_indexed_model_vertices(MODEL_INFO *model) {
     }
 
     //Get model array of vertices pointer
-    vector<float>* modelVertices = model -> getVertices();
+    vector<float>* modelVertices      = model -> getVertices();
     vector<GLuint>* indexes = model -> indexes;
+    vector<float>* modelTextureCoords;
+    if (model->settings[1])
+        modelTextureCoords = model -> getTextureCoordinates();
 
     //0: vertices
     //1: indexes
@@ -96,10 +100,17 @@ int load_indexed_model_vertices(MODEL_INFO *model) {
         //to store the line
         string line;
 
+        //read first line containing nr of vert, indexes, texture Coord...
+        getline(file_stream, line);
+        int nr_vert = 0, nr_indexes = 0, nr_textCoord = 0;
+        sscanf(line.c_str(), "%d,%d,%d", &nr_vert, &nr_indexes, &nr_textCoord);
+
         //3 fields of each line in model file
         //the 3 coordinates x, y and z
         float x, y, z;
+        float t_x, t_y;
         int index;
+        int read_indexes = 0, read_texturecoords = 0;
 
         //while not EOF
         while (getline(file_stream, line)) {
@@ -113,6 +124,7 @@ int load_indexed_model_vertices(MODEL_INFO *model) {
                 if (floatsRead != 3) {
 
                     index = (GLuint) x;
+                    read_indexes++;
                     parsing = 1;
                     continue;
                 }
@@ -121,12 +133,29 @@ int load_indexed_model_vertices(MODEL_INFO *model) {
                 modelVertices->push_back(y);
                 modelVertices->push_back(z);
 
-            //parsing indexes
+                //parsing indexes
             } else if (parsing == 1) {
 
-                indexes -> push_back(index);
+                indexes->push_back(index);
 
-                floatsRead = sscanf(line.c_str(), "%d", &index);
+                sscanf(line.c_str(), "%d", &index);
+
+                read_indexes++;
+
+                if (read_indexes == nr_indexes) {
+                    parsing = 2; //parsing texture coordinates now
+                    read_texturecoords = 0;
+                }
+
+            } else if(parsing == 2 && model -> settings[1]) {
+
+                sscanf(line.c_str(), "%f %f", &t_x, &t_y);
+
+                modelTextureCoords->push_back(t_x);
+                modelTextureCoords->push_back(t_y);
+                read_texturecoords++;
+
+               if (read_texturecoords > nr_textCoord) break;
             }
         }
 
@@ -151,19 +180,41 @@ static void processModelsTag(XMLElement *models_ptr, Group *group) {
 
     for (; model_ptr != NULL; model_ptr = model_ptr -> NextSiblingElement("model")) {
 
-        string model_file_name = string(model_ptr -> Attribute("file"));
+        //--------------------------------------------------------------------------------------------------------------
+
+        //file name
+        auto file_model = model_ptr -> Attribute("file");
+
+        if (!file_model)
+            throw string("No 'file' attributes found for model ?");
+
+        string model_file_name = string(file_model);
+
+        //textures
+        auto file_texture = model_ptr -> Attribute("texture");
+
+        string model_texture;
+        if (file_texture) {
+
+            model_texture = string(file_texture);
+        }
+
+        //--------------------------------------------------------------------------------------------------------------
 
         if (model_file_name.substr(model_file_name.find_last_of(".") + 1) == "indexed") {
 
-            auto model = new MODEL_INFO(model_file_name, true);
+            auto model = new MODEL_INFO(model_file_name, true, file_texture != nullptr);
 
-            load_indexed_model_vertices(model);
+            if (file_texture)
+                model -> textureFile = model_texture;
+
+            load_indexed_model(model);
 
             group -> models -> push_back(*model);
 
         } else {
 
-            auto model = new MODEL_INFO(model_file_name, false);
+            auto model = new MODEL_INFO(model_file_name, false, false);
 
             load_standard_model_vertices(model);
 

@@ -48,10 +48,10 @@ RM = /home/joao/clion-2019.3.2/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine
+CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -285,6 +285,33 @@ Models/model-info.cpp.s:
 	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/model-info.cpp.s
 .PHONY : Models/model-info.cpp.s
 
+Models/textures.o: Models/textures.cpp.o
+
+.PHONY : Models/textures.o
+
+# target to build an object file
+Models/textures.cpp.o:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/textures.cpp.o
+.PHONY : Models/textures.cpp.o
+
+Models/textures.i: Models/textures.cpp.i
+
+.PHONY : Models/textures.i
+
+# target to preprocess a source file
+Models/textures.cpp.i:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/textures.cpp.i
+.PHONY : Models/textures.cpp.i
+
+Models/textures.s: Models/textures.cpp.s
+
+.PHONY : Models/textures.s
+
+# target to generate assembly for a file
+Models/textures.cpp.s:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/textures.cpp.s
+.PHONY : Models/textures.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -366,6 +393,9 @@ help:
 	@echo "... Models/model-info.o"
 	@echo "... Models/model-info.i"
 	@echo "... Models/model-info.s"
+	@echo "... Models/textures.o"
+	@echo "... Models/textures.i"
+	@echo "... Models/textures.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

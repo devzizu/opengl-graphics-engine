@@ -43,10 +43,10 @@ RM = /home/joao/clion-2019.3.2/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine
+CMAKE_SOURCE_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug
+CMAKE_BINARY_DIR = /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/engine.dir/depend.make
@@ -59,107 +59,120 @@ include CMakeFiles/engine.dir/flags.make
 
 CMakeFiles/engine.dir/Models/load-xml.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/Models/load-xml.cpp.o: ../Models/load-xml.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/engine.dir/Models/load-xml.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/load-xml.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/load-xml.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/engine.dir/Models/load-xml.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/load-xml.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-xml.cpp
 
 CMakeFiles/engine.dir/Models/load-xml.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/Models/load-xml.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/load-xml.cpp > CMakeFiles/engine.dir/Models/load-xml.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-xml.cpp > CMakeFiles/engine.dir/Models/load-xml.cpp.i
 
 CMakeFiles/engine.dir/Models/load-xml.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/Models/load-xml.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/load-xml.cpp -o CMakeFiles/engine.dir/Models/load-xml.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-xml.cpp -o CMakeFiles/engine.dir/Models/load-xml.cpp.s
 
 CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.o: ../tinyxml2/tinyxml2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/tinyxml2/tinyxml2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/tinyxml2/tinyxml2.cpp
 
 CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/tinyxml2/tinyxml2.cpp > CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/tinyxml2/tinyxml2.cpp > CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.i
 
 CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/tinyxml2/tinyxml2.cpp -o CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/tinyxml2/tinyxml2.cpp -o CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.s
 
 CMakeFiles/engine.dir/main.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/engine.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/main.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/engine.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/main.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/main.cpp
 
 CMakeFiles/engine.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/main.cpp > CMakeFiles/engine.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/main.cpp > CMakeFiles/engine.dir/main.cpp.i
 
 CMakeFiles/engine.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/main.cpp -o CMakeFiles/engine.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/main.cpp -o CMakeFiles/engine.dir/main.cpp.s
 
 CMakeFiles/engine.dir/Models/model-info.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/Models/model-info.cpp.o: ../Models/model-info.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/engine.dir/Models/model-info.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/model-info.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/model-info.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/engine.dir/Models/model-info.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/model-info.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/model-info.cpp
 
 CMakeFiles/engine.dir/Models/model-info.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/Models/model-info.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/model-info.cpp > CMakeFiles/engine.dir/Models/model-info.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/model-info.cpp > CMakeFiles/engine.dir/Models/model-info.cpp.i
 
 CMakeFiles/engine.dir/Models/model-info.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/Models/model-info.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/model-info.cpp -o CMakeFiles/engine.dir/Models/model-info.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/model-info.cpp -o CMakeFiles/engine.dir/Models/model-info.cpp.s
 
 CMakeFiles/engine.dir/Models/load-graphics.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/Models/load-graphics.cpp.o: ../Models/load-graphics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/engine.dir/Models/load-graphics.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/load-graphics.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/load-graphics.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/engine.dir/Models/load-graphics.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/load-graphics.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-graphics.cpp
 
 CMakeFiles/engine.dir/Models/load-graphics.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/Models/load-graphics.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/load-graphics.cpp > CMakeFiles/engine.dir/Models/load-graphics.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-graphics.cpp > CMakeFiles/engine.dir/Models/load-graphics.cpp.i
 
 CMakeFiles/engine.dir/Models/load-graphics.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/Models/load-graphics.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/load-graphics.cpp -o CMakeFiles/engine.dir/Models/load-graphics.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-graphics.cpp -o CMakeFiles/engine.dir/Models/load-graphics.cpp.s
 
 CMakeFiles/engine.dir/Models/draw-elements.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/Models/draw-elements.cpp.o: ../Models/draw-elements.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/engine.dir/Models/draw-elements.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/draw-elements.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/draw-elements.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/engine.dir/Models/draw-elements.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/draw-elements.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/draw-elements.cpp
 
 CMakeFiles/engine.dir/Models/draw-elements.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/Models/draw-elements.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/draw-elements.cpp > CMakeFiles/engine.dir/Models/draw-elements.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/draw-elements.cpp > CMakeFiles/engine.dir/Models/draw-elements.cpp.i
 
 CMakeFiles/engine.dir/Models/draw-elements.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/Models/draw-elements.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/draw-elements.cpp -o CMakeFiles/engine.dir/Models/draw-elements.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/draw-elements.cpp -o CMakeFiles/engine.dir/Models/draw-elements.cpp.s
 
 CMakeFiles/engine.dir/Models/VBO.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/Models/VBO.cpp.o: ../Models/VBO.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/engine.dir/Models/VBO.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/VBO.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/VBO.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/engine.dir/Models/VBO.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/VBO.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/VBO.cpp
 
 CMakeFiles/engine.dir/Models/VBO.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/Models/VBO.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/VBO.cpp > CMakeFiles/engine.dir/Models/VBO.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/VBO.cpp > CMakeFiles/engine.dir/Models/VBO.cpp.i
 
 CMakeFiles/engine.dir/Models/VBO.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/Models/VBO.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/VBO.cpp -o CMakeFiles/engine.dir/Models/VBO.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/VBO.cpp -o CMakeFiles/engine.dir/Models/VBO.cpp.s
 
 CMakeFiles/engine.dir/Models/catmull-rom.cpp.o: CMakeFiles/engine.dir/flags.make
 CMakeFiles/engine.dir/Models/catmull-rom.cpp.o: ../Models/catmull-rom.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/engine.dir/Models/catmull-rom.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/catmull-rom.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/catmull-rom.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/engine.dir/Models/catmull-rom.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/catmull-rom.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/catmull-rom.cpp
 
 CMakeFiles/engine.dir/Models/catmull-rom.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/Models/catmull-rom.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/catmull-rom.cpp > CMakeFiles/engine.dir/Models/catmull-rom.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/catmull-rom.cpp > CMakeFiles/engine.dir/Models/catmull-rom.cpp.i
 
 CMakeFiles/engine.dir/Models/catmull-rom.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/Models/catmull-rom.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/Models/catmull-rom.cpp -o CMakeFiles/engine.dir/Models/catmull-rom.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/catmull-rom.cpp -o CMakeFiles/engine.dir/Models/catmull-rom.cpp.s
+
+CMakeFiles/engine.dir/Models/textures.cpp.o: CMakeFiles/engine.dir/flags.make
+CMakeFiles/engine.dir/Models/textures.cpp.o: ../Models/textures.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/engine.dir/Models/textures.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/engine.dir/Models/textures.cpp.o -c /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/textures.cpp
+
+CMakeFiles/engine.dir/Models/textures.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/Models/textures.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/textures.cpp > CMakeFiles/engine.dir/Models/textures.cpp.i
+
+CMakeFiles/engine.dir/Models/textures.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/Models/textures.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/textures.cpp -o CMakeFiles/engine.dir/Models/textures.cpp.s
 
 # Object files for target engine
 engine_OBJECTS = \
@@ -170,7 +183,8 @@ engine_OBJECTS = \
 "CMakeFiles/engine.dir/Models/load-graphics.cpp.o" \
 "CMakeFiles/engine.dir/Models/draw-elements.cpp.o" \
 "CMakeFiles/engine.dir/Models/VBO.cpp.o" \
-"CMakeFiles/engine.dir/Models/catmull-rom.cpp.o"
+"CMakeFiles/engine.dir/Models/catmull-rom.cpp.o" \
+"CMakeFiles/engine.dir/Models/textures.cpp.o"
 
 # External object files for target engine
 engine_EXTERNAL_OBJECTS =
@@ -183,6 +197,7 @@ engine: CMakeFiles/engine.dir/Models/load-graphics.cpp.o
 engine: CMakeFiles/engine.dir/Models/draw-elements.cpp.o
 engine: CMakeFiles/engine.dir/Models/VBO.cpp.o
 engine: CMakeFiles/engine.dir/Models/catmull-rom.cpp.o
+engine: CMakeFiles/engine.dir/Models/textures.cpp.o
 engine: CMakeFiles/engine.dir/build.make
 engine: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 engine: /usr/lib/x86_64-linux-gnu/libGLX.so
@@ -193,7 +208,7 @@ engine: /usr/lib/x86_64-linux-gnu/libXi.so
 engine: /usr/lib/x86_64-linux-gnu/libGLEW.so
 engine: /usr/lib/x86_64-linux-gnu/libIL.so
 engine: CMakeFiles/engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable engine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/engine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -206,6 +221,6 @@ CMakeFiles/engine.dir/clean:
 .PHONY : CMakeFiles/engine.dir/clean
 
 CMakeFiles/engine.dir/depend:
-	cd /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-3/engine/cmake-build-debug/CMakeFiles/engine.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/cmake-build-debug/CMakeFiles/engine.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/engine.dir/depend
 

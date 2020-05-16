@@ -14,20 +14,30 @@ vector<float> *MODEL_INFO::getVertices() const {
     return vertices;
 }
 
+//Get vertices vector ptr
+vector<float> *MODEL_INFO::getTextureCoordinates() const {
+    return texturesCoord;
+}
+
 //Get model name
 const string &MODEL_INFO::getName() const {
     return name;
 }
 
 //MODEL_INFO constructor
-MODEL_INFO::MODEL_INFO(const string &name, bool isIndexed) : name(name), indexedModel(isIndexed) {
+MODEL_INFO::MODEL_INFO(const string &name, bool isIndexed, bool isTextured) : name(name) {
 
     this->vertices = new vector<float>();
+    this->settings[0] = isIndexed;
+    this->settings[1] = isTextured;
 
     if(isIndexed) {
         this->indexes = new vector<GLuint>();
     }
 
+    if (isTextured) {
+        this->texturesCoord = new vector<float>();
+    }
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/

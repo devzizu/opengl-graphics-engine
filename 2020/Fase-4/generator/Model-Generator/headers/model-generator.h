@@ -30,6 +30,8 @@ void generate_box_3d (double x, double y, double z, int divisions, string file_n
  */
 void generate_cone_3d (double radius, double height, int slices, int stacks, string file_name);
 
+void generate_cone_indexed (double radius, double height, int slices, int stacks, string file_name);
+
 /*
  * Gerar os vértices para uma esfera em 3D baseado em triângulos.
  * @param radius raio
@@ -38,5 +40,7 @@ void generate_cone_3d (double radius, double height, int slices, int stacks, str
  * @param file_name ficheiro output
  */
 void generate_sphere_3d (double radius, double slices, int stacks, string file_name);
+
+void generate_sphere_indexed (double radius, int slices, int stacks, string file_name);
 
 #endif

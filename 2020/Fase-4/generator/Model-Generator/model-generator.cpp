@@ -1,6 +1,8 @@
 
 #include <fstream>
 #include <cmath>
+#include <vector>
+#include "headers/model-info.h"
 
 using namespace std;
 
@@ -194,6 +196,110 @@ void generate_box_3d (double x, double y, double z, int divisions, string file_n
     outfile.close();
 }
 
+void generate_cone_indexed (double radius, double height, int slices, int stacks, string file_name) {
+
+    ofstream outfile(file_name);
+
+    int nr_of_vertices = 1 + (slices+1) * (stacks + 1);
+    int nr_indices = 3 * slices + 6 * stacks * slices;
+    int nr_textureCoords = nr_indices;
+
+    outfile << nr_of_vertices << "," << nr_indices << "," << nr_textureCoords << endl;
+
+    double alpha = 0.0, alpha_offset = 2 * M_PI / slices;
+    double curr_x, curr_y, curr_z, new_radius;
+    double stack_height = height / stacks;
+
+    //Texture coordinates vector
+    auto *textureCoordinates = new vector<POINT_3D>();
+
+    for (int st = 0; st <= stacks; st++) {
+
+        new_radius = radius - st * (radius / stacks);
+
+        if (st == 0) {
+
+            curr_x = 0.0f;
+            curr_y = 0.0f;
+            curr_z = 0.0f;
+
+            //write vertex to output file
+            outfile << curr_x << " " << curr_y << " " << curr_z << endl;
+        }
+
+        for (int sl = 0; sl <= slices; sl++) {
+
+            alpha = sl * alpha_offset;
+
+            curr_x = new_radius * sin(alpha);
+            curr_y = st * stack_height;
+            curr_z = new_radius * cos(alpha);
+
+            //write vertex to output file
+            outfile << curr_x << " " << curr_y << " " << curr_z << endl;
+
+            textureCoordinates -> push_back(*new POINT_3D(
+                    (sl / (float) slices),
+                    (st / (float) stacks),
+                    0.0f
+            ));
+        }
+    }
+
+    int A, B, C, D;
+
+    //write indexes
+    for (int st = 0; st < stacks; st++) {
+
+        for (int sl = 0; sl < slices; sl++) {
+
+            if (st == 0) {
+
+                //Considering a triangle ABC
+                //       B
+                //      /|
+                //    /  |
+                //  /    |
+                // C_____D
+
+                B = 0;
+                D = sl  +1;
+                C = D + 1;
+
+                //Draw: BCD
+                outfile << B << endl << C << endl << D << endl;
+            }
+
+            //Considering a square ABCD
+            // C_____D
+            // |\    |
+            // |  \  |
+            // |    \|
+            // A_____B
+
+            A = st * (slices + 1) + sl + 1;
+            B = A + 1;
+            C = (st + 1) * (slices + 1) + sl + 1;
+            D = C + 1;
+
+            //Draw: ACB
+            outfile << B << endl << C << endl << A << endl;
+
+            //Draw: BCD
+            outfile << D << endl << C << endl << B << endl;
+        }
+    }
+
+    //write the texture coordinates to the output file
+    for (auto it = textureCoordinates -> begin(); it < textureCoordinates->end(); it++) {
+
+        outfile << it->x << " " << it->y << endl;
+    }
+
+    outfile.close();
+}
+
+
 void generate_cone_3d (double radius, double height, int slices, int stacks, string file_name) {
 
     ofstream outfile(file_name);
@@ -234,6 +340,94 @@ void generate_cone_3d (double radius, double height, int slices, int stacks, str
     outfile.close();
 }
 
+void generate_sphere_indexed (double radius, int slices, int stacks, string file_name) {
+
+    //create file for the sphere model
+    ofstream outfile(file_name);
+
+    int nr_of_vertices = (stacks + 1) * (slices + 1);
+    int nr_indices = 6 * stacks * slices;
+    int nr_texture_coord = nr_of_vertices;
+    outfile << nr_of_vertices << "," << nr_indices << "," << nr_texture_coord << endl;
+
+    double alpha = 0.0, alpha_offset = 2 * M_PI / slices;
+    double beta = 0.0, beta_offset = M_PI / stacks;
+    double curr_x, curr_y, curr_z, new_radius = radius;
+
+    //------------------------------------------------------------------------------------------------------------------
+    //To store normals and texture coordinates
+
+    //Texture coordinates vector
+    auto *textureCoordinates = new vector<POINT_3D>();
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    //write vertices
+    for (int st = 0; st <= stacks; st++) {
+
+        //beta for the stacks PI/2 -> -PI/2
+        beta = M_PI / 2 - st * beta_offset;
+
+        //compute new radius
+        new_radius = radius * cos(beta);
+
+        for (int sl = 0; sl <= slices; sl++) {
+
+            //alpha for the slices
+            alpha = sl * alpha_offset;
+
+            //calculate vertices
+            curr_x = new_radius * sin(alpha);
+            curr_y = radius * sin(beta);
+            curr_z = new_radius * cos(alpha);
+
+            //write vertex to output file
+            outfile << curr_x << " " << curr_y << " " << curr_z << endl;
+
+            textureCoordinates -> push_back(*new POINT_3D(
+                    (sl / (float) slices),
+                    -(st / (float) stacks),
+                    0.0f
+            ));
+        }
+    }
+
+    int A, B, C, D;
+
+    //write indexes
+    for (int st = 0; st < stacks; st++) {
+
+        for (int sl = 0; sl < slices; sl++) {
+
+            //Considering a square ABCD
+            // A_____B
+            // |    /|
+            // |  /  |
+            // |/    |
+            // C_____D
+
+            A = st * (slices + 1) + sl;
+            B = A + 1;
+            C = (st + 1) * (slices + 1) + sl;
+            D = C + 1;
+
+            //Draw: ACB
+            outfile << A << endl << C << endl << B << endl;
+
+            //Draw: BCD
+            outfile << B << endl << C << endl << D << endl;
+        }
+    }
+
+    //write the texture coordinates to the output file
+    for (auto it = textureCoordinates -> begin(); it < textureCoordinates->end(); it++) {
+
+        outfile << it->x << " " << it->y << endl;
+    }
+
+    outfile.close();
+}
+
 void generate_sphere_3d (double radius, double slices, int stacks, string file_name) {
 
     ofstream outfile(file_name);
@@ -254,6 +448,9 @@ void generate_sphere_3d (double radius, double slices, int stacks, string file_n
 
         for(int i=0; i < slices;i++) {
 
+            //----------------------------------------------------------------------------------------------------------
+            // Draw each stack (optional)
+
             //Note: X = r * cos(b) * sin(a) | Y = r * sin(b) | Z = r * cos(b) * cos(a)
 
             //Top stacks of the sphere
@@ -266,7 +463,9 @@ void generate_sphere_3d (double radius, double slices, int stacks, string file_n
             outfile << radius * cos(beta_bottom) * sin(alpha * i) << " "<< radius * sin(beta_bottom) << " "<< radius * cos(beta_bottom) * cos(alpha*i)  <<  endl;
             outfile << radius * cos(beta_bottom) * sin(alpha*(i+1)) << " "<< radius * sin(beta_bottom) << " "<< radius * cos(beta_bottom) * cos(alpha*(i+1))  << endl;
 
-            // Sides of each stack
+            //----------------------------------------------------------------------------------------------------------
+            // Draw sides of each stack (top -> beta)
+
 
             //triangle 1 - top
             outfile << radius * cos(next_beta_top) * sin(alpha*i) << " "<<  radius * sin(next_beta_top) << " "<<  radius * cos(next_beta_top) * cos(alpha*i)  << endl;

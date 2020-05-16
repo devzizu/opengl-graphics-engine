@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/engine.dir/Models/load-graphics.cpp.o"
   "CMakeFiles/engine.dir/Models/load-xml.cpp.o"
   "CMakeFiles/engine.dir/Models/model-info.cpp.o"
+  "CMakeFiles/engine.dir/Models/textures.cpp.o"
   "CMakeFiles/engine.dir/main.cpp.o"
   "CMakeFiles/engine.dir/tinyxml2/tinyxml2.cpp.o"
   "engine"

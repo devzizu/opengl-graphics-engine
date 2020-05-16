@@ -28,7 +28,7 @@ add_executable(engine
         Models/load-xml.cpp
         tinyxml2/tinyxml2.cpp
         tinyxml2/tinyxml2.h
-        main.cpp Models/model-info.cpp Models/headers/model-info.h Models/load-graphics.cpp Models/headers/load-graphics.h Models/draw-elements.cpp Models/headers/draw-elements.h Models/VBO.cpp Models/headers/VBO.h Models/catmull-rom.cpp Models/headers/catmull-rom.h)
+        main.cpp Models/model-info.cpp Models/headers/model-info.h Models/load-graphics.cpp Models/headers/load-graphics.h Models/draw-elements.cpp Models/headers/draw-elements.h Models/VBO.cpp Models/headers/VBO.h Models/catmull-rom.cpp Models/headers/catmull-rom.h Models/textures.cpp Models/headers/textures.h)
 
 #-----------------------------------------------------------------------------------------------------------------------
 
@@ -54,17 +54,19 @@ if  (WIN32)
         message(ERROR ": GLEW not found")
     endif (NOT EXISTS "${TOOLKITS_FOLDER}/glew/GL/glew.h" OR NOT EXISTS "${TOOLKITS_FOLDER}/glew/glew32.lib")
 
-    include_directories(${TOOLKITS_FOLDER}/glut ${TOOLKITS_FOLDER}/glew)
+    include_directories(${TOOLKITS_FOLDER}/glut ${TOOLKITS_FOLDER}/glew ${TOOLKITS_FOLDER}/devil)
     target_link_libraries(${PROJECT_NAME} ${OPENGL_LIBRARIES}
             ${TOOLKITS_FOLDER}/glut/glut32.lib
-            ${TOOLKITS_FOLDER}/glew/glew32.lib )
+            ${TOOLKITS_FOLDER}/glew/glew32.lib
+            ${TOOLKITS_FOLDER}/devil/devIL.lib )
 
-    if (EXISTS "${TOOLKITS_FOLDER}/glut/glut32.dll" AND EXISTS "${TOOLKITS_FOLDER}/glew/glew32.dll")
+    if (EXISTS "${TOOLKITS_FOLDER}/glut/glut32.dll" AND EXISTS "${TOOLKITS_FOLDER}/glew/glew32.dll" AND EXISTS "${TOOLKITS_FOLDER}/devil/devil.dll")
         file(COPY ${TOOLKITS_FOLDER}/glut/glut32.dll DESTINATION ${CMAKE_BINARY_DIR})
         file(COPY ${TOOLKITS_FOLDER}/glew/glew32.dll DESTINATION ${CMAKE_BINARY_DIR})
+        file(COPY ${TOOLKITS_FOLDER}/devil/devil.dll DESTINATION ${CMAKE_BINARY_DIR})
     endif(EXISTS "${TOOLKITS_FOLDER}/glut/glut32.dll" AND EXISTS "${TOOLKITS_FOLDER}/glew/glew32.dll")
 
-    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME} AND EXISTS "${TOOLKITS_FOLDER}/devil/devil.dll")
 
 else (WIN32) #Linux and Mac
 

@@ -6,6 +6,7 @@
         <scale X="8" Y="8" Z="8"/>
 
         <!-- Teapot .................................................. -->
+       
         <group>
                         
             <group>
@@ -26,6 +27,7 @@
                 </models>
             </group>
         </group>
+    
 
         <!-- Sol ..................................................... -->
         <group>
@@ -34,7 +36,7 @@
             
             <group>
                 <models>
-                    <model file="sphere.3d" />
+                    <model file="sphere.3d.indexed" texture="sun.jpg" />
                 </models>
             </group>
         </group>
@@ -61,7 +63,7 @@
                 <rotate time="348" axisX="0" axisY="1" axisZ="0" />
 
                 <models>
-                    <model file="sphere.3d" />
+                    <model file="sphere.3d.indexed" />
                 </models>
 
             </group>
@@ -89,7 +91,7 @@
                 <rotate time="696" axisX="0" axisY="1" axisZ="0" />
 
                 <models>
-                    <model file="sphere.3d" />
+                    <model file="sphere.3d.indexed" />
                 </models>
 
             </group>
@@ -117,7 +119,7 @@
                 <rotate time="6" axisX="0" axisY="1" axisZ="0" />
 
                 <models>
-                    <model file="sphere.3d" />
+                    <model file="sphere.3d.indexed" texture="earth.jpg" />
                 </models>
 
             </group>
@@ -131,7 +133,7 @@
                 <group>
 
                     <models>
-                        <model file="sphere.3d" />
+                        <model file="sphere.3d.indexed" />
                     </models>
 
                 </group>
@@ -163,7 +165,7 @@
                 <rotate time="6.1" axisX="0" axisY="1" axisZ="0" />
 
                 <models>
-                    <model file="sphere.3d" />
+                    <model file="sphere.3d.indexed" />
                 </models>
 
             </group>
@@ -191,7 +193,7 @@
                 <rotate time="3.5" axisX="0" axisY="1" axisZ="0" />
 
                 <models>
-                    <model file="sphere.3d" />
+                    <model file="sphere.3d.indexed" />
                 </models>
 
             </group>
@@ -201,7 +203,7 @@
                 <scale X="0.0076" Y="0.0076" Z="0.0076"/>
                 <group>
                     <models>
-                        <model file="sphere.3d" />
+                        <model file="sphere.3d.indexed" />
                     </models>
                 </group>
             </group> 
@@ -231,7 +233,7 @@
                 <rotate time="3.6" axisX="0" axisY="0" axisZ="1" />
 
                 <models>
-                    <model file="sphere.3d" />
+                    <model file="sphere.3d.indexed" />
                 </models>
 
             </group>
@@ -243,7 +245,7 @@
                 <scale X="0.0072" Y="0.0072" Z="0.0072"/>
                 <group>
                     <models>
-                        <model file="sphere.3d" />
+                        <model file="sphere.3d.indexed" />
                     </models>
                 </group>
             </group>
@@ -272,7 +274,7 @@
                 <rotate time="4.2" axisX="0" axisY="0" axisZ="1" />
 
                 <models>
-                    <model file="sphere.3d" />
+                    <model file="sphere.3d.indexed" />
                 </models>
 
             </group>
@@ -283,7 +285,7 @@
                 <scale X="0.0029" Y="0.0029" Z="0.0029"/>
                 <group>
                     <models>
-                        <model file="sphere.3d" />
+                        <model file="sphere.3d.indexed" />
                     </models>
                 </group>
             </group>
@@ -311,7 +313,7 @@
                 <rotate time="4" axisX="1" axisY="1" axisZ="1" />
 
                 <models>
-                    <model file="sphere.3d" />
+                    <model file="sphere.3d.indexed" />
                 </models>
 
             </group>
@@ -323,7 +325,7 @@
                 <scale X="0.0039" Y="0.0039" Z="0.0039"/>
                 <group>
                     <models>
-                        <model file="sphere.3d" />
+                        <model file="sphere.3d.indexed" />
                     </models>
                 </group>
             </group>

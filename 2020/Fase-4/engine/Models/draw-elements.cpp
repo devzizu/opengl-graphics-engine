@@ -79,16 +79,28 @@ void drawModelVertices(MODEL_INFO model) {
 void drawModelVBO (MODEL_INFO model) {
 
     glBindBuffer(GL_ARRAY_BUFFER, model.verticesBuffer[0]);
-    glVertexPointer(3, GL_FLOAT, 0, 0);
+    glVertexPointer(3, GL_FLOAT, 0, nullptr);
 
     int count = model.vertices -> size() / 3;
 
-    if (model.indexedModel) {
+    bool isTextured = model.settings[1];
+
+    if (model.settings[0]) { //if has indexes
+
+        if (isTextured) {
+
+            glBindBuffer(GL_ARRAY_BUFFER, model.textureBuffer[0]);
+            glTexCoordPointer(2, GL_FLOAT, 0, 0);
+            glBindTexture(GL_TEXTURE_2D, model.glutTextureID);
+        }
 
         int indexArraySize = model.indexes -> size();
-
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.indexesBuffer[0]);
         glDrawElements(GL_TRIANGLES, indexArraySize, GL_UNSIGNED_INT, NULL);
+
+        glClearColor(0,0,0,0);
+
+        if (isTextured) glBindTexture(GL_TEXTURE_2D, 0);
 
     } else {
 
@@ -165,7 +177,7 @@ void drawGroupElements(Group g) {
 
         //Axis around each model
         glPushMatrix();
-            //drawAxis(3.0f, 3.0f, 3.0f);
+            drawAxis(3.0f, 3.0f, 3.0f);
         glPopMatrix();
 
         glPushMatrix();

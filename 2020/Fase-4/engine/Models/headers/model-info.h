@@ -31,15 +31,22 @@ class MODEL_INFO {
 
     public:
         string name;
-        bool indexedModel;
+        bool settings[2]; //[indexed?, textures?]
+
         vector<float>* vertices;
         vector<GLuint>* indexes;
+        vector<float>* texturesCoord;
+
         GLuint verticesBuffer[1];
         GLuint indexesBuffer[1];
+        GLuint textureBuffer[1];
+        string textureFile;
+        GLuint glutTextureID;
 
     public:
-        MODEL_INFO(const string &name, bool isIndexed);
+        MODEL_INFO(const string &name, bool isIndexed, bool isTextured);
         vector<float> *getVertices() const;
+        vector<float> *getTextureCoordinates() const;
         const string &getName() const;
 };
 

@@ -447,7 +447,6 @@ int load_graphics(vector<Group>* scene_groups, int argc, char** argv) {
 
     spherical2Cartesian();
 
-
     displayRunningInformation();
 
     //------------------------------------------------------------------------------------------------------------------

@@ -7,6 +7,7 @@
 #else
     #include <GL/glew.h>
     #include <GL/glut.h>
+    #include <IL/il.h>
 #endif
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -22,7 +23,8 @@
 #include <model-info.h>
 #include <draw-elements.h>
 #include <catmull-rom.h>
-#include "VBO.h"
+#include <textures.h>
+#include <VBO.h>
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 //1) Global Variables
@@ -124,13 +126,13 @@ void processFPS () {
 
 void displayRunningInformation() {
 
-    cout << "[3] Everything was loaded: " << endl;
+    cout << "[4] Everything was loaded: " << endl;
 
     cout << "\tVendor   : " << glGetString(GL_VENDOR) << endl;
     cout << "\tRenderer : " << glGetString(GL_RENDERER) << endl;
     cout << "\tVersion  : " << glGetString(GL_VERSION) << endl;
 
-    cout << "[4] Useful Keys:" << endl;
+    cout << "[4.1] Useful Keys:" << endl;
 
     cout << "\tl   : " << "glPolygonMode(GL_FRONT, GL_LINE) " << endl;
     cout << "\tf   : " << "glPolygonMode(GL_FRONT, GL_FILL) " << endl;
@@ -163,12 +165,9 @@ void renderScene(void) {
     /*----------------------------------------------------------------------------------------------------------------*/
     //Load the scene based on the structures
 
-    //TMP: Move models in the XZ plane
-    //glTranslatef(pos_x, pos_y, pos_z);
-
     //::1::Draw the axis
     glPushMatrix();
-        //drawAxis(50.0f, 50.0f, 50.0f);
+        drawAxis(300.0f, 300.0f, 300.0f);
     glPopMatrix();
 
     //TMP: Fill every model white
@@ -183,6 +182,7 @@ void renderScene(void) {
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
+    // Updates window information about frames/second
     processFPS();
 
     // End of frame
@@ -422,10 +422,19 @@ int load_graphics(vector<Group>* scene_groups, int argc, char** argv) {
     //------------------------------------------------------------------------------------------------------------------
     // VBOs Initialization
 
+    //Enables 2D textures
+    glEnable(GL_TEXTURE_2D);
+
     //Enables vertex arrays when calling glDrawArrays or glDrawElements
     glEnableClientState(GL_VERTEX_ARRAY);
+    //Enables texture coordinate arrays for rendering
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    //------------------------------------------------------------------------------------------------------------------
+    // Initialization of VBOs, Textures, DevIl, ...
 
     initVBOs(sceneGroups);
+    initTextures(sceneGroups);
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -447,7 +456,7 @@ int load_graphics(vector<Group>* scene_groups, int argc, char** argv) {
 
     spherical2Cartesian();
 
-
+    //Shows available keys, gpu information, ...
     displayRunningInformation();
 
     //------------------------------------------------------------------------------------------------------------------

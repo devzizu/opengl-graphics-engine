@@ -151,9 +151,13 @@ int main(int argc, char* argv[]) {
             cout << "\t\t / Radius   = " << radius << "," << endl;
             cout << "\t\t / Slices   = " << slices << "," << endl;
             cout << "\t\t / Stacks   = " << stacks << "," << endl;
-            cout << "\t-> Output file : " << GENERATED_FILES + output_file << endl;
+            cout << "\t-> Output file : " << GENERATED_FILES + output_file + ".indexed" << endl;
 
-            generate_sphere_3d (radius, slices, stacks, GENERATED_FILES + output_file);
+            //Phase 1-3
+            //generate_sphere_3d (radius, slices, stacks, GENERATED_FILES + output_file);
+
+            //Phase 4
+            generate_sphere_indexed(radius, slices, stacks, GENERATED_FILES + output_file + ".indexed");
 
             cout << "[status] All vertices were generated... " << endl << endl;
 
@@ -176,9 +180,9 @@ int main(int argc, char* argv[]) {
             cout << "\t\t / Height   = " << height << "," << endl;
             cout << "\t\t / Slices   = " << slices << "," << endl;
             cout << "\t\t / Stacks   = " << stacks << "," << endl;
-            cout << "\t-> Output file : " << GENERATED_FILES + output_file << endl;
+            cout << "\t-> Output file : " << GENERATED_FILES + output_file + ".indexed" << endl;
 
-            generate_cone_3d(radius, height, slices, stacks, GENERATED_FILES + output_file);
+            generate_cone_indexed(radius, height, slices, stacks, GENERATED_FILES + output_file + ".indexed");
 
             cout << "[status] All vertices were generated... " << endl << endl;
 

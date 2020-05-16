@@ -1,0 +1,7 @@
+<scene>
+    <group>
+        <models>
+            <model file="sphere.3d.indexed" />
+        </models>
+    </group>
+</scene>

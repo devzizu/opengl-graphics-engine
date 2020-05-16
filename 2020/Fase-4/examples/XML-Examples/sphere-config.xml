@@ -1,0 +1,7 @@
+<scene>
+    <group>
+        <models>
+            <model file="cone.3d.indexed" texture="cone_estrada.jpg" />
+        </models>
+    </group>
+</scene>
