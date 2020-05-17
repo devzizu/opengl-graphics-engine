@@ -10,6 +10,8 @@ using namespace std;
  */
 void generate_plane_3d (double size, string file_name);
 
+void generate_plane_indexed (double size, string file_name);
+
 /*
  * Gerar os vértices para um caixa em 3D baseado em triângulos.
  * @param x dimensão da coordenada X
@@ -19,6 +21,8 @@ void generate_plane_3d (double size, string file_name);
  * @param file_name ficheiro output
  */
 void generate_box_3d (double x, double y, double z, int divisions, string file_name);
+
+void generate_box_indexed (double x, double y, double z, int divisions, string file_name);
 
 /*
  * Gerar os vértices para um cone em 3D baseado em triângulos.

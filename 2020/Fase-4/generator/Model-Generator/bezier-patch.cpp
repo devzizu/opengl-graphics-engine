@@ -208,7 +208,12 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
     cout << "\t\t/ Total indexes      = " << nr_indices << endl << endl;
 
     //totaling vertices
-    outfile << nr_patchs * pow(tessellationLevel + 1, 2) << endl;
+    int nr_vertices = nr_patchs * pow(tessellationLevel + 1, 2);
+    int nr_indexes = 6 * nr_patchs * pow(tessellationLevel, 2);
+    int nr_textCoords = nr_vertices;
+    auto *textureCoordinates = new vector<POINT_3D>();
+
+    outfile << nr_vertices << "," << nr_indexes << "," << nr_textCoords << endl;
 
     //Store here the vertices of each patch
     float Pij_X[16];
@@ -245,6 +250,10 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
                 outfile << bezierResultantPoint[0] << " "
                         << bezierResultantPoint[1] << " "
                         << bezierResultantPoint[2] << endl;
+
+                textureCoordinates->push_back(*new POINT_3D(
+                     v, u, 0.0f
+                ));
             }
         }
     }
@@ -284,6 +293,8 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
         }
     }
 
+    for (auto it = textureCoordinates -> begin(); it < textureCoordinates->end(); it++)
+        outfile << it->x << " " << it->y << endl;
 
     outfile.close();
 

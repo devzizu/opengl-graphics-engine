@@ -145,6 +145,7 @@ int load_indexed_model(MODEL_INFO *model) {
                 if (read_indexes == nr_indexes) {
                     parsing = 2; //parsing texture coordinates now
                     read_texturecoords = 0;
+                    indexes->push_back(index);
                 }
 
             } else if(parsing == 2 && model -> settings[1]) {

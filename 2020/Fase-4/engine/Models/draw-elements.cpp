@@ -18,17 +18,17 @@ void drawAxis(float x, float y, float z) {
 
     // X axis in red
     glColor3f(1.0f, 0.0f, 0.0f);
-    glVertex3f(-x, 0.0f, 0.0f);
+    glVertex3f(0, 0.0f, 0.0f);
     glVertex3f( x, 0.0f, 0.0f);
 
     // Y Axis in Green
     glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3f(0.0f, -y, 0.0f);
+    glVertex3f(0.0f, 0, 0.0f);
     glVertex3f(0.0f, y, 0.0f);
 
     // Z Axis in Blue
     glColor3f(0.0f, 0.0f, 1.0f);
-    glVertex3f(0.0f, 0.0f, -z);
+    glVertex3f(0.0f, 0.0f, 0);
     glVertex3f(0.0f, 0.0f, z);
     glEnd();
 }

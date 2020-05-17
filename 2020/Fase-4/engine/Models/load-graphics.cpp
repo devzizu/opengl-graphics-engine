@@ -52,10 +52,10 @@ vector<Group> *sceneGroups;
 #define BETA_OFFSET 0.08f
 
 //Camera alpha, beta and radius
-float alpha = 0.0f, beta = 0.0f, radius = 10.0f;
+float alpha =-90.0f, beta = 0.0f, radius = 10.0f;
 
 //Camera position in global space
-float camX = 0.0f, camY = 0.0f, camZ = -80.0f;
+float camX = 80.0f, camY = 0.0f, camZ = 80.0f;
 //Camera look at point
 float LookX = 0, LookY = 0, LookZ = 0;
 

@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-../Models/headers/VBO.h
-model-info.h
-../Models/headers/model-info.h
-
-../Models/headers/catmull-rom.h
-model-info.h
-../Models/headers/model-info.h
-
-../Models/headers/draw-elements.h
-model-info.h
-../Models/headers/model-info.h
-
 ../Models/headers/model-info.h
 iostream
 -
@@ -28,31 +16,45 @@ stack
 GL/glew.h
 -
 
-../Models/headers/textures.h
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-xml.cpp
+iostream
+-
+fstream
+-
+vector
+-
 model-info.h
-../Models/headers/model-info.h
+-
+../tinyxml2/tinyxml2.h
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/tinyxml2/tinyxml2.h
 
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-graphics.cpp
-GLUT/glut.h
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/tinyxml2/tinyxml2.h
+ctype.h
 -
-GL/glew.h
+limits.h
 -
-GL/glut.h
+stdio.h
 -
-IL/il.h
+stdlib.h
 -
-math.h
+string.h
+-
+stddef.h
 -
 cctype
 -
-model-info.h
+climits
 -
-draw-elements.h
+cstdio
 -
-catmull-rom.h
+cstdlib
 -
-textures.h
+cstring
 -
-VBO.h
+stdint.h
+-
+android/log.h
+-
+assert.h
 -
 

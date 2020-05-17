@@ -77,9 +77,9 @@ int main(int argc, char* argv[]) {
             cout << "\t-> Model       : " << selected_model << "," << endl;
             cout << "\t-> Properties  : " << endl;
             cout << "\t\t / Side-Dimension = " << dim << "." << endl;
-            cout << "\t-> Output file : " << GENERATED_FILES + output_file << endl;
+            cout << "\t-> Output file : " << GENERATED_FILES + output_file + ".indexed" << endl;
 
-            generate_plane_3d(dim, GENERATED_FILES + output_file);
+            generate_plane_indexed(dim, GENERATED_FILES + output_file + ".indexed");
 
             cout << "[status] All vertices were generated... " << endl << endl;
 
@@ -106,9 +106,9 @@ int main(int argc, char* argv[]) {
                 cout << "\t\t / X = " << X << "," << endl;
                 cout << "\t\t / Y = " << Y << "," << endl;
                 cout << "\t\t / Z = " << Z << "," << endl;
-                cout << "\t-> Output file : " << GENERATED_FILES + output_file << endl;
+                cout << "\t-> Output file : " << GENERATED_FILES + output_file + ".indexed" << endl;
 
-                generate_box_3d(X, Y, Z, 0, GENERATED_FILES + output_file);
+                generate_box_indexed(X, Y, Z, 0, GENERATED_FILES + output_file + ".indexed");
 
                 cout << "[status] All vertices were generated... " << endl << endl;
 
@@ -126,9 +126,9 @@ int main(int argc, char* argv[]) {
                 cout << "\t\t / Y   = " << Y << "," << endl;
                 cout << "\t\t / Z   = " << Z << "," << endl;
                 cout << "\t\t / Div = " << divisions << "," << endl;
-                cout << "\t-> Output file : " << GENERATED_FILES + output_file << endl;
+                cout << "\t-> Output file : " << GENERATED_FILES + output_file + ".indexed" << endl;
 
-                generate_box_3d(X, Y, Z, divisions, GENERATED_FILES + output_file);
+                generate_box_indexed(X, Y, Z, divisions, GENERATED_FILES + output_file + ".indexed");
 
                 cout << "[status] All vertices were generated... " << endl << endl;
             }
