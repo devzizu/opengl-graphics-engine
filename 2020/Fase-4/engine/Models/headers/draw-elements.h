@@ -14,6 +14,6 @@ void drawAxis(float x, float y, float z);
  * Draws a group of elements in the screen
  * @param g a Group class with elements to draw: models, groups and transformations
  * */
-void drawGroupElements(Group g);
+void drawGroupElements(Group g, bool hasLighting, bool ENABLE_MODEL_AXIS);
 
 #endif //ENGINE_DRAW_ELEMENTS_H

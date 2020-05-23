@@ -108,6 +108,9 @@
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/headers/draw-elements.h">
 			<Option target="engine"/>
 		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/headers/lights.h">
+			<Option target="engine"/>
+		</Unit>
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/headers/load-graphics.h">
 			<Option target="engine"/>
 		</Unit>
@@ -118,6 +121,9 @@
 			<Option target="engine"/>
 		</Unit>
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/headers/textures.h">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/lights.cpp">
 			<Option target="engine"/>
 		</Unit>
 		<Unit filename="/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-graphics.cpp">

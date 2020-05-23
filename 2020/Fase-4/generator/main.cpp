@@ -34,6 +34,9 @@ void cat_command_options (string invalid_cmd) {
 
     cout << endl << "@Phase3 additions: " << endl << endl;
     cout << "bezier  : generator bezier-patch <in-file> <tessellation-level> <outfile>" << endl;
+
+    cout << endl << "@Phase4 : " << endl << endl;
+    cout << "general  : models are now generated with indexes, texture coordinates and normals..." << endl;
 }
 
 void cat_end_program() {

@@ -1,0 +1,223 @@
+<scene>
+
+	<lights>
+		<light type="POINT" X="0" Y="0" Z="0" 
+			   ambiR="1" ambiG="1" ambiB="1"/>
+	</lights>
+	
+    <group>
+
+    	<group> 
+
+    		<scale X="3" Y="3" Z="3" />
+
+    		<models> 
+    			<model file="sphere.3d.indexed"
+    			       texture="sun.jpg" 
+    				   emisR="1" emisG="1" emisB="1"/>
+    		</models>
+
+    	</group>
+
+    	<group>
+
+    		<group>
+
+		    	<translate X="-100" Z="100" Y="40"/>
+
+		    	<rotate time="10" axisY="1"/>
+
+		    	<group>
+	
+		    		<scale X="10" Y="10" Z="10" />
+		
+			        <models>
+			            <model file="cone.3d.indexed"
+			            	   diffR="1" diffG="1" diffB="0"/>
+			        </models>
+
+			    </group>
+
+			</group>
+	
+
+    		<group>
+
+		    	<translate X="-100" Z="100" Y="-40"/>
+
+		    	<rotate time="10" axisY="1"/>
+
+		    	<group>
+
+		    		<scale X="5" Y="5" Z="5" />
+		
+			        <models>
+			            <model file="cone.3d.indexed"
+			            	   texture="cone-estrada.jpg"
+			            	   diffR="1" diffG="1" diffB="0"/>
+			        </models>
+
+			    </group>
+
+			</group>
+
+		</group>
+
+    	<group>
+
+    		<group>
+
+		    	<translate X="-100" Z="-100" Y="40"/>
+
+		    	<rotate time="10" axisY="1"/>
+
+		    	<group>
+	
+		    		<scale X="10" Y="10" Z="10" />
+		
+			        <models>
+			            <model file="box.3d.indexed"
+			            	   diffR="1" diffG="1" diffB="0"/>
+			        </models>
+
+			    </group>
+
+			</group>
+	
+
+    		<group>
+
+		    	<translate X="-100" Z="-100" Y="-40"/>
+
+		    	<rotate time="10" axisX="1"/>
+
+		    	<group>
+
+		    		<scale X="5" Y="5" Z="5" />
+		
+			        <models>
+			            <model file="box.3d.indexed"
+			            	   texture="paper-box.jpg"
+			            	   diffR="1" diffG="1" diffB="0"/>
+			        </models>
+
+			    </group>
+
+			</group>
+
+		</group>
+
+    	<group>
+
+    		<group>
+
+		    	<translate X="100" Z="100" Y="-16"/>
+
+		    	<rotate angle="-45" axisX="1"/>
+
+		    	<group>
+
+		    		<rotate angle="-45" axisY="1"/>
+			        <models>
+			            <model file="plane.3d.indexed"
+			            	   texture="wd-box.png"
+			            	   diffR="1" diffG="1" diffB="0"/>
+			        </models>
+
+			    </group>
+
+			</group>
+	
+
+    		<group>
+
+		    	<translate X="100" Z="100" Y="100"/>
+
+			    <rotate angle="180" axisX="1"/>
+
+		    	<group>
+
+			        <models>
+			            <model file="plane.3d.indexed"
+			            	   diffR="1" diffG="1" diffB="0"/>
+			        </models>
+
+			    </group>
+
+			</group>
+
+		</group>
+
+    	<group>
+
+    		<group>
+
+		    	<translate X="100" Z="-100" Y="-16"/>
+
+		    	<rotate time="10" axisY="1"/>
+
+		    	<group>
+	
+		    		<scale X="20" Y="20" Z="20" />
+		
+			        <models>
+			            <model file="sphere.3d.indexed"
+			            	   diffR="1" diffG="1" diffB="0"/>
+			        </models>
+
+			    </group>
+
+			</group>
+	
+
+    		<group>
+
+		    	<translate X="100" Z="-100" Y="40"/>
+
+		    	<rotate time="10" axisY="1"/>
+
+		    	<group>
+
+		    		<scale X="20" Y="20" Z="20" />
+		
+			        <models>
+			            <model file="sphere.3d.indexed"
+			            	   texture="earth.jpg"
+			            	   diffR="1" diffG="1" diffB="0"/>
+			        </models>
+
+			    </group>
+
+			</group>
+
+		</group>
+
+    	<group>
+
+            <translate time="20">
+                <point X="-200" Y="40" Z="0"/>
+                <point X="0" Y="8" Z="200"/>
+                <point X="200" Y="40" Z="0"/>
+                <point X="0" Y="8" Z="-200"/>
+            </translate>
+
+	    	<group>
+
+				<rotate angle="-90" axisX="1" />
+
+	    		<scale X="2" Y="2" Z="2" />
+	
+		        <models>
+		            <model file="teapot.3d.indexed"
+		            	   diffR="0" diffG="1" diffB="1"
+		            	   ambiR="1" ambiG="0" ambiB="0"
+		            	   specR="1" specG="0" specB="0"/>
+		        </models>
+
+		    </group>
+	
+		</group>
+
+    </group>
+
+</scene>

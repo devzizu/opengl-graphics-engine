@@ -25,6 +25,13 @@ void initIndexedVBOModel(MODEL_INFO *model) {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model -> indexesBuffer[0]);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexArraySize, &(*model -> indexes)[0], GL_STATIC_DRAW);
 
+    int vertexNormalArraySize = model -> vertexNormals -> size() * sizeof(float);
+
+    //Normals
+    glGenBuffers(1, model->normalsBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, model -> normalsBuffer[0]);
+    glBufferData(GL_ARRAY_BUFFER, vertexNormalArraySize, &(*model -> getVertexNormals())[0], GL_STATIC_DRAW);
+
     //Textures
     if (model->settings[1]) { //has textures
 

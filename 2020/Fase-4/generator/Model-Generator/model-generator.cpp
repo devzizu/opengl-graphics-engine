@@ -13,7 +13,7 @@ void generate_plane_3d (double size, string file_name) {
 
     ofstream outfile(file_name);
 
-    int nr_of_vertices = 6;
+    int nr_of_vertices = 4;
 
     outfile << nr_of_vertices << endl;
 
@@ -38,7 +38,7 @@ void generate_plane_indexed (double size, string file_name) {
     int nr_textCoords = nr_of_vertices;
     auto *textureCoordinates = new vector<POINT_3D>();
 
-    outfile << nr_of_vertices << "," << nr_indexes << "," << nr_textCoords << endl;
+    outfile << nr_of_vertices << "," << nr_indexes << "," << nr_textCoords << "," << nr_of_vertices << endl;
 
     //Square: A---B (centred in (0,0,0))
     //        | / |
@@ -71,8 +71,13 @@ void generate_plane_indexed (double size, string file_name) {
     for (auto it = textureCoordinates -> begin(); it < textureCoordinates->end(); it++)
         outfile << -it->x << " " << it->y << endl;
 
-    outfile.close();
+    //Normal for plane vertexes
+    auto *normal = new POINT_3D(0.0f, 1.0f, 0.0f);
 
+    for (int i = 0; i < 4; i++)
+        outfile << normal->x << " " << normal->y << " " << normal->z << endl;
+
+    outfile.close();
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -252,11 +257,11 @@ void generate_box_indexed (double x, double y, double z, int divisions, string f
     ofstream outfile(file_name);
 
     int off = pow((divisions + 2), 2);
-    int nr_of_vertices = 6 * pow((divisions + 1), 2);
+    int nr_of_vertices = 6 * pow((divisions + 2), 2);
     int nr_indices = 6 * 6 * pow((divisions + 1), 2);
-    int nr_textureCoords = 6 * nr_of_vertices;
+    int nr_textureCoords = nr_of_vertices;
 
-    outfile << nr_of_vertices << "," << nr_indices << "," << nr_textureCoords << endl;
+    outfile << nr_of_vertices << "," << nr_indices << "," << nr_textureCoords << "," << nr_of_vertices << endl;
 
     auto *X0 = new vector<POINT_3D>();
     auto *Xmax = new vector<POINT_3D>();
@@ -378,6 +383,25 @@ void generate_box_indexed (double x, double y, double z, int divisions, string f
         for (auto it = textureCoordinates -> begin(); it < textureCoordinates->end(); it++)
             outfile << it->x << " " << it->y << endl;
 
+    //Normals for X = 0 (plano YZ)
+    for (int i = 0; i < nr_of_vertices/6; i++)
+        outfile << -1.0f << " " << 0.0f << " " << 0.0f << endl;
+    //Normals for X = max (plano YZ)
+    for (int i = 0; i < nr_of_vertices/6; i++)
+        outfile << +1.0f << " " << 0.0f << " " << 0.0f << endl;
+    //Normals for Y = 0 (plano XZ)
+    for (int i = 0; i < nr_of_vertices/6; i++)
+        outfile << 0.0f << " " << -1.0f << " " << 0.0f << endl;
+    //Normals for Y = max (plano XZ)
+    for (int i = 0; i < nr_of_vertices/6; i++)
+        outfile << 0.0f << " " << 1.0f << " " << 0.0f << endl;
+    //Normals for Z = 0 (plano YX)
+    for (int i = 0; i < nr_of_vertices/6; i++)
+        outfile << 0.0f << " " << 0.0f << " " << -1.0f << endl;
+    //Normals for Z = max (plano YX)
+    for (int i = 0; i < nr_of_vertices/6; i++)
+        outfile << 0.0f << " " << 0.0f << " " << +1.0f << endl;
+
     outfile.close();
 }
 
@@ -427,11 +451,11 @@ void generate_cone_indexed (double radius, double height, int slices, int stacks
 
     ofstream outfile(file_name);
 
-    int nr_of_vertices = 1 + (slices+1) * (stacks + 1);
+    int nr_of_vertices = 2*(slices+1) + (slices+1) * (stacks + 1);
     int nr_indices = 3 * slices + 6 * stacks * slices;
-    int nr_textureCoords = nr_indices;
+    int nr_textureCoords = nr_of_vertices;
 
-    outfile << nr_of_vertices << "," << nr_indices << "," << nr_textureCoords << endl;
+    outfile << nr_of_vertices << "," << nr_indices << "," << nr_textureCoords << "," << nr_of_vertices << endl;
 
     double alpha = 0.0, alpha_offset = 2 * M_PI / slices;
     double curr_x, curr_y, curr_z, new_radius;
@@ -440,24 +464,58 @@ void generate_cone_indexed (double radius, double height, int slices, int stacks
     //Texture coordinates vector
     auto *textureCoordinates = new vector<POINT_3D>();
 
+    //Normals for each vector
+    auto *normalVector = new vector<POINT_3D>();
+
+    float beta;
     for (int st = 0; st <= stacks; st++) {
 
         new_radius = radius - st * (radius / stacks);
 
         if (st == 0) {
 
-            curr_x = 0.0f;
-            curr_y = 0.0f;
-            curr_z = 0.0f;
+            for (int sl = 0; sl <= slices; sl++) {
 
-            //write vertex to output file
-            outfile << curr_x << " " << curr_y << " " << curr_z << endl;
+                //-------------------------------------------------------------------
+                //write center
 
-            textureCoordinates -> push_back(*new POINT_3D(
-                    0.0f,
-                    0.0f,
-                    0.0f
-            ));
+                outfile << 0.0f << " " << 0.0f << " " << 0.0f << endl;
+
+                textureCoordinates -> push_back(*new POINT_3D(
+                        0.5,
+                        0.5,
+                        0.0f
+                ));
+
+                normalVector -> push_back(*new POINT_3D(
+                        0.0f,
+                        -1.0f,
+                        0.0f
+                ));
+
+                //-------------------------------------------------------------------
+
+                alpha = sl * alpha_offset;
+
+                curr_x = new_radius * sin(alpha);
+                curr_y = st * stack_height;
+                curr_z = new_radius * cos(alpha);
+
+                //write vertex to output file
+                outfile << curr_x << " " << curr_y << " " << curr_z << endl;
+
+                textureCoordinates -> push_back(*new POINT_3D(
+                        0.5f * sin(alpha) + 0.5f,
+                        0.5f * cos(alpha) + 0.5f,
+                        0.0f
+                ));
+
+                normalVector -> push_back(*new POINT_3D(
+                        0.0f,
+                        -1.0f,
+                        0.0f
+                ));
+            }
         }
 
         for (int sl = 0; sl <= slices; sl++) {
@@ -476,32 +534,43 @@ void generate_cone_indexed (double radius, double height, int slices, int stacks
                     (st / (float) stacks),
                     0.0f
             ));
+
+            beta = atan(radius / height);
+
+            normalVector -> push_back(*new POINT_3D(
+                    cos(beta) * sin(alpha),
+                    sin(beta),
+                    cos(beta) * cos(alpha)
+            ));
         }
     }
 
-    int A, B, C, D;
+    int A, B, C, D, offset = 2*(slices+1);
 
     //write indexes
     for (int st = 0; st < stacks; st++) {
 
-        for (int sl = 0; sl < slices; sl++) {
+        if (st == 0) {
 
-            if (st == 0) {
+            for (int sl = 0; sl < slices; sl++) {
 
                 //Considering a triangle ABC
                 //       B
                 //      /|
                 //    /  |
                 //  /    |
-                // C_____D
+                // D_____C
 
                 B = 0;
-                D = sl  +1;
-                C = D + 1;
+                D = 1 + sl * 2;
+                C = D + 2;
 
                 //Draw: BCD
                 outfile << B << endl << C << endl << D << endl;
             }
+        }
+
+        for (int sl = 0; sl < slices; sl++) {
 
             //Considering a square ABCD
             // C_____D
@@ -510,9 +579,9 @@ void generate_cone_indexed (double radius, double height, int slices, int stacks
             // |    \|
             // A_____B
 
-            A = st * (slices + 1) + sl + 1;
+            A = offset + st * (slices + 1) + sl ;
             B = A + 1;
-            C = (st + 1) * (slices + 1) + sl + 1;
+            C = offset + (st + 1) * (slices + 1) + sl ;
             D = C + 1;
 
             //Draw: ACB
@@ -524,10 +593,12 @@ void generate_cone_indexed (double radius, double height, int slices, int stacks
     }
 
     //write the texture coordinates to the output file
-    for (auto it = textureCoordinates -> begin(); it < textureCoordinates->end(); it++) {
-
+    for (auto it = textureCoordinates -> begin(); it < textureCoordinates->end(); it++)
         outfile << it->x << " " << it->y << endl;
-    }
+
+    //write the texture coordinates to the output file
+    for (auto it = normalVector -> begin(); it < normalVector->end(); it++)
+        outfile << it->x << " " << it->y << " " << it->z << endl;
 
     outfile.close();
 }
@@ -611,7 +682,7 @@ void generate_sphere_indexed (double radius, int slices, int stacks, string file
     int nr_of_vertices = (stacks + 1) * (slices + 1);
     int nr_indices = 6 * stacks * slices;
     int nr_texture_coord = nr_of_vertices;
-    outfile << nr_of_vertices << "," << nr_indices << "," << nr_texture_coord << endl;
+    outfile << nr_of_vertices << "," << nr_indices << "," << nr_texture_coord << "," << nr_of_vertices << endl;
 
     double alpha = 0.0, alpha_offset = 2 * M_PI / slices;
     double beta = 0.0, beta_offset = M_PI / stacks;
@@ -622,6 +693,9 @@ void generate_sphere_indexed (double radius, int slices, int stacks, string file
 
     //Texture coordinates vector
     auto *textureCoordinates = new vector<POINT_3D>();
+
+    //Normals for each vector
+    auto *normalVector = new vector<POINT_3D>();
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -651,6 +725,12 @@ void generate_sphere_indexed (double radius, int slices, int stacks, string file
                     (sl / (float) slices),
                     -(st / (float) stacks),
                     0.0f
+            ));
+
+            normalVector -> push_back(*new POINT_3D(
+                     curr_x/radius,
+                     curr_y/radius,
+                     curr_z/radius
             ));
         }
     }
@@ -683,10 +763,12 @@ void generate_sphere_indexed (double radius, int slices, int stacks, string file
     }
 
     //write the texture coordinates to the output file
-    for (auto it = textureCoordinates -> begin(); it < textureCoordinates->end(); it++) {
-
+    for (auto it = textureCoordinates -> begin(); it < textureCoordinates->end(); it++)
         outfile << it->x << " " << it->y << endl;
-    }
+
+    //write the texture coordinates to the output file
+    for (auto it = normalVector -> begin(); it < normalVector->end(); it++)
+        outfile << it->x << " " << it->y << " " << it->z << endl;
 
     outfile.close();
 }

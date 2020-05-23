@@ -7,6 +7,6 @@
  * @param argc argc da main principal
  * @param argv argv da main principal
  * */
-int load_graphics(vector<Group>* scene_groups, int argc, char** argv);
+int load_graphics(pair<vector<Group>*, vector<LightSource>*> scene, int argc, char** argv);
 
 #endif

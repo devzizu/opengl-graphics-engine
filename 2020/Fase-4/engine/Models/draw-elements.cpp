@@ -10,6 +10,20 @@
 #include <catmull-rom.h>
 
 /*--------------------------------------------------------------------------------------------------------------------*/
+//...
+void setMaterials(MODEL_INFO *model) {
+
+    //if has color attributes
+    if (model -> settings[2]) {
+
+        glMaterialfv(GL_FRONT, GL_DIFFUSE, model -> diffuseComponent);
+        glMaterialfv(GL_FRONT, GL_SPECULAR, model -> specularComponent);
+        glMaterialfv(GL_FRONT, GL_EMISSION, model -> emissiveComponent);
+        glMaterialfv(GL_FRONT, GL_AMBIENT, model -> ambientComponent);
+    }
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
 //Draw the axis on the screen
 
 void drawAxis(float x, float y, float z) {
@@ -55,19 +69,6 @@ void drawModelVertices(MODEL_INFO model) {
         glVertex3f(*(it).base(),
                    *(it+1).base(),
                    *(it+2).base());
-
-        /*
-        if(red == 1.0f) {
-            red = 0.0f; green = 1.0f;
-        }
-        else if(green == 1.0f) {
-            green = 0.0f; blue = 1.0f;
-        }
-        else if(blue = 1.0f) {
-            red = 1.0f; blue = 0.0f;
-        }
-        */
-
     }
 
     glEnd();
@@ -85,6 +86,9 @@ void drawModelVBO (MODEL_INFO model) {
 
     bool isTextured = model.settings[1];
 
+    glBindBuffer(GL_ARRAY_BUFFER, model.normalsBuffer[0]);
+    glNormalPointer(GL_FLOAT, 0, 0);
+
     if (model.settings[0]) { //if has indexes
 
         if (isTextured) {
@@ -95,12 +99,14 @@ void drawModelVBO (MODEL_INFO model) {
         }
 
         int indexArraySize = model.indexes -> size();
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.indexesBuffer[0]);
-        glDrawElements(GL_TRIANGLES, indexArraySize, GL_UNSIGNED_INT, NULL);
 
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, model.indexesBuffer[0]);
+        glDrawElements(GL_TRIANGLES, indexArraySize, GL_UNSIGNED_INT, nullptr);
+
+        //temporary? clear color buffers
         glClearColor(0,0,0,0);
 
-        if (isTextured) glBindTexture(GL_TEXTURE_2D, 0);
+        if (model.settings[1]) glBindTexture(GL_TEXTURE_2D, 0);
 
     } else {
 
@@ -111,7 +117,7 @@ void drawModelVBO (MODEL_INFO model) {
 /*--------------------------------------------------------------------------------------------------------------------*/
 //Draw group
 
-void drawGroupElements(Group g) {
+void drawGroupElements(Group g, bool hasLighting, bool ENABLE_MODEL_AXIS) {
 
     //From source: pushes the current matrix stack down by one
     glPushMatrix();
@@ -143,7 +149,16 @@ void drawGroupElements(Group g) {
             float pos[3] = { 0.0, 0.0, 0.0 };
             float deriv[3] = { 0.0, 0.0, 0.0 };
 
+            glDisable(GL_LIGHTING);
+
+            glClearColor(0,0,0,0);
+            glColor3f(0.5, 0.5, 0.5);
+
             renderCatmullRomCurve(it->transformationPoints);
+
+            if (hasLighting)
+                glEnable(GL_LIGHTING);
+
             getGlobalCatmullRomPoint(it->transformationPoints, timeT, (float*)pos, (float*)deriv);
 
             glTranslatef(pos[0], pos[1], pos[2]);
@@ -175,15 +190,41 @@ void drawGroupElements(Group g) {
 
     for (auto it = models -> begin(); it != models -> end(); ++it) {
 
-        //Axis around each model
-        glPushMatrix();
-            drawAxis(3.0f, 3.0f, 3.0f);
-        glPopMatrix();
+        if (ENABLE_MODEL_AXIS) {
+
+            //Axis around each model
+            glPushMatrix();
+
+            glDisable(GL_LIGHTING);
+
+            glClearColor(0, 0, 0, 0);
+            glColor3f(1, 1, 1);
+
+            drawAxis(5.0f, 5.0f, 5.0f);
+
+            if (!hasLighting) {
+
+                glEnable(GL_LIGHTING);
+            }
+
+            glClearColor(0, 0, 0, 0);
+            glColor3f(1, 1, 1);
+
+            glPopMatrix();
+        }
+
+        if (!hasLighting) {
+
+            glEnable(GL_LIGHTING);
+        }
 
         glPushMatrix();
 
-            //All models white
-            glColor3f(1,1,1);
+            //old: All models white
+            //glColor3f(1,1,1);
+
+            //Set model colour component
+            setMaterials(it.base());
 
             //Phase 3
             drawModelVBO(*it);
@@ -199,7 +240,7 @@ void drawGroupElements(Group g) {
 
     for (auto it = groups -> begin(); it != groups -> end(); ++it) {
 
-        drawGroupElements(*it);
+        drawGroupElements(*it, hasLighting, ENABLE_MODEL_AXIS);
     }
 
     /*-------------------------------------------------------------*/

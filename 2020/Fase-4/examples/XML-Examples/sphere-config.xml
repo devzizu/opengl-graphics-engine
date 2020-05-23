@@ -1,8 +1,0 @@
-<scene>
-    <group>
-    	<scale X="10" Y="10" Z="10" />
-        <models>
-            <model file="teapot.3d.indexed" texture="pattern5.jpg" />
-        </models>
-    </group>
-</scene>

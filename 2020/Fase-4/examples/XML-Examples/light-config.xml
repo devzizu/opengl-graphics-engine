@@ -1,0 +1,42 @@
+<scene>
+        <lights>
+            <light type="SPOT" dirZ="1" />
+        </lights>
+    <group>
+        <group>
+            <scale X="-1" Y="-1" Z="-1" />
+            <rotate time="20" axisX="0" axisY="1" axisZ="0" />
+            <models>
+                <model file="sphere.3d.indexed" emisR="1" emisG="1" emisB="1" />
+            </models>
+        </group>
+        <group>
+            <translate X="4" />
+            <rotate time="20" axisX="0" axisY="1" axisZ="0" />
+            <models>
+                <model file="sphere.3d.indexed" diffR="1" diffG="0" diffB="0" />
+            </models>
+        </group>
+        <group>
+            <translate X="-4" />
+            <rotate time="20" axisX="0" axisY="1" axisZ="0" />
+            <models>
+                <model file="sphere.3d.indexed" diffR="0" diffG="1" diffB="0" />
+            </models>
+        </group>
+        <group>
+            <translate Z="4" />
+            <rotate time="20" axisX="0" axisY="1" axisZ="0" />
+            <models>
+                <model file="sphere.3d.indexed" diffR="0" diffG="0" diffB="1" />
+            </models>
+        </group>
+        <group>
+            <translate Z="-4" />
+            <rotate time="20" axisX="0" axisY="1" axisZ="0" />
+            <models>
+                <model file="sphere.3d.indexed" diffR="1" diffG="0" diffB="1" />
+            </models>
+        </group>
+    </group>
+</scene>

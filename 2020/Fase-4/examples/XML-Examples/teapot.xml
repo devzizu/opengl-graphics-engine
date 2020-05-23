@@ -1,0 +1,139 @@
+<scene>
+
+	<lights>
+		<light type="POINT" X="0" Y="0" Z="0" 
+			   ambiR="1" ambiG="1" ambiB="1"/>
+	</lights>
+	
+    <group>
+
+    	<group> 
+
+    		<scale X="3" Y="3" Z="3" />
+
+    		<models> 
+    			<model file="sphere.3d.indexed"
+    			       texture="lamp-1.jpg" 
+    				   emisR="1" emisG="1" emisB="1"/>
+    		</models>
+
+    	</group>
+
+    	<group>
+
+	    	<translate X="-100" Z="100" Y="-16"/>
+
+	    	<rotate time="10" axisY="1"/>
+
+	    	<group>
+
+				<rotate angle="-90" axisX="1" />
+
+	    		<scale X="12" Y="12" Z="12" />
+	
+		        <models>
+		            <model file="teapot.3d.indexed" 
+		            	   texture="pattern1.jpg"
+		            	   diffR="1" diffG="0" diffB="0"
+		            	   />
+		        </models>
+
+		    </group>
+	
+		</group>
+
+    	<group>
+
+	    	<translate X="-100" Z="-100" Y="-16"/>
+
+	    	<rotate time="10" axisY="1"/>
+
+	    	<group>
+
+				<rotate angle="-90" axisX="1" />
+
+	    		<scale X="10" Y="10" Z="10" />
+	
+		        <models>
+		            <model file="teapot.3d.indexed"
+		            	   texture="pattern2.jpg"
+		            	   diffR="0" diffG="1" diffB="0"/>
+		        </models>
+
+		    </group>
+	
+		</group>
+
+    	<group>
+
+	    	<translate X="100" Z="-100" Y="-16"/>
+
+	    	<rotate time="10" axisY="1"/>
+
+	    	<group>
+
+				<rotate angle="-90" axisX="1" />
+
+	    		<scale X="10" Y="10" Z="10" />
+	
+		        <models>
+		            <model file="teapot.3d.indexed"
+		            	   texture="pattern3.jpg"
+		            	   diffR="0" diffG="0" diffB="1"/>
+		        </models>
+
+		    </group>
+	
+		</group>
+
+    	<group>
+
+	    	<translate X="100" Z="100" Y="-16"/>
+
+	    	<rotate time="10" axisY="1"/>
+
+	    	<group>
+
+				<rotate angle="-90" axisX="1" />
+
+	    		<scale X="10" Y="10" Z="10" />
+	
+		        <models>
+		            <model file="teapot.3d.indexed"
+		            	   diffR="1" diffG="1" diffB="0"/>
+		        </models>
+
+		    </group>
+	
+		</group>
+
+
+    	<group>
+
+            <translate time="20">
+                <point X="-200" Y="8" Z="0"/>
+                <point X="0" Y="8" Z="200"/>
+                <point X="200" Y="8" Z="0"/>
+                <point X="0" Y="8" Z="-200"/>
+            </translate>
+
+	    	<group>
+
+				<rotate angle="-90" axisX="1" />
+
+	    		<scale X="2" Y="2" Z="2" />
+	
+		        <models>
+		            <model file="teapot.3d.indexed"
+		            	   diffR="0" diffG="1" diffB="1"
+		            	   ambiR="1" ambiG="0" ambiB="0"
+		            	   specR="1" specG="0" specB="0"/>
+		        </models>
+
+		    </group>
+	
+		</group>
+
+    </group>
+
+</scene>

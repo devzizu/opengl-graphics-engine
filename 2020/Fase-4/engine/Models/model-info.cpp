@@ -19,6 +19,11 @@ vector<float> *MODEL_INFO::getTextureCoordinates() const {
     return texturesCoord;
 }
 
+//Get vertices vector ptr
+vector<float> *MODEL_INFO::getVertexNormals() const {
+    return vertexNormals;
+}
+
 //Get model name
 const string &MODEL_INFO::getName() const {
     return name;
@@ -28,16 +33,37 @@ const string &MODEL_INFO::getName() const {
 MODEL_INFO::MODEL_INFO(const string &name, bool isIndexed, bool isTextured) : name(name) {
 
     this->vertices = new vector<float>();
+    this->vertexNormals = new vector<float>();
+
     this->settings[0] = isIndexed;
-    this->settings[1] = isTextured;
+    this->settings[1] = false;
+    this->settings[2] = false;
+
+    //Filling with default values for materials
+    //Source: https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glMaterial.xml
+    for (int i = 0; i < 4; i++) {
+
+        if (i == 3) {
+
+            this -> diffuseComponent[i] = 1.0f;
+            this -> specularComponent[i] = 1.0f;
+            this -> ambientComponent[i] = 1.0f;
+            this -> emissiveComponent[i] = 1.0f;
+
+            break;
+        }
+
+        this -> diffuseComponent[i] = 0.8f;
+        this -> specularComponent[i] = 0.0f;
+        this -> ambientComponent[i] = 0.2f;
+        this -> emissiveComponent[i] = 0.0f;
+    }
 
     if(isIndexed) {
         this->indexes = new vector<GLuint>();
     }
 
-    if (isTextured) {
-        this->texturesCoord = new vector<float>();
-    }
+    this->texturesCoord = new vector<float>();
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -81,6 +107,10 @@ Group::Group() {
     this->groups = new vector<Group>;
     this->transformations = new vector<Transformation>;
 }
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+//Lights methods
+
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 //Debug function

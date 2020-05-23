@@ -18,6 +18,16 @@ float M_BEZIER[4][4] = { { -1,  3, -3, 1 },
 
 //----------------------------------------------------------------------------------------------------------------------
 
+void normalize(float *a) {
+
+    float l = sqrt(a[0]*a[0] + a[1] * a[1] + a[2] * a[2]);
+    a[0] = a[0]/l;
+    a[1] = a[1]/l;
+    a[2] = a[2]/l;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 void multMatrixVector(float *m, float *v, float *res) {
 
     for (int j = 0; j < 4; ++j) {
@@ -27,6 +37,15 @@ void multMatrixVector(float *m, float *v, float *res) {
         }
     }
 
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cross(float *a, float *b, float *res) {
+
+    res[0] = a[1]*b[2] - a[2]*b[1];
+    res[1] = a[2]*b[0] - a[0]*b[2];
+    res[2] = a[0]*b[1] - a[1]*b[0];
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -128,7 +147,83 @@ void getVerticesInPatch(int patchNr, vector<int>* indices, vector<POINT_3D>* poi
 
 //----------------------------------------------------------------------------------------------------------------------
 
-POINT_3D* getBezierPoint(float u, float v, float *PijX, float *PijY, float *PijZ, float *resultCoords) {
+void getBezierNormal(float u, float v, float *PijX, float *PijY, float *PijZ, float *normal) {
+
+    float u_vector[4] = { (u * u * u), (u * u), u, 1 };
+    float v_vector[4] = { (v * v * v), (v * v), v, 1 };
+
+    float u_vector_deriv[4] = { 3 * (u * u), 2 * (u), 1, 0 };
+    float v_vector_deriv[4] = { 3 * (v * v), 2 * (v), 1, 0 };
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    // M_v = M * v
+    float M_v[4];
+    multMatrixVector(*M_BEZIER, v_vector, M_v);
+
+    // M_v = M * v_deriv
+    float M_v_deriv[4];
+    multMatrixVector(*M_BEZIER, v_vector_deriv, M_v_deriv);
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    // Pxyz_M_v = P * M_v
+    float Pxyz_M_v[3][4];
+    multMatrixVector(PijX, M_v, Pxyz_M_v[0]);
+    multMatrixVector(PijY, M_v, Pxyz_M_v[1]);
+    multMatrixVector(PijZ, M_v, Pxyz_M_v[2]);
+
+    // Pxyz_M_v_deriv = P * M_v_deriv
+    float Pxyz_M_v_deriv[3][4];
+    multMatrixVector(PijX, M_v_deriv, Pxyz_M_v_deriv[0]);
+    multMatrixVector(PijY, M_v_deriv, Pxyz_M_v_deriv[1]);
+    multMatrixVector(PijZ, M_v_deriv, Pxyz_M_v_deriv[2]);
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    // M_Pxyz_M_v = M * Pxyz_M_v
+    float M_Pxyz_M_v[3][4];
+    multMatrixVector(*M_BEZIER, Pxyz_M_v[0], M_Pxyz_M_v[0]);
+    multMatrixVector(*M_BEZIER, Pxyz_M_v[1], M_Pxyz_M_v[1]);
+    multMatrixVector(*M_BEZIER, Pxyz_M_v[2], M_Pxyz_M_v[2]);
+
+    // M_Pxyz_M_v_deriv = M * Pxyz_M_v_deriv
+    float M_Pxyz_M_v_deriv[3][4];
+    multMatrixVector(*M_BEZIER, Pxyz_M_v_deriv[0], M_Pxyz_M_v_deriv[0]);
+    multMatrixVector(*M_BEZIER, Pxyz_M_v_deriv[1], M_Pxyz_M_v_deriv[1]);
+    multMatrixVector(*M_BEZIER, Pxyz_M_v_deriv[2], M_Pxyz_M_v_deriv[2]);
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    float dU[3];
+    dU[0] = 0.0f; dU[1] = 0.0f; dU[2] = 0.0f;
+    float dV[3];
+    dV[0] = 0.0f; dV[1] = 0.0f; dV[2] = 0.0f;
+
+    for (int i = 0; i < 4; i++) {
+
+        dU[0] += u_vector_deriv[i] * M_Pxyz_M_v[0][i];
+        dU[1] += u_vector_deriv[i] * M_Pxyz_M_v[1][i];
+        dU[2] += u_vector_deriv[i] * M_Pxyz_M_v[2][i];
+
+        dV[0] += u_vector[i] * M_Pxyz_M_v_deriv[0][i];
+        dV[1] += u_vector[i] * M_Pxyz_M_v_deriv[1][i];
+        dV[2] += u_vector[i] * M_Pxyz_M_v_deriv[2][i];
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+
+    normalize(dU);
+    normalize(dV);
+
+    cross(dV, dU, normal);
+
+    //------------------------------------------------------------------------------------------------------------------
+}
+
+void getBezierPoint(float u, float v, float *PijX, float *PijY, float *PijZ, float *resultCoords) {
+
+    //------------------------------------------------------------------------------------------------------------------
 
     /*
      *  B(u, v) = SUM[3]_j=0 ( SUM[3]_i=0 ( B_i(u) * P_ij * B_j(v) ) )
@@ -188,8 +283,6 @@ POINT_3D* getBezierPoint(float u, float v, float *PijX, float *PijY, float *PijZ
         resultCoords[1] += u_vector[i] * M_Pxyz_M_v[1][i];
         resultCoords[2] += u_vector[i] * M_Pxyz_M_v[2][i];
     }
-
-    return nullptr;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -211,9 +304,13 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
     int nr_vertices = nr_patchs * pow(tessellationLevel + 1, 2);
     int nr_indexes = 6 * nr_patchs * pow(tessellationLevel, 2);
     int nr_textCoords = nr_vertices;
+
     auto *textureCoordinates = new vector<POINT_3D>();
 
-    outfile << nr_vertices << "," << nr_indexes << "," << nr_textCoords << endl;
+    //Normals for each vector
+    auto *normalVector = new vector<POINT_3D>();
+
+    outfile << nr_vertices << "," << nr_indexes << "," << nr_textCoords << "," << nr_vertices << endl;
 
     //Store here the vertices of each patch
     float Pij_X[16];
@@ -243,16 +340,34 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
                 t_u = ((float) u / (float) tessellationLevel);
                 t_v = ((float) v / (float) tessellationLevel);
 
-                getBezierPoint(t_u, t_v,
-                               Pij_X, Pij_Y, Pij_Z,
-                               bezierResultantPoint);
+                getBezierPoint(t_u, t_v, Pij_X, Pij_Y, Pij_Z,
+                                        bezierResultantPoint);
 
                 outfile << bezierResultantPoint[0] << " "
                         << bezierResultantPoint[1] << " "
                         << bezierResultantPoint[2] << endl;
 
                 textureCoordinates->push_back(*new POINT_3D(
-                     v, u, 0.0f
+                    t_v , t_u, 0.0f
+                ));
+
+                float normal[3];
+                //calculate normal vector and cross product
+                getBezierNormal(t_u, t_v, Pij_X, Pij_Y, Pij_Z,
+                                normal);
+
+                //normalize vector
+                normalize(normal);
+                for (int val = 0; val < 3; val++) {
+
+                    if (isnan(normal[val]))
+                        normal[val]=0.0f;
+                }
+
+                normalVector -> push_back(*new POINT_3D(
+                        normal[0],
+                        normal[1],
+                        normal[2]
                 ));
             }
         }
@@ -295,6 +410,10 @@ int generate_bezier_model(string outfile_path, vector<int>* patch_indices, vecto
 
     for (auto it = textureCoordinates -> begin(); it < textureCoordinates->end(); it++)
         outfile << it->x << " " << it->y << endl;
+
+    //write the texture coordinates to the output file
+    for (auto it = normalVector -> begin(); it < normalVector->end(); it++)
+        outfile << it->x << " " << it->y << " " << it->z << endl;
 
     outfile.close();
 

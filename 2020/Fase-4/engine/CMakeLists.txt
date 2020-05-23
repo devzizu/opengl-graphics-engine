@@ -28,7 +28,7 @@ add_executable(engine
         Models/load-xml.cpp
         tinyxml2/tinyxml2.cpp
         tinyxml2/tinyxml2.h
-        main.cpp Models/model-info.cpp Models/headers/model-info.h Models/load-graphics.cpp Models/headers/load-graphics.h Models/draw-elements.cpp Models/headers/draw-elements.h Models/VBO.cpp Models/headers/VBO.h Models/catmull-rom.cpp Models/headers/catmull-rom.h Models/textures.cpp Models/headers/textures.h)
+        main.cpp Models/model-info.cpp Models/headers/model-info.h Models/load-graphics.cpp Models/headers/load-graphics.h Models/draw-elements.cpp Models/headers/draw-elements.h Models/VBO.cpp Models/headers/VBO.h Models/catmull-rom.cpp Models/headers/catmull-rom.h Models/textures.cpp Models/headers/textures.h Models/lights.cpp Models/headers/lights.h)
 
 #-----------------------------------------------------------------------------------------------------------------------
 

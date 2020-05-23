@@ -25,39 +25,44 @@
 #include <catmull-rom.h>
 #include <textures.h>
 #include <VBO.h>
+#include <lights.h>
+#include <cstring>
+#include <sstream>
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 //1) Global Variables
 
-string WINDOW_TITLE = "Phase_3@CG_2020 | ? fps";
+string WINDOW_TITLE = "Phase_4@CG_2020 | ? fps";
 int frame = 0, fps = 0, timebase = 0;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 //Group structures
 vector<Group> *sceneGroups;
+//Light sources structure
+vector<LightSource> *sceneLights;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 //2) Camera movements
 
 //Macros for the camera movements
-#define CAM_RIGHT 5
-#define CAM_LEFT -5
-#define CAM_FORWARD 5
-#define CAM_BACKWARD -5
-#define CAM_VERTICAL_OFF 5
+#define CAM_RIGHT 6
+#define CAM_LEFT -6
+#define CAM_FORWARD 6
+#define CAM_BACKWARD -6
+#define CAM_VERTICAL_OFF 6
 
 //Macros for camera angles offset
 #define ALPHA_OFFSET 0.08f
 #define BETA_OFFSET 0.08f
 
 //Camera alpha, beta and radius
-float alpha =-90.0f, beta = 0.0f, radius = 10.0f;
+float alpha =-172.8f, beta = 0.0f, radius = 10.0f;
 
 //Camera position in global space
-float camX = 80.0f, camY = 0.0f, camZ = 80.0f;
+float camX = 0.0f, camY = 0.0f, camZ = 800.0f;
 //Camera look at point
-float LookX = 0, LookY = 0, LookZ = 0;
+float LookX = 0, LookY = 0, LookZ = 799.0f;
 
 //Camera up vector
 float v_up[3] = { 0.0f, 1.0f, 0.0f };
@@ -70,8 +75,66 @@ float v_look_direction[3] = {0.0f, 0.0f, 0.0f};
 //Change the screen size, set the viewport, ...
 
 int VIEWPORT_SET = 0;
+bool ENABLE_MODEL_AXIS = false;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
+
+void drawString(char *string)
+{
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    int w = glutGet( GLUT_WINDOW_WIDTH );
+    int h = glutGet( GLUT_WINDOW_HEIGHT );
+    glOrtho( 0, w, 0, h, -1, 1 );
+
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+
+    glDisable( GL_DEPTH_TEST );
+
+    glDisable( GL_LIGHTING );
+    glColor3f(0, 1, 0);
+
+    int x = 20, y = 20;
+    glRasterPos2i(x, y);
+    void *font = GLUT_BITMAP_HELVETICA_12;
+    for (char* c=string; *c != '\0'; c++)
+    {
+
+        if (*c == '\n')
+        {
+            y+=20;
+            glRasterPos2i(x, y);
+        }
+
+        glutBitmapCharacter(font, *c);
+    }
+
+    if (!sceneLights->empty())
+        glEnable( GL_LIGHTING );
+
+    glEnable (GL_DEPTH_TEST);
+
+    glMatrixMode(GL_MODELVIEW);
+    glPopMatrix();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+}
+
+void processRunningInformation() {
+
+    std::stringstream ss;
+
+    ss << " (Enable/Disable axis: 'q', Reset Camera: 'r')" << endl;
+    ss << "Camera lookat   : x = " << LookX << ", y = " << LookY << ", z = " << LookZ << ", alpha = " << alpha << "º" << endl;
+    ss << "Camera position : x = " << camX << ", y = " << camY << ", z = " << camZ << endl;
+    ss << "Engine Model Simulation" << endl;
+
+    drawString((char*) ss.str().c_str());
+}
 
 void changeSize(int w, int h) {
 
@@ -94,7 +157,6 @@ void changeSize(int w, int h) {
         // Set the viewport to be the entire window
         glViewport(0, 0, w, h);
 
-
     } else if (VIEWPORT_SET == 1) {
 
         // Small square view
@@ -103,7 +165,7 @@ void changeSize(int w, int h) {
     }
 
     // Set perspective
-    gluPerspective(45.0f ,ratio, 1.0f ,100000.0f);
+    gluPerspective(45.0f ,ratio, 1.0f ,10000.0f);
 
     // return to the model view matrix mode
     glMatrixMode(GL_MODELVIEW);
@@ -119,7 +181,7 @@ void processFPS () {
         fps = frame*1000.0/(time-timebase);
         timebase = time;
         frame = 0;
-        string newTitle = "Phase_3@CG_2020 | " + to_string(fps) + " fps";
+        string newTitle = "Phase_4@CG_2020 | " + to_string(fps) + " fps";
         glutSetWindowTitle(newTitle.c_str());
     }
 }
@@ -138,6 +200,8 @@ void displayRunningInformation() {
     cout << "\tf   : " << "glPolygonMode(GL_FRONT, GL_FILL) " << endl;
     cout << "\tARR_UP, ARR_DW, ARR_LEFT, ARR_RIGHT : Move the camera around a sphere." << endl;
     cout << "\tW, A, S, D : Forward, Backward, Left and Right motion." << endl;
+    cout << "\tR : reset camera position to (0,0,0)." << endl;
+    cout << "\tQ : Enable/Disable model axis." << endl;
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -163,27 +227,51 @@ void renderScene(void) {
               0.0f,1.0f,0.0f);
 
     /*----------------------------------------------------------------------------------------------------------------*/
+    //Load lights in the scene
+    for (auto it = sceneLights->begin(); it < sceneLights->end(); it++) {
+
+        //Default glLight parameters/values
+        //https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glLight.xml
+
+        glClearColor(0, 0, 0, 0);
+
+        GLenum lightIndex = GL_LIGHT0 + it -> lightEnumNumber;
+
+        //light pos = {x,y,z,w}, case w = 0 -> vector, case w = 1 -> point
+        glLightfv(lightIndex, GL_POSITION, it -> point);
+
+        glLightfv(lightIndex, GL_SPECULAR, it -> specularComponent);
+        glLightfv(lightIndex, GL_AMBIENT, it -> ambientComponent);
+        glLightfv(lightIndex, GL_DIFFUSE, it -> diffuseComponent);
+        //glLightf(lightIndex, GL_SHININESS, 2);
+
+        if (it -> lightType == "SPOT") {
+
+            glLightfv(lightIndex, GL_SPOT_DIRECTION, it -> SpotDirection);
+            glLightf(lightIndex, GL_SPOT_EXPONENT, it -> SpotExponent);
+            glLightf(lightIndex, GL_SPOT_CUTOFF, it -> SpotCutoff);
+        }
+    }
+
+    /*----------------------------------------------------------------------------------------------------------------*/
     //Load the scene based on the structures
 
-    //::1::Draw the axis
-    glPushMatrix();
-        drawAxis(300.0f, 300.0f, 300.0f);
-    glPopMatrix();
-
     //TMP: Fill every model white
-    glColor3f(1.0f, 1.0f, 1.0f);
+    //glColor3f(1.0f, 1.0f, 1.0f);
 
     //::2::Iterate through all the scene groups
     for (auto iter = sceneGroups->begin(); iter != sceneGroups->end(); ++iter) {
 
         //Draw a single group and its child
-        drawGroupElements(*iter);
+        drawGroupElements(*iter, sceneLights->empty(), ENABLE_MODEL_AXIS);
     }
 
     /*----------------------------------------------------------------------------------------------------------------*/
 
     // Updates window information about frames/second
     processFPS();
+
+    processRunningInformation();
 
     // End of frame
     glutSwapBuffers();
@@ -206,6 +294,22 @@ void processKeys(unsigned char c, int xx, int yy) {
 
     switch(tolower(c))
     {
+        case 'q':
+
+            if (ENABLE_MODEL_AXIS)
+                ENABLE_MODEL_AXIS = false;
+            else ENABLE_MODEL_AXIS = true;
+
+            break;
+
+        case 'r':
+
+            camX = 0;
+            camY = 0;
+            camZ = 0;
+
+            break;
+
         case 'f':
 
             glPolygonMode(GL_FRONT, GL_FILL);
@@ -388,7 +492,7 @@ void processSpecialKeys(int key, int xx, int yy)
     glutPostRedisplay();
 }
 
-int load_graphics(vector<Group>* scene_groups, int argc, char** argv) {
+int load_graphics(pair<vector<Group>*, vector<LightSource>*> scene, int argc, char** argv) {
 
     //------------------------------------------------------------------------------------------------------------------
 
@@ -401,7 +505,9 @@ int load_graphics(vector<Group>* scene_groups, int argc, char** argv) {
     //Setting up global variables
 
     //Loaded groups from the xml file
-    sceneGroups = scene_groups;
+    sceneGroups = scene.first;
+    //Loaded lights from the xml file
+    sceneLights = scene.second;
 
     //------------------------------------------------------------------------------------------------------------------
     //Glut, Glew and VBOs Initialization
@@ -427,8 +533,18 @@ int load_graphics(vector<Group>* scene_groups, int argc, char** argv) {
 
     //Enables vertex arrays when calling glDrawArrays or glDrawElements
     glEnableClientState(GL_VERTEX_ARRAY);
+    //Enables vertex normals arrays
+    glEnableClientState(GL_NORMAL_ARRAY);
     //Enables texture coordinate arrays for rendering
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+    //Enable lights
+    if (!scene.second->empty()) {
+        glEnable(GL_LIGHTING); //turn on lighting
+        for (auto it = scene.second->begin(); it < scene.second->end(); it++) {
+            glEnable(GL_LIGHT0 + it->lightEnumNumber); //turn on the light source
+        }
+    }
 
     //------------------------------------------------------------------------------------------------------------------
     // Initialization of VBOs, Textures, DevIl, ...
@@ -449,10 +565,14 @@ int load_graphics(vector<Group>* scene_groups, int argc, char** argv) {
     //Callback registration for keyboard processing
     glutKeyboardFunc(processKeys);
     glutSpecialFunc(processSpecialKeys);
-
+    glShadeModel(GL_SMOOTH);
     //OpenGL settings
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
+    //glEnable(GL_COLOR_MATERIAL);
+
+    //glEnable(GL_NORMALIZE);
+    glEnable(GL_RESCALE_NORMAL);
 
     spherical2Cartesian();
 

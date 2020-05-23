@@ -10,7 +10,7 @@
 using namespace std;
 using namespace tinyxml2;
 
-#define default_xml_config_file "default-config.xml"
+#define default_xml_config_file "SistemaSolar.xml"
 #define XML_CONFIG_FILES_PATH "../../examples/XML-Examples/"
 
 void cat_commands () {
@@ -55,12 +55,14 @@ int main(int argc, char** argv)
     cout << endl << "»»» Engine starting..." << endl;
     cout << endl << "[...] Reading configuration file: " << xml_file_name << endl;
 
-    vector<Group>* scene_groups;
+    //vector<Group>* scene_groups;
+
+    pair<vector<Group>*, vector<LightSource>*> SceneGroupsLights;
 
     try {
 
-        //Loading xml file
-        scene_groups = load_xml_config(xml_file_name);
+        //Loading xml file: load groups + light sources
+        SceneGroupsLights = load_xml_config(xml_file_name);
 
     } catch (string msg) {
 
@@ -74,7 +76,7 @@ int main(int argc, char** argv)
 
     // Could not read any group from a scene tag
     // inside the xml configuration file
-    if (scene_groups == nullptr || scene_groups->empty()) {
+    if (SceneGroupsLights.first == nullptr || SceneGroupsLights.first->empty()) {
 
         cout << endl << "[X] Could not load any group from " << xml_file_name << " (or the file doesn't exist in the default path " << XML_CONFIG_FILES_PATH << " !);" << endl;
 
@@ -86,7 +88,7 @@ int main(int argc, char** argv)
     //Graphic engine initialized:
     cout  << endl << "[1] Initializing graphics engine with the structures... " << endl;
 
-    load_graphics(scene_groups, argc, argv);
+    load_graphics(SceneGroupsLights, argc, argv);
 
     return 0;
 }

@@ -204,6 +204,33 @@ Models/draw-elements.cpp.s:
 	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/draw-elements.cpp.s
 .PHONY : Models/draw-elements.cpp.s
 
+Models/lights.o: Models/lights.cpp.o
+
+.PHONY : Models/lights.o
+
+# target to build an object file
+Models/lights.cpp.o:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/lights.cpp.o
+.PHONY : Models/lights.cpp.o
+
+Models/lights.i: Models/lights.cpp.i
+
+.PHONY : Models/lights.i
+
+# target to preprocess a source file
+Models/lights.cpp.i:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/lights.cpp.i
+.PHONY : Models/lights.cpp.i
+
+Models/lights.s: Models/lights.cpp.s
+
+.PHONY : Models/lights.s
+
+# target to generate assembly for a file
+Models/lights.cpp.s:
+	$(MAKE) -f CMakeFiles/engine.dir/build.make CMakeFiles/engine.dir/Models/lights.cpp.s
+.PHONY : Models/lights.cpp.s
+
 Models/load-graphics.o: Models/load-graphics.cpp.o
 
 .PHONY : Models/load-graphics.o
@@ -384,6 +411,9 @@ help:
 	@echo "... Models/draw-elements.o"
 	@echo "... Models/draw-elements.i"
 	@echo "... Models/draw-elements.s"
+	@echo "... Models/lights.o"
+	@echo "... Models/lights.i"
+	@echo "... Models/lights.s"
 	@echo "... Models/load-graphics.o"
 	@echo "... Models/load-graphics.i"
 	@echo "... Models/load-graphics.s"

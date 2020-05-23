@@ -4,6 +4,7 @@
 #include <vector>
 
 #include <model-info.h>
+#include <lights.h>
 
 #include "../tinyxml2/tinyxml2.h"
 
@@ -89,8 +90,8 @@ int load_indexed_model(MODEL_INFO *model) {
     vector<float>* modelVertices      = model -> getVertices();
     vector<GLuint>* indexes = model -> indexes;
     vector<float>* modelTextureCoords;
-    if (model->settings[1])
-        modelTextureCoords = model -> getTextureCoordinates();
+    modelTextureCoords = model -> getTextureCoordinates();
+    vector<float>* vertexNormals = model -> getVertexNormals();
 
     //0: vertices
     //1: indexes
@@ -102,15 +103,15 @@ int load_indexed_model(MODEL_INFO *model) {
 
         //read first line containing nr of vert, indexes, texture Coord...
         getline(file_stream, line);
-        int nr_vert = 0, nr_indexes = 0, nr_textCoord = 0;
-        sscanf(line.c_str(), "%d,%d,%d", &nr_vert, &nr_indexes, &nr_textCoord);
+        int nr_vert = 0, nr_indexes = 0, nr_textCoord = 0, nr_normals = 0;
+        sscanf(line.c_str(), "%d,%d,%d,%d", &nr_vert, &nr_indexes, &nr_textCoord, &nr_normals);
 
         //3 fields of each line in model file
         //the 3 coordinates x, y and z
         float x, y, z;
         float t_x, t_y;
         int index;
-        int read_indexes = 0, read_texturecoords = 0;
+        int read_indexes = 0, read_texturecoords = 0, read_normals = 0;
 
         //while not EOF
         while (getline(file_stream, line)) {
@@ -148,7 +149,7 @@ int load_indexed_model(MODEL_INFO *model) {
                     indexes->push_back(index);
                 }
 
-            } else if(parsing == 2 && model -> settings[1]) {
+            } else if(parsing == 2) {
 
                 sscanf(line.c_str(), "%f %f", &t_x, &t_y);
 
@@ -156,7 +157,31 @@ int load_indexed_model(MODEL_INFO *model) {
                 modelTextureCoords->push_back(t_y);
                 read_texturecoords++;
 
-               if (read_texturecoords > nr_textCoord) break;
+               if (read_texturecoords > nr_textCoord) {
+
+                   parsing = 3;
+
+                   sscanf(line.c_str(), "%f %f %f", &x, &y, &z);
+
+                   vertexNormals -> push_back(x);
+                   vertexNormals -> push_back(y);
+                   vertexNormals -> push_back(z);
+
+                   read_normals++;
+               }
+
+            } else if (parsing == 3) {
+
+
+                sscanf(line.c_str(), "%f %f %f", &x, &y, &z);
+
+                vertexNormals -> push_back(x);
+                vertexNormals -> push_back(y);
+                vertexNormals -> push_back(z);
+
+                read_normals++;
+
+                if (read_normals > nr_normals) break;
             }
         }
 
@@ -206,10 +231,36 @@ static void processModelsTag(XMLElement *models_ptr, Group *group) {
 
             auto model = new MODEL_INFO(model_file_name, true, file_texture != nullptr);
 
-            if (file_texture)
-                model -> textureFile = model_texture;
+            if (file_texture) {
+                model -> settings[1] = true;
+                model->textureFile = model_texture;
+            }
 
             load_indexed_model(model);
+
+            //----------------------------------------------------------------------------------------------------------
+            // Parse colours (if any)
+
+            //has setted colour components
+            model -> settings[2] = true;
+
+            model_ptr -> QueryAttribute("diffR", &model->diffuseComponent[0]);
+            model_ptr -> QueryAttribute("diffG", &model->diffuseComponent[1]);
+            model_ptr -> QueryAttribute("diffB", &model->diffuseComponent[2]);
+
+            model_ptr -> QueryAttribute("specR", &model->specularComponent[0]);
+            model_ptr -> QueryAttribute("specG", &model->specularComponent[1]);
+            model_ptr -> QueryAttribute("specB", &model->specularComponent[2]);
+
+            model_ptr -> QueryAttribute("ambiR", &model->ambientComponent[0]);
+            model_ptr -> QueryAttribute("ambiG", &model->ambientComponent[1]);
+            model_ptr -> QueryAttribute("ambiB", &model->ambientComponent[2]);
+
+            model_ptr -> QueryAttribute("emisR", &model->emissiveComponent[0]);
+            model_ptr -> QueryAttribute("emisG", &model->emissiveComponent[1]);
+            model_ptr -> QueryAttribute("emisB", &model->emissiveComponent[2]);
+
+            //----------------------------------------------------------------------------------------------------------
 
             group -> models -> push_back(*model);
 
@@ -347,6 +398,85 @@ static void processScaleTag(XMLElement *scale_ptr, Group *group) {
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
+//Process the lights
+
+static vector<LightSource>* processLightsTag(XMLElement *lights_ptr) {
+
+    auto *vectorLights = new vector<LightSource>();
+
+    XMLElement* lightSourceElement = lights_ptr -> FirstChildElement("light");
+
+    int lightOffset = 0;
+    //Process a list of light sources
+    while (lightSourceElement) {
+
+        auto hasTypeString = lightSourceElement -> Attribute("type");
+
+        string lightType;
+        if (hasTypeString) {
+
+            lightType = string(hasTypeString);
+
+            auto* lightSource = new LightSource();
+
+            lightSourceElement -> QueryAttribute("diffR",&lightSource->diffuseComponent[0]);
+            lightSourceElement -> QueryAttribute("diffG",&lightSource->diffuseComponent[1]);
+            lightSourceElement -> QueryAttribute("diffB",&lightSource->diffuseComponent[2]);
+
+            lightSourceElement -> QueryAttribute("specR", &lightSource->specularComponent[0]);
+            lightSourceElement -> QueryAttribute("specG", &lightSource->specularComponent[1]);
+            lightSourceElement -> QueryAttribute("specB", &lightSource->specularComponent[2]);
+
+            lightSourceElement -> QueryAttribute("ambiR", &lightSource->ambientComponent[0]);
+            lightSourceElement -> QueryAttribute("ambiG", &lightSource->ambientComponent[1]);
+            lightSourceElement -> QueryAttribute("ambiB", &lightSource->ambientComponent[2]);
+
+            lightSourceElement -> QueryAttribute("posX",&lightSource->point[0]);
+            lightSourceElement -> QueryAttribute("posY",&lightSource->point[1]);
+            lightSourceElement -> QueryAttribute("posZ",&lightSource->point[2]);
+
+            if (lightType == "POINT") {
+
+                lightSource -> lightType = "POINT";
+
+                lightSource -> point[3] = 1.0f;
+
+            } else if (lightType == "DIRECTIONAL") {
+
+                lightSource -> lightType = "DIRECTIONAL";
+
+                lightSource -> point[3] = 0.0f;
+
+            } else if (lightType == "SPOT") {
+
+                lightSource -> lightType = "SPOT";
+
+                lightSourceElement -> QueryAttribute("cutoff",&lightSource->SpotCutoff);
+                lightSourceElement -> QueryAttribute("exponent",&lightSource->SpotExponent);
+
+                lightSourceElement -> QueryAttribute("dirX",&(lightSource->SpotDirection[0]));
+                lightSourceElement -> QueryAttribute("dirY",&(lightSource->SpotDirection[1]));
+                lightSourceElement -> QueryAttribute("dirZ",&(lightSource->SpotDirection[2]));
+            }
+
+            //printLightSource(lightSource);
+
+            lightSource -> lightEnumNumber = lightOffset;
+
+            vectorLights -> push_back(*lightSource);
+
+            lightOffset+=1;
+
+        } else
+            throw string("A light source type may be defined in the lights scope!");
+
+        lightSourceElement = lightSourceElement -> NextSiblingElement("light");
+    }
+
+    return vectorLights;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
 //Process the group tag (<group>)
 
 static void processGroupTag(XMLElement *group_tag_ptr, Group *group) {
@@ -401,7 +531,7 @@ static void processGroupTag(XMLElement *group_tag_ptr, Group *group) {
 /*--------------------------------------------------------------------------------------------------------------------*/
 //Process the xml file and load all structures and classes
 
-vector<Group>* load_xml_config(string xml_config_filename) {
+pair<vector<Group>*, vector<LightSource>*> load_xml_config(string xml_config_filename) {
 
     /*--------------------------------------------------------------*/
 
@@ -427,8 +557,20 @@ vector<Group>* load_xml_config(string xml_config_filename) {
         return {};
 
     /*--------------------------------------------------------------*/
+    //Process light sources from xml
 
-    //Scene tags can only contain group child tags
+    XMLElement* lightsElement = rootScene -> FirstChildElement("lights");
+
+    auto* lights = new vector<LightSource>();
+
+    if (lightsElement != NULL) {
+
+        lights = processLightsTag(lightsElement);
+    }
+
+    /*--------------------------------------------------------------*/
+
+    //Scene tags can only contain group child tags or light sources
     XMLElement* group_tag_ptr = rootScene -> FirstChildElement("group");
 
     //Vector ptr containing all the groups of the scene
@@ -440,7 +582,6 @@ vector<Group>* load_xml_config(string xml_config_filename) {
         //Create new group that will be processed in processGroupTag(...)
         auto newGroup = new Group();
 
-
             //Process the group tag
             processGroupTag(group_tag_ptr, newGroup);
 
@@ -451,5 +592,5 @@ vector<Group>* load_xml_config(string xml_config_filename) {
         group_tag_ptr = group_tag_ptr -> NextSiblingElement("group");
     }
 
-    return groups_vector;
+    return make_pair(groups_vector, lights);
 }

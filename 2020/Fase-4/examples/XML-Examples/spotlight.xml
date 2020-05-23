@@ -1,0 +1,187 @@
+<scene>
+
+	<lights>
+
+		<light type="SPOT" 
+			   posX="-50" posY="0" posZ="0" 
+			   dirX="-1" dirY="0" dirZ="0"
+			   cutoff="1" exponent="100"
+			   ambiR="0" ambiG="1" ambiB="1"/>
+
+		<light type="SPOT" 
+			   posX="50" posY="0" posZ="0" 
+			   dirX="1" dirY="0" dirZ="0"
+			   cutoff="2" exponent="100"
+			   ambiR="0" ambiG="0" ambiB="1"/>
+
+		<light type="SPOT" 
+			   posX="0" posY="0" posZ="50" 
+			   dirX="0" dirY="0" dirZ="1"
+			   cutoff="3" exponent="100"
+			   ambiR="1" ambiG="0" ambiB="0"/>
+
+		<light type="SPOT" 
+			   posX="0" posY="0" posZ="-50" 
+			   dirX="0" dirY="0" dirZ="-1"
+			   cutoff="4" exponent="100"
+			   ambiR="1" ambiG="1" ambiB="1"/>
+
+	</lights>
+	
+    <group>
+
+	    <!-- Spotlights setup -->
+    	<group>
+
+	    	<group> 
+
+		    	<translate X="-50" Z="0" Y="0"/>
+
+		    	<scale X="5" Y="5" Z="5" />
+
+	    		<models> 
+	    			<model file="sphere.3d.indexed"
+	    			       texture="pattern1.jpg" 
+	    				   emisR="1" emisG="1" emisB="1"/>
+	    		</models>
+
+	    	</group>
+
+	    	<group> 
+
+		    	<translate X="0" Z="50" Y="0"/>
+
+				<scale X="5" Y="5" Z="5" />
+	    		
+	    		<models> 
+	    			<model file="sphere.3d.indexed"
+	    			       texture="pattern2.jpg" 
+	    				   emisR="1" emisG="1" emisB="1"/>
+	    		</models>
+
+	    	</group>
+
+	    	<group> 
+
+		    	<translate X="50" Z="0" Y="0"/>
+
+		    	<scale X="5" Y="5" Z="5" />
+
+	    		<models> 
+	    			<model file="sphere.3d.indexed"
+	    			       texture="pattern3.jpg" 
+	    				   emisR="1" emisG="1" emisB="1"/>
+	    		</models>
+
+	    	</group>
+
+	    	<group> 
+
+		    	<translate X="0" Z="-50" Y="0"/>
+
+		    	<scale X="5" Y="5" Z="5" />
+
+	    		<models>
+	    			<model file="sphere.3d.indexed"
+	    				   emisR="1" emisG="1" emisB="1"/>
+	    		</models>
+
+	    	</group>
+	    </group>
+
+	    <!-- Primitives -->
+    	<group>
+
+	    	<translate X="-220" Z="0" Y="0"/>
+
+	    	<rotate time="10" axisY="1"/>
+
+	    	<group>
+
+				<rotate angle="-90" axisX="1" />
+
+	    		<scale X="20" Y="20" Z="20" />
+	
+		        <models>
+		            <model file="sphere.3d.indexed" 
+		            	   texture="pattern1.jpg"
+		            	   ambiR="1" ambiG="1" ambiB="1"
+		            	   diffR="1" diffG="0" diffB="0"
+		            	   />
+		        </models>
+
+		    </group>
+	
+		</group>
+
+    	<group>
+
+	    	<translate X="0" Z="220" Y="0"/>
+
+	    	<rotate time="10" axisY="1"/>
+
+	    	<group>
+
+				<rotate angle="-90" axisX="1" />
+
+	    		<scale X="20" Y="20" Z="20" />
+	
+		        <models>
+		            <model file="sphere.3d.indexed"
+		            	   texture="pattern2.jpg"
+		            	   ambiR="1" ambiG="1" ambiB="1"
+		            	   diffR="0" diffG="1" diffB="0"/>
+		        </models>
+
+		    </group>
+	
+		</group>
+
+    	<group>
+
+	    	<translate X="220" Z="0" Y="0"/>
+
+	    	<rotate time="10" axisY="1"/>
+
+	    	<group>
+
+				<rotate angle="-90" axisX="1" />
+
+	    		<scale X="20" Y="20" Z="20" />
+	
+		        <models>
+		            <model file="sphere.3d.indexed"
+		            	   texture="pattern3.jpg"
+		            	   ambiR="1" ambiG="1" ambiB="1"
+		            	   diffR="0" diffG="0" diffB="1"/>
+		        </models>
+
+		    </group>
+	
+		</group>
+
+    	<group>
+
+	    	<translate X="0" Z="-220" Y="0"/>
+
+	    	<rotate time="10" axisY="1"/>
+
+	    	<group>
+
+				<rotate angle="-90" axisX="1" />
+
+	    		<scale X="20" Y="20" Z="20" />
+	
+		        <models>
+		            <model file="sphere.3d.indexed"
+		            	   ambiR="1" ambiG="1" ambiB="1"
+		            	   diffR="1" diffG="1" diffB="0"/>
+		        </models>
+
+		    </group>
+	
+		</group>
+
+    </group>
+
+</scene>

@@ -49,6 +49,8 @@ void initModelTexture(MODEL_INFO *model) {
 
     //upload image data
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, IMG_WDT, IMG_HGT, 0, GL_RGBA, GL_UNSIGNED_BYTE, DATA);
+
+    //Maybe temporary
     glGenerateMipmap(GL_TEXTURE_2D);
 
     glBindTexture(GL_TEXTURE_2D, 0);
