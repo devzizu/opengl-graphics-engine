@@ -723,7 +723,7 @@ void generate_sphere_indexed (double radius, int slices, int stacks, string file
 
             textureCoordinates -> push_back(*new POINT_3D(
                     (sl / (float) slices),
-                    -(st / (float) stacks),
+                    1.0f - (st / (float) stacks),
                     0.0f
             ));
 
