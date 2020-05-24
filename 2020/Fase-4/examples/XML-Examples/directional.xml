@@ -1,0 +1,93 @@
+<scene>
+
+	<lights>
+
+		<light type="DIRECTIONAL" 
+			   posX="1" posY="0" posZ="0" 
+			   ambiR="0" ambiG="1" ambiB="0"
+		/>
+
+		<light type="DIRECTIONAL" 
+			   posX="0" posY="0" posZ="-1" 
+			   ambiR="0" ambiG="1" ambiB="0"
+		/>
+
+	</lights>
+	
+    <group>
+
+	    <group> 
+
+			<scale X="10" Y="10" Z="10" />
+
+	    	<models> 
+	    		<model file="sphere.3d.indexed"
+	    		       texture="sun.jpg" 
+	    			   emisR="1" emisG="1" emisB="1"/>
+	    	</models>
+
+	    </group>
+
+	    <group> 
+
+			<translate X="-200" Z="0" Y="0"/>
+
+			<scale X="50" Y="50" Z="50" />
+	    	
+	    	<models> 
+	    		<model file="sphere.3d.indexed"
+	    		       texture="earth.jpg" 
+	    			   diffR="0" diffG="1" diffB="0"
+	    			   specR="1" specG="1" specB="1"/>
+	    	</models>
+
+	    </group>
+
+	    <group> 
+
+			<translate X="200" Z="0" Y="0"/>
+
+			<scale X="50" Y="50" Z="50" />
+	    	
+	    	<models> 
+	    		<model file="sphere.3d.indexed"
+	    		       texture="earth.jpg" 
+	    			   diffR="0" diffG="1" diffB="0"
+	    			   specR="1" specG="1" specB="1"/>
+	    	</models>
+
+	    </group>
+
+	    <group> 
+
+			<translate X="0" Z="-200" Y="0"/>
+
+			<scale X="50" Y="50" Z="50" />
+	    	
+	    	<models> 
+	    		<model file="sphere.3d.indexed"
+	    		       texture="earth.jpg" 
+	    			   diffR="0" diffG="0" diffB="1"
+	    			   specR="1" specG="1" specB="1"/>
+	    	</models>
+
+	    </group>
+
+	    <group> 
+
+			<translate X="0" Z="+200" Y="0"/>
+
+			<scale X="50" Y="50" Z="50" />
+	    	
+	    	<models> 
+	    		<model file="sphere.3d.indexed"
+	    		       texture="earth.jpg" 
+	    			   diffR="0" diffG="0" diffB="1"
+	    			   specR="1" specG="1" specB="1"/>
+	    	</models>
+
+	    </group>
+
+    </group>
+
+</scene>

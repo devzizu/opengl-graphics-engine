@@ -33,7 +33,7 @@
 	
 		        <models>
 		            <model file="teapot.3d.indexed" 
-		            	   texture="pattern1.jpg"
+		            	   texture="face1.png"
 		            	   diffR="1" diffG="0" diffB="0"
 		            	   />
 		        </models>

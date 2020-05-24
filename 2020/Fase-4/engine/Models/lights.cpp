@@ -53,6 +53,7 @@ void printArrayComponent(float* array, int tam) {
 void printLightSource(LightSource* ls) {
 
     cout << "......................................" << endl;
+    cout << "Light type: " << ls ->lightType << endl;
     cout << "Light number: " << ls ->lightEnumNumber << endl;
     cout << "Point: " << endl;
     printArrayComponent(ls ->point, 4);

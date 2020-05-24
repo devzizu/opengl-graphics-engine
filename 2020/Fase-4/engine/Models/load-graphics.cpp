@@ -128,7 +128,7 @@ void processRunningInformation() {
 
     std::stringstream ss;
 
-    ss << " (Enable/Disable axis: 'q', Reset Camera: 'r')" << endl;
+    ss << " (Enable/Disable axis: 'q', Reset Camera: 'r', Polygon mode: 'l' -> line, 'f' -> fill)" << endl;
     ss << "Camera lookat   : x = " << LookX << ", y = " << LookY << ", z = " << LookZ << ", alpha = " << alpha << "º" << endl;
     ss << "Camera position : x = " << camX << ", y = " << camY << ", z = " << camZ << endl;
     ss << "Engine Model Simulation" << endl;
@@ -239,6 +239,8 @@ void renderScene(void) {
 
         //light pos = {x,y,z,w}, case w = 0 -> vector, case w = 1 -> point
         glLightfv(lightIndex, GL_POSITION, it -> point);
+
+        printLightSource(it.base());
 
         glLightfv(lightIndex, GL_SPECULAR, it -> specularComponent);
         glLightfv(lightIndex, GL_AMBIENT, it -> ambientComponent);
@@ -555,7 +557,7 @@ int load_graphics(pair<vector<Group>*, vector<LightSource>*> scene, int argc, ch
     //------------------------------------------------------------------------------------------------------------------
 
     //Sets the screen size to fullscreen
-    //glutFullScreen();
+    glutFullScreen();
 
     //Required callback registry
     glutDisplayFunc(renderScene);
