@@ -5,9 +5,8 @@
 #include "lights.h"
 
 /*
- * Carrega o ficheiro de configuração xml num objeto com o nome
- * de todos os modelos.
- * @param caminho para o ficheiro xml
+ * Loads our xml configuration file.
+ * @param xml file path
  * */
 pair<vector<Group>*, vector<LightSource>*> load_xml_config(std::string xml_config_filename);
 

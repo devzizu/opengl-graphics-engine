@@ -12,6 +12,9 @@ using namespace std;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+/*
+ * Defines a generic point in 3 dimensions.
+ * */
 class POINT_3D {
 
     public:

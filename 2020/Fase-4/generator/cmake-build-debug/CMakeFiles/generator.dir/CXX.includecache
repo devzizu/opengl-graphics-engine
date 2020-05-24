@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/bezier-patch.cpp
+vector
+-
+fstream
+-
+iostream
+-
+math.h
+-
+headers/model-info.h
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/headers/model-info.h
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/headers/bezier-patch.h
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/headers/model-generator.h
+
 /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/headers/model-info.h
 
 /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/model-generator.cpp
@@ -19,4 +35,20 @@ iostream
 -
 headers/model-info.h
 /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/headers/model-info.h
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/model-info.cpp
+headers/model-info.h
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/headers/model-info.h
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/main.cpp
+iostream
+-
+vector
+-
+Model-Generator/headers/model-generator.h
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/headers/model-generator.h
+Model-Generator/headers/model-info.h
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/headers/model-info.h
+Model-Generator/headers/bezier-patch.h
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/generator/Model-Generator/headers/bezier-patch.h
 

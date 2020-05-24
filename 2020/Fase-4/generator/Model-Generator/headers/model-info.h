@@ -4,15 +4,18 @@
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+/*
+ * Stores a generic 3 dimensions point.
+ * */
 class POINT_3D {
 
         public:
-        POINT_3D(float x, float y, float z);
+            POINT_3D(float x, float y, float z);
 
         public:
-        float x;
-        float y;
-        float z;
+            float x;
+            float y;
+            float z;
 };
 
 #endif

@@ -7,6 +7,13 @@
 
 using namespace std;
 
+/*
+ * Class that stores all the information about
+ * a light source in this system. Lights could be SPOT,
+ * DIRECTIONAL or POINT and the RGBA intensities may be
+ * given as input.
+ * Default OpenGL values are given to all colour components.
+ * */
 class LightSource {
 
 public:
@@ -37,7 +44,17 @@ public:
     float SpotCutoff;
 };
 
+/*
+ * Prints a light source class in stdout.
+ * @param ls the LightSource class
+ * */
 void printLightSource(LightSource* ls);
+
+/*
+ * Generic array display function on stdout.
+ * @param array the array
+ * @param tam array length
+ * */
 void printArrayComponent(float* array, int tam);
 
 #endif //ENGINE_LIGHTS_H
