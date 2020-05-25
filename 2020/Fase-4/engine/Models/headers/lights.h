@@ -4,6 +4,7 @@
 
 #include <GL/glew.h>
 #include <iostream>
+#include <model-info.h>
 
 using namespace std;
 
@@ -56,5 +57,11 @@ void printLightSource(LightSource* ls);
  * @param tam array length
  * */
 void printArrayComponent(float* array, int tam);
+
+/*
+ * Loads lighting to opengl and enables all source lights
+ * @param scene scene containing lights and groups
+ * */
+void initLights(pair<vector<Group>*, vector<LightSource>*> scene);
 
 #endif //ENGINE_LIGHTS_H

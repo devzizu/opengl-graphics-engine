@@ -26,7 +26,6 @@
 #include <textures.h>
 #include <VBO.h>
 #include <lights.h>
-#include <cstring>
 #include <sstream>
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -239,8 +238,6 @@ void renderScene(void) {
 
         //light pos = {x,y,z,w}, case w = 0 -> vector, case w = 1 -> point
         glLightfv(lightIndex, GL_POSITION, it -> point);
-
-        printLightSource(it.base());
 
         glLightfv(lightIndex, GL_SPECULAR, it -> specularComponent);
         glLightfv(lightIndex, GL_AMBIENT, it -> ambientComponent);
@@ -494,6 +491,17 @@ void processSpecialKeys(int key, int xx, int yy)
     glutPostRedisplay();
 }
 
+void initClientState() {
+
+    //Enables vertex arrays when calling glDrawArrays or glDrawElements
+    glEnableClientState(GL_VERTEX_ARRAY);
+    //Enables vertex normals arrays
+    glEnableClientState(GL_NORMAL_ARRAY);
+    //Enables texture coordinate arrays for rendering
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+}
+
 int load_graphics(pair<vector<Group>*, vector<LightSource>*> scene, int argc, char** argv) {
 
     //------------------------------------------------------------------------------------------------------------------
@@ -528,29 +536,17 @@ int load_graphics(pair<vector<Group>*, vector<LightSource>*> scene, int argc, ch
     #endif
 
     //------------------------------------------------------------------------------------------------------------------
-    // VBOs Initialization
+
+    //Enable all client states
+    initClientState();
 
     //Enables 2D textures
     glEnable(GL_TEXTURE_2D);
 
-    //Enables vertex arrays when calling glDrawArrays or glDrawElements
-    glEnableClientState(GL_VERTEX_ARRAY);
-    //Enables vertex normals arrays
-    glEnableClientState(GL_NORMAL_ARRAY);
-    //Enables texture coordinate arrays for rendering
-    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-
-    //Enable lights
-    if (!scene.second->empty()) {
-        glEnable(GL_LIGHTING); //turn on lighting
-        for (auto it = scene.second->begin(); it < scene.second->end(); it++) {
-            glEnable(GL_LIGHT0 + it->lightEnumNumber); //turn on the light source
-        }
-    }
-
     //------------------------------------------------------------------------------------------------------------------
     // Initialization of VBOs, Textures, DevIl, ...
 
+    initLights(scene);
     initVBOs(sceneGroups);
     initTextures(sceneGroups);
 

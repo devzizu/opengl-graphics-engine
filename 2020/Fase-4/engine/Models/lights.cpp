@@ -1,6 +1,7 @@
 
 #include <lights.h>
 #include <iostream>
+#include <model-info.h>
 
 using namespace std;
 
@@ -68,4 +69,16 @@ void printLightSource(LightSource* ls) {
     cout << "Spot Exponent: " << ls ->SpotExponent << endl;
     cout << "Spot cutoff: " << ls ->SpotCutoff << endl;
     cout << "......................................" << endl;
+}
+
+void initLights(pair<vector<Group>*, vector<LightSource>*> scene) {
+
+    //Enable lights
+    if (!scene.second->empty()) {
+        glEnable(GL_LIGHTING); //turn on lighting
+        for (auto it = scene.second->begin(); it < scene.second->end(); it++) {
+            glEnable(GL_LIGHT0 + it->lightEnumNumber); //turn on the light source
+        }
+    }
+
 }

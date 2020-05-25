@@ -23,6 +23,8 @@ GL/glew.h
 -
 iostream
 -
+model-info.h
+-
 
 ../Models/headers/model-info.h
 iostream
@@ -38,36 +40,12 @@ GL/glew.h
 model-info.h
 ../Models/headers/model-info.h
 
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/VBO.cpp
-model-info.h
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/model-info.h
-
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/catmull-rom.cpp
-math.h
--
-model-info.h
--
-GLUT/glut.h
--
-GL/glut.h
--
-
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/draw-elements.cpp
-GLUT/glut.h
--
-GL/glew.h
--
-GL/glut.h
--
-model-info.h
--
-catmull-rom.h
--
-
 /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/headers/lights.h
 GL/glew.h
 -
 iostream
+-
+model-info.h
 -
 
 /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/headers/load-graphics.h
@@ -84,6 +62,14 @@ vector
 stack
 -
 GL/glew.h
+-
+
+/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/lights.cpp
+lights.h
+-
+iostream
+-
+model-info.h
 -
 
 /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/load-graphics.cpp
@@ -111,8 +97,6 @@ VBO.h
 -
 lights.h
 -
-cstring
--
 sstream
 -
 
@@ -129,16 +113,6 @@ lights.h
 -
 ../tinyxml2/tinyxml2.h
 /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/tinyxml2/tinyxml2.h
-
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/model-info.cpp
-model-info.h
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/model-info.h
-
-/home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/textures.cpp
-model-info.h
--
-IL/il.h
--
 
 /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/main.cpp
 iostream

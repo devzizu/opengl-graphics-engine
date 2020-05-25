@@ -13,6 +13,7 @@ CMakeFiles/engine.dir/Models/draw-elements.cpp.o
  /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/draw-elements.cpp
 CMakeFiles/engine.dir/Models/lights.cpp.o
  ../Models/headers/lights.h
+ ../Models/headers/model-info.h
  /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/lights.cpp
 CMakeFiles/engine.dir/Models/load-graphics.cpp.o
  ../Models/headers/VBO.h
@@ -34,6 +35,7 @@ CMakeFiles/engine.dir/Models/textures.cpp.o
  ../Models/headers/model-info.h
  /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/textures.cpp
 CMakeFiles/engine.dir/main.cpp.o
+ ../Models/headers/model-info.h
  /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/headers/lights.h
  /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/headers/load-graphics.h
  /home/joao/Desktop/Projeto-CG/CG19-20/2020/Fase-4/engine/Models/headers/load-xml.h
