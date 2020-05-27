@@ -76,10 +76,73 @@ float v_look_direction[3] = {0.0f, 0.0f, 0.0f};
 int VIEWPORT_SET = 0;
 bool ENABLE_MODEL_AXIS = false;
 
+//Background Sky
+bool DRAW_BACKGROUND = false;
+GLuint textIDSky;
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 
-void drawString(char *string)
+void drawBackground(void)
 {
+    float w = 0.0f;  // Largura da janela
+    float h = 0.0f;  // Altura da janela
+
+    // Pretende-se que o background não seja sujeito a transformações e que
+    // permaneça no fundo da janela
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_LIGHTING);
+
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+
+    // Calculam-se a altura e a largura da janela
+    w = (float)glutGet(GLUT_WINDOW_WIDTH);
+    h = (float)glutGet(GLUT_WINDOW_HEIGHT);
+
+    gluOrtho2D(0.0, (GLdouble)w, (GLdouble)h, 0.0);
+
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+
+    glBindTexture(GL_TEXTURE_2D, textIDSky);
+
+    // Desenha-se um plano com as dimensões da janela e aplica-se a textura
+    // com o background
+    glBegin(GL_QUADS);
+
+    glColor3f(0.2f, 0.2f, 0.2f);
+
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(0.0f, 0.0f, 0.0f);
+
+    glTexCoord2f(0.0f, 1.0f);
+    glVertex3f(0.0f, h, 0.0f);
+
+    glTexCoord2f(1.0f, 1.0f);
+    glVertex3f(w, h, 0.0f);
+
+    glTexCoord2f(1.0f, 0.0f);
+    glVertex3f(w, 0.0f, 0.0f);
+
+    glEnd();
+
+
+    // Retorna-se às configurações iniciais
+    glPopMatrix();
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_LIGHTING);
+}
+
+void drawString(char *string) {
+
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
     glLoadIdentity();
@@ -127,7 +190,7 @@ void processRunningInformation() {
 
     std::stringstream ss;
 
-    ss << " (Enable/Disable axis: 'q', Reset Camera: 'r', Polygon mode: 'l' -> line, 'f' -> fill)" << endl;
+    ss << " (Enable/Disable axis: 'q'; Reset Camera: 'r'; Polygon mode: 'l' -> line, 'f' -> fill; Enable/Disable sky: 'b')" << endl;
     ss << "Camera lookat   : x = " << LookX << ", y = " << LookY << ", z = " << LookZ << ", alpha = " << alpha << "º" << endl;
     ss << "Camera position : x = " << camX << ", y = " << camY << ", z = " << camZ << endl;
     ss << "Engine Model Simulation" << endl;
@@ -211,6 +274,9 @@ void renderScene(void) {
     // clear buffers
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    if (DRAW_BACKGROUND)
+        drawBackground();
+
     /*----------------------------------------------------------------------------------------------------------------*/
 
     //Control camera look position
@@ -293,6 +359,14 @@ void processKeys(unsigned char c, int xx, int yy) {
 
     switch(tolower(c))
     {
+        case 'b':
+
+            if (DRAW_BACKGROUND)
+                DRAW_BACKGROUND = false;
+            else DRAW_BACKGROUND = true;
+
+            break;
+
         case 'q':
 
             if (ENABLE_MODEL_AXIS)
@@ -550,10 +624,12 @@ int load_graphics(pair<vector<Group>*, vector<LightSource>*> scene, int argc, ch
     initVBOs(sceneGroups);
     initTextures(sceneGroups);
 
+    textIDSky = initModelTextureSky("space.jpg");
+
     //------------------------------------------------------------------------------------------------------------------
 
     //Sets the screen size to fullscreen
-    glutFullScreen();
+    //glutFullScreen();
 
     //Required callback registry
     glutDisplayFunc(renderScene);

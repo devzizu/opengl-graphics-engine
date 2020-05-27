@@ -56,6 +56,55 @@ void initModelTexture(MODEL_INFO *model) {
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
+int initModelTextureSky(string texture) {
+
+    //init DevIL
+    ilInit();
+
+    //Set texture origin in lower left side
+    ilEnable(IL_ORIGIN_SET);
+    ilOriginFunc(IL_ORIGIN_LOWER_LEFT);
+
+    //Image id, width and height
+    unsigned int IMG_ID, IMG_WDT, IMG_HGT;
+    unsigned char* DATA;
+
+    //Generates 1 image name/id
+    ilGenImages(1, &IMG_ID);
+    ilBindImage(IMG_ID);
+
+    string text_path = TEXTURES_PATH + texture;
+    const char* textureFile = text_path.c_str();
+
+    ilLoadImage((ILstring) textureFile);
+    IMG_WDT = ilGetInteger(IL_IMAGE_WIDTH);
+    IMG_HGT = ilGetInteger(IL_IMAGE_HEIGHT);
+    ilConvertImage(IL_RGBA, IL_UNSIGNED_BYTE);
+    DATA = ilGetData();
+
+    unsigned int texID;
+
+    //Generates 1 texture for the gpu
+    glGenTextures(1, &texID);
+
+    glBindTexture(GL_TEXTURE_2D, texID);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+
+    //upload image data
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, IMG_WDT, IMG_HGT, 0, GL_RGBA, GL_UNSIGNED_BYTE, DATA);
+
+    //Maybe temporary
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    return texID;
+}
+
 void initGroupTextures(Group *g) {
 
     auto models = g -> models;

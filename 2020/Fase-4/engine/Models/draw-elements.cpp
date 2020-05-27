@@ -250,3 +250,4 @@ void drawGroupElements(Group g, bool hasLighting, bool ENABLE_MODEL_AXIS) {
     //             with the one below it on the stack.
     glPopMatrix();
 }
+
