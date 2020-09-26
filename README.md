@@ -1,13 +1,12 @@
-# CG - 2020
+# Computer Graphics Engine - Solar System and other simulations
 
-Project: CG | "Sistema Solar" | using OpenGL in C/C++.
+Assessment for Computer Graphics subject.
 
-## Members
+### Members / Mainteiners 
 
-A89983 | Paulo Lima
+- João Azevedo    | [A85227]
+- Pedro Machado  | [A83719]
+- Paulo Araujo   | [A85729]
+- Paulo Lima     | [A89983]
 
-A85227 | João Azevedo
-
-A83719 | Pedro Machado
-
-University of Minho, 3rd year.
+>**University of Minho, Software Engineering (3rd year)**.
