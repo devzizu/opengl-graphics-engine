@@ -1,6 +1,6 @@
 # Computer Graphics Engine - Solar System and other simulations
 
-Assessment for Computer Graphics subject.
+[Assessment](https://github.com/devzizu/Computer-Graphics/blob/master/2020/assignment.CG.eng.PDF) 
 
 ### Members / Mainteiners 
 
