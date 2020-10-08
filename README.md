@@ -76,7 +76,7 @@ generator bezier-patch teapot.patch 10 teapot.3d
 ### **Phase 4** - *Normals and Texture Coordinates* 
 [(phase 4 report)](https://github.com/devzizu/Computer-Graphics/blob/master/2020/Fase-4/Relat%C3%B3rio_Fase-4.pdf)
    - After we get our dynamic scene, we needed to provide normals and texture coordinates to every vertex of each model in order to add lighting and textures.
-    - Each model had its algorithm improved and now the final **<model>.3d** files have more information, which you can see in the final report. After that, the engine loads all vertices (+indexes), normals and texture coordinates into the corresponding VBOs using the OpenGL API. We define the light sources in the **xml** configuration file like this:
+   Each model had its algorithm improved and now the final **<model>.3d** files have more information, which you can see in the final report. After that, the engine loads all vertices (+indexes), normals and texture coordinates into the corresponding VBOs using the OpenGL API. We define the light sources in the **xml** configuration file like this:
 
 ```xml
 <scene>
@@ -86,7 +86,7 @@ generator bezier-patch teapot.patch 10 teapot.3d
     ...
 </scene>
 ```
-...and each light can be of different types, with different color components.
+   - Each light can be of different types, with different color components.
 Finally, we defined the final configuration file as being the Solar System simulation, but other scenes have been implemented to show other functionalities. The final report contains all the simulation results with several screenshots.
 ### Members / Maintainers
 
