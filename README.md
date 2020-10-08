@@ -1,15 +1,15 @@
 # Computer Graphics Engine - Solar System
 
 The goal of this assignment is to develop a mini scene graph based 3D engine and provide usage
-examples that show its potential. The assignment is split in four phases and each phase has its report and code for the **engine** and **generator**. Here you can see the project [assignment paper](https://github.com/devzizu/Computer-Graphics/blob/master/2020/assignment.CG.eng.PDF).
+examples that show its potential. The assignment is split in four phases and each phase has its report and code for the **engine** and **generator**. Here you can see the project [assignment paper](https://github.com/devzizu/Computer-Graphics/blob/master/Computer-Graphics/assignment.CG.eng.PDF).
 
 ## Development process - four phases
 
 ### **Phase 1** - *Algorithms for Graphical primitives* 
-[(phase 1 report)](https://github.com/devzizu/Computer-Graphics/blob/master/2020/Fase-1/Relat%C3%B3rio_Fase-1.pdf)
+[(phase 1 report)](https://github.com/devzizu/Computer-Graphics/blob/master/Computer-Graphics/Fase-1/Relat%C3%B3rio_Fase-1.pdf)
 - We built two applications using C++: the **generator** whose goal was to generate vertices for different models like planes, boxes, spheres and cones (and its measures - x y z). After running the program with the appropriate arguments, files called <model>.3d are generated, for example:
 
-Example: [**cone.3d**](https://github.com/devzizu/Computer-Graphics/blob/master/2020/Fase-1/examples/Model-Read-Tests/cone.3d) (3601 lines of vertices)
+Example: [**cone.3d**](https://github.com/devzizu/Computer-Graphics/blob/master/Computer-Graphics/Fase-1/examples/Model-Read-Tests/cone.3d) (3601 lines of vertices)
 
 ```c
 3600
@@ -28,7 +28,7 @@ After that, the engine is able to load this files specified in the **xml** scene
 And the model is displayed in the screen using the OpenGL API. Although this is a very simple example, models can get much bigger and complex, each phase we increase the functionalities of this applications.
 
 ### **Phase 2** - *Apply hierarchical Geometric Transforms* 
-[(phase 2 report)](https://github.com/devzizu/Computer-Graphics/blob/master/2020/Fase-2/Relat%C3%B3rio_Fase-2.pdf)
+[(phase 2 report)](https://github.com/devzizu/Computer-Graphics/blob/master/Computer-Graphics/Fase-2/Relat%C3%B3rio_Fase-2.pdf)
    - Now the **xml scenes** have an hierarchical structure meaning that they are defined as a tree where each node contains a set of geometric transforms (translate, rotate and scale) and optionally a set of models. Each node can also have children nodes. So, basically we only work on the **engine**, adding memory structures, features in the xml reader and OpenGL code to render the scene in order.
 
 ```xml
@@ -52,7 +52,7 @@ And the model is displayed in the screen using the OpenGL API. Although this is 
 ```
 
 ### **Phase 3** - *Curves, Cubic Surfaces and Vertex buffer objects (VBOs)* 
-[(phase 3 report)](https://github.com/devzizu/Computer-Graphics/blob/master/2020/Fase-3/Relat%C3%B3rio_Fase-3.pdf)
+[(phase 3 report)](https://github.com/devzizu/Computer-Graphics/blob/master/Computer-Graphics/Fase-3/Relat%C3%B3rio_Fase-3.pdf)
    
   - Now the **generator** application creates a <ins>new type of model</ins> based on [*Bézier patches*](https://pt.wikipedia.org/wiki/Superf%C3%ADcies_de_B%C3%A9zier) applying Bézier rules for the defined **control points** and **tesselation level**.
 
@@ -62,7 +62,7 @@ Now we run the model like this:
 generator bezier-patch <patch-file> <tesselation> <output-file-name>
 ```
 
-For example, running [teapot.patch](https://github.com/devzizu/Computer-Graphics/blob/master/2020/Fase-3/examples/Models.patch/teapot.patch) file with tesselation level of 10:
+For example, running [teapot.patch](https://github.com/devzizu/Computer-Graphics/blob/master/Computer-Graphics/Fase-3/examples/Models.patch/teapot.patch) file with tesselation level of 10:
 
 ```bash
 generator bezier-patch teapot.patch 10 teapot.3d
@@ -74,7 +74,7 @@ generator bezier-patch teapot.patch 10 teapot.3d
 - Finally, VBOs were added as opposed to immediate mode used in the previous phases.
 
 ### **Phase 4** - *Normals and Texture Coordinates* 
-[(phase 4 report)](https://github.com/devzizu/Computer-Graphics/blob/master/2020/Fase-4/Relat%C3%B3rio_Fase-4.pdf)
+[(phase 4 report)](https://github.com/devzizu/Computer-Graphics/blob/master/Computer-Graphics/Fase-4/Relat%C3%B3rio_Fase-4.pdf)
    - After we get our dynamic scene, we needed to provide normals and texture coordinates to every vertex of each model in order to add lighting and textures.
    Each model had its algorithm improved and now the final **<model>.3d** files have more information, which you can see in the final report. After that, the engine loads all vertices (+indexes), normals and texture coordinates into the corresponding VBOs using the OpenGL API. We define the light sources in the **xml** configuration file like this:
 
